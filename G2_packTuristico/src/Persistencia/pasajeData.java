@@ -1,7 +1,7 @@
 
 package Persistencia;
 
-import Modelo.Conexion;
+import AccesoDatos.Conexion;
 import org.mariadb.jdbc.Connection;
 import Modelo.Pasaje;
 import java.sql.*;

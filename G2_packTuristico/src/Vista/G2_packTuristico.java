@@ -1,7 +1,7 @@
 
 package Vista;
 
-import Modelo.Conexion;
+import AccesoDatos.Conexion;
 import java.sql.Connection;
 
 
