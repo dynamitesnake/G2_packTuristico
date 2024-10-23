@@ -16,7 +16,7 @@ public class pasajeData {
         this.conn = (Connection) Conexion.getConexion();
     }
      public void guardPasaje(Pasaje pasaje) {
-        System.out.println("\nGuardar pasaje: " + pasaje.getDestino());
+        System.out.println("\nGuardar pasaje: ");
         String sql = "INSERT INTO pasaje (fechaHora, origen, destino, asiento) VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -35,17 +35,17 @@ public class pasajeData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla pasaje");
         }
     }
-     public Pasaje buscarPasajeId(int idpasaje) {
-        System.out.println("\nBuscar pasaje por id: " + idpasaje);
+     public Pasaje buscarPasajeId(int codPasaje) {
+        System.out.println("\nBuscar pasaje por id: " + codPasaje);
         Pasaje pasaje = null;
-        String sql = "SELECT fechaHora, origen, destino, asiento FROM pasaje WHERE idPasaje = ? ";
+        String sql = "SELECT idPasaje, fechaHora, origen, destino, asiento FROM pasaje WHERE idPasaje = ? ";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, idpasaje);
+            ps.setInt(1, codPasaje);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 pasaje = new Pasaje();
-                pasaje.setCodPasaje(idpasaje);
+                pasaje.setCodPasaje(codPasaje);
                 pasaje.setFechaHora(rs.getDate("fechaHora").toLocalDate());
                 pasaje.setOrigen(rs.getString("origen"));
                 pasaje.setDestino(rs.getString("destino"));
@@ -54,6 +54,7 @@ public class pasajeData {
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el pasaje");
             }
+            rs.close();
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla pasaje");
@@ -61,7 +62,7 @@ public class pasajeData {
         return pasaje;
     }
      public void modificarPasaje(Pasaje pasaje) {
-        System.out.println("\nModificar pasaje: " + pasaje.getCodPasaje());
+        System.out.println("\nModificar pasaje: ");
         String sql = "UPDATE pasaje SET fechaHora = ?, origen = ?, destino = ?, asiento = ? WHERE idPasaje = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -82,12 +83,12 @@ public class pasajeData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla pasaje");
         }
     }
-     public void darDeBajaPorId(int idPasaje) {
-        System.out.println("\nDar de baja a id: " + idPasaje);
-        String sql = "UPDATE pasaje WHERE idPasaje = ? ";
+     public void darDeBajaPorId(int codPasaje) {
+        System.out.println("\nDar de baja a id: " + codPasaje);
+        String sql = "UPDATE pasaje SET idPasaje = 0 WHERE idPasaje = ? ";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, idPasaje);
+            ps.setInt(1, codPasaje);
             int fila=ps.executeUpdate();
             if (fila == 1) {
                 JOptionPane.showMessageDialog(null, "Baja de pasaje");
@@ -97,12 +98,12 @@ public class pasajeData {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla pasaje");
         }
     }
-     public void darDeAltaPorId(int idPasaje) {
-        System.out.println("\nDar de alta a pasaje: " + idPasaje);
-        String sql = "UPDATE pasaje WHERE idPasaje = ? ";
+     public void darDeAltaPorId(int codPasaje) {
+        System.out.println("\nDar de alta a pasaje: " + codPasaje);
+        String sql = "UPDATE pasaje SET idPasaje = 1 WHERE idPasaje = ? ";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, idPasaje);
+            ps.setInt(1, codPasaje);
             int fila=ps.executeUpdate();
             if (fila == 1) {
                 JOptionPane.showMessageDialog(null, "Alta de pasaje");

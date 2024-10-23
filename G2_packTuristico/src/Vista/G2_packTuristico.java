@@ -13,11 +13,19 @@ public class G2_packTuristico {
     
     public static void main(String[] args) {
        Connection conn = Conexion.getConexion();
-       Pasaje pasaje = new Pasaje(1,LocalDate.now(),"san luis","mar del plata",4);
        
+       Pasaje pasaje = new Pasaje(1,LocalDate.now(),"san luis","mar del plata",4);
        pasajeData pasaData= new pasajeData();
+       
        pasaData.guardPasaje(pasaje);
        
+       pasaData.buscarPasajeId(1);
+       
+       pasaData.darDeBajaPorId(1);
+       
+       pasaData.darDeAltaPorId(1);
+       
+   
     }
     
 }
