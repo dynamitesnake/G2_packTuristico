@@ -1,13 +1,13 @@
 
 package Persistencia;
+
 import AccesoDatos.Conexion;
-import Modelo.Turista;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import javax.swing.JOptionPane;
 import org.mariadb.jdbc.Connection;
+import Modelo.Turista;
+import java.sql.*;
+import java.util.*;
+import javax.swing.JOptionPane;
+
 
 public class TuristaData {
     private Connection conn = null;
@@ -17,9 +17,10 @@ public class TuristaData {
     }
     
     public void guardarTurista (Turista turista){
+        System.out.println("\nGuardar turista: ");
         String sql = "INSERT INTO Turista (dni, nombre, edad, idPaquete) VALUES (?, ?, ?, ?)";
         try {
-            PreparedStatement ps = conn.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, turista.getDni());
             ps.setString(2, turista.getNombre());
             ps.setInt(3, turista.getEdad());
