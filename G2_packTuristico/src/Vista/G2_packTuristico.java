@@ -3,7 +3,9 @@ package Vista;
 
 import AccesoDatos.Conexion;
 import Modelo.Pasaje;
+import Modelo.Turista;
 import Persistencia.pasajeData;
+import Persistencia.TuristaData;
 import java.sql.Connection;
 import java.time.LocalDate;
 
@@ -26,6 +28,18 @@ public class G2_packTuristico {
        pasaData.darDeAltaPorId(1);
        
    
+       Turista turista = new Turista(666666,"Agostia Camargo", 36, 3);
+       TuristaData turiData= new TuristaData();
+       
+       turiData.guardarTurista(turista);
+       
+       turiData.buscarTurista(666666);
+       
+       turiData.modificarTurista(turista);
+       
+       turiData.bajaTurista(666666);
+       
+       turiData.altaTurista(666666);
     }
     
 }

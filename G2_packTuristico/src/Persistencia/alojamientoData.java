@@ -86,7 +86,7 @@ public class alojamientoData {
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Modificado exitosamente");
             } else {
-                JOptionPane.showMessageDialog(null, "El pasaje no existe");
+                JOptionPane.showMessageDialog(null, "El alojamiento no existe");
             }
             ps.close();
            }catch (SQLException ex) { 
