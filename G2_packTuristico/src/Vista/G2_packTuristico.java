@@ -2,8 +2,12 @@
 package Vista;
 
 import AccesoDatos.Conexion;
+import Modelo.Habitacion;
 import Modelo.Pasaje;
 import Modelo.Turista;
+import Persistencia.HabitacionData;
+
+
 import Persistencia.pasajeData;
 import Persistencia.TuristaData;
 import java.sql.Connection;
@@ -40,6 +44,16 @@ public class G2_packTuristico {
        turiData.bajaTurista(666666);
        
        turiData.altaTurista(666666);
+       
+        Habitacion hab3 = new Habitacion(2, 73, 4, 2);
+   HabitacionData hab= new HabitacionData();
+   
+   //hab.guardarHabitacion(hab3);
+   //hab.modificarHabitacion(hab3);
+   hab.eliminarHabitacion(2);
+   
+   
     }
     
+   
 }
