@@ -18,7 +18,7 @@ public class TuristaData {
     
     public void guardarTurista (Turista turista){
         System.out.println("\nGuardar turista: ");
-        String sql = "INSERT INTO Turista (dni, nombre, edad, idPaquete) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Turista (dni, nombre, edad, idpaquete) VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, turista.getDni());
@@ -114,6 +114,5 @@ public class TuristaData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla turista");
         }
 }
-
 }
 
