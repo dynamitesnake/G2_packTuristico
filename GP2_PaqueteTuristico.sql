@@ -108,6 +108,7 @@ CREATE TABLE `turista` (
   `nombre` varchar(50) DEFAULT NULL,
   `edad` int(11) DEFAULT NULL,
   `idpaquete` int(11) DEFAULT NULL
+  `activo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
