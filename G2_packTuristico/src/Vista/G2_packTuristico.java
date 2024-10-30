@@ -32,7 +32,7 @@ public class G2_packTuristico {
        pasaData.darDeAltaPorId(1);
        
    
-       Turista turista = new Turista(666666,"Agostina Camargo", 36, 3);
+       Turista turista = new Turista(666666,"Agostina Camargo", 36, 0);
        TuristaData turiData= new TuristaData();
        
        turiData.guardarTurista(turista);

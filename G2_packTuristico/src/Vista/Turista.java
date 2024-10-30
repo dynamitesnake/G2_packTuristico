@@ -1,5 +1,6 @@
 
 package Vista;
+
 import Persistencia.TuristaData;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,15 +11,16 @@ import javax.swing.JOptionPane;
 public class Turista extends javax.swing.JInternalFrame {
     
     private TuristaData turisData = new TuristaData();
-    private Turista turisActual = null;
-    private List<Turista> turistas = new ArrayList<>();
+    private List<Turista> turistas;
+    private int getDni;
 
 
     public Turista() {
+        this.turistas = new ArrayList<>();
         initComponents();
     }
 
-    private Turista(int dni, String nombre, int edad, int idPaquete) {
+    private Turista(int dni, String nombre, int edad, int idpaquete) {
     }
 
     
@@ -38,11 +40,12 @@ public class Turista extends javax.swing.JInternalFrame {
         txtid = new javax.swing.JTextField();
         jB_guardar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jB_buscar = new javax.swing.JButton();
+        jB_modificar = new javax.swing.JButton();
+        jB_baja = new javax.swing.JButton();
+        jB_alta = new javax.swing.JButton();
+        jB_salir = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -84,25 +87,52 @@ public class Turista extends javax.swing.JInternalFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\icons8-passport-50.png")); // NOI18N
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 102, 255));
-        jButton2.setText("BUSCAR");
+        jB_buscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jB_buscar.setForeground(new java.awt.Color(0, 102, 255));
+        jB_buscar.setText("BUSCAR");
+        jB_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_buscarActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 153, 255));
-        jButton3.setText("MODIFICAR");
+        jB_modificar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jB_modificar.setForeground(new java.awt.Color(0, 153, 255));
+        jB_modificar.setText("MODIFICAR");
+        jB_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_modificarActionPerformed(evt);
+            }
+        });
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 153, 255));
-        jButton4.setText("BAJA");
+        jB_baja.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jB_baja.setForeground(new java.awt.Color(0, 153, 255));
+        jB_baja.setText("BAJA");
+        jB_baja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_bajaActionPerformed(evt);
+            }
+        });
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 153, 255));
-        jButton5.setText("ALTA");
+        jB_alta.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jB_alta.setForeground(new java.awt.Color(0, 153, 255));
+        jB_alta.setText("ALTA");
+        jB_alta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_altaActionPerformed(evt);
+            }
+        });
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(0, 153, 255));
-        jButton6.setText("SALIR");
+        jB_salir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jB_salir.setForeground(new java.awt.Color(0, 153, 255));
+        jB_salir.setText("SALIR");
+        jB_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_salirActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\icons8-taj-mahal-50.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,61 +140,69 @@ public class Turista extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtnom, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtedad))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtdni))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtid)))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtnom, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtedad))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtdni))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtid)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jB_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jB_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(14, 14, 14)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jB_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(14, 14, 14))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jButton3)
+                .addComponent(jB_modificar)
                 .addGap(40, 40, 40)
-                .addComponent(jButton4)
+                .addComponent(jB_baja)
                 .addGap(45, 45, 45)
-                .addComponent(jButton5)
+                .addComponent(jB_alta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6)
+                .addComponent(jB_salir)
                 .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(8, 8, 8)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jB_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jB_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
@@ -187,11 +225,11 @@ public class Turista extends javax.swing.JInternalFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
-                .addContainerGap(28, Short.MAX_VALUE))
+                    .addComponent(jB_modificar)
+                    .addComponent(jB_baja)
+                    .addComponent(jB_alta)
+                    .addComponent(jB_salir))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -201,38 +239,132 @@ public class Turista extends javax.swing.JInternalFrame {
         guardarTurista ();
     }//GEN-LAST:event_jB_guardarActionPerformed
 
-    private void guardarTurista() {
-        try {
-        int dni = Integer.parseInt(txtdni.getText());
-        String nombre = txtnom.getText();
-        int edad = Integer.parseInt(txtedad.getText());
-        int idpaquete = Integer.parseInt(txtid.getText());
+    private void jB_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_buscarActionPerformed
+        buscarTurista ();
+    }//GEN-LAST:event_jB_buscarActionPerformed
 
-        Turista turista = new Turista (dni, nombre, edad, idpaquete);
-        turisData.guardarTurista(turista);
-        JOptionPane.showMessageDialog(null, "Cliente agregado: " + nombre );
-        limpiarCampos();
-        
+    private void jB_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_modificarActionPerformed
+        modificarTurista();
+    }//GEN-LAST:event_jB_modificarActionPerformed
+
+    private void jB_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_salirActionPerformed
+        dispose();
+    }//GEN-LAST:event_jB_salirActionPerformed
+
+    private void jB_altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_altaActionPerformed
+       altaTurista();
+    }//GEN-LAST:event_jB_altaActionPerformed
+
+    private void jB_bajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_bajaActionPerformed
+        bajaTurista();
+    }//GEN-LAST:event_jB_bajaActionPerformed
+
+    private void guardarTurista() {
+        try { 
+            int dni = Integer.parseInt(txtdni.getText()); 
+            String nombre = txtnom.getText(); 
+            int edad = Integer.parseInt(txtedad.getText()); 
+            int idpaquete = Integer.parseInt(txtid.getText()); 
+            Turista turista = new Turista(dni, nombre, edad, idpaquete); 
+            
+            turisData.guardarTurista(turista); 
+            JOptionPane.showMessageDialog(null, "Cliente agregado: " + nombre); 
+            limpiarCampos(); 
         } catch (NumberFormatException e) { 
             JOptionPane.showMessageDialog(null, "Error: Por favor ingresa números válidos para DNI, Edad y ID de Paquete."); 
-        } catch (Exception e) { JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el turista: " + e.getMessage()); 
+        } catch (Exception e) { 
+            JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el turista: " + e.getMessage()); 
         }
-        
+    }       
+    
+    private void buscarTurista() { 
+       try { 
+           int dni = Integer.parseInt(txtdni.getText()); 
+           Modelo.Turista turista = turisData.buscarTurista(dni);
+        if (turista != null) { 
+            txtnom.setText(turista.getNombre()); 
+            txtedad.setText(String.valueOf(turista.getEdad())); 
+            txtid.setText(String.valueOf(turista.getIdPaquete())); 
+            JOptionPane.showMessageDialog(null, "Turista encontrado: " + turista.getNombre()); 
+        } else { JOptionPane.showMessageDialog(null, "Turista no encontrado."); 
+        } 
+       } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Error: Por favor ingresa un DNI válido."); 
+       } catch (Exception e) { JOptionPane.showMessageDialog(null, "Ocurrió un error al buscar el turista: " + e.getMessage()); 
+       }
+    }  
+    
+    private void modificarTurista() {
+        try { 
+            int dni = Integer.parseInt(txtdni.getText());
+            for (Turista turista : turistas) { 
+                if (turista.getDni == dni) { 
+                    turista.setNombre(txtnom.getText()); 
+                    turista.setEdad(Integer.parseInt(txtedad.getText()));
+                    turista.setIdPaquete(Integer.parseInt(txtid.getText())); 
+                    JOptionPane.showMessageDialog(null, "Turista modificado: " + turista.getNombre()); 
+                    limpiarCampos(); 
+                    return; 
+                } 
+            } 
+            JOptionPane.showMessageDialog(null, "Turista no encontrado."); 
+        } catch (NumberFormatException e){ 
+            JOptionPane.showMessageDialog(null, "Error: Por favor ingresa números válidos para Edad y ID de Paquete."); 
+        } catch (Exception e) { 
+            JOptionPane.showMessageDialog(null, "Ocurrió un error al modificar el turista: " + e.getMessage());  
+        }
+    }  
+    
+    private void bajaTurista() {
+        try { 
+            int dni = Integer.parseInt(txtdni.getText()); 
+            for (Turista turista : turistas) { 
+                if (turista.getDni() == dni) { 
+                    turista.setActivo(false); 
+                    JOptionPane.showMessageDialog(null, "Turista dado de baja: " + turista.getNombre()); 
+                    limpiarCampos(); 
+                    return;  
+                } 
+            } JOptionPane.showMessageDialog(null, "Turista no encontrado."); 
+        } catch (NumberFormatException e) { JOptionPane.showMessageDialog(null, "Error: Por favor ingresa un DNI válido."); 
+        } catch (Exception e) { 
+            JOptionPane.showMessageDialog(null, "Ocurrió un error al dar de baja el turista: " + e.getMessage()); 
+        } 
     }
     
+    private void altaTurista() {
+        try { 
+            int dni = Integer.parseInt(txtdni.getText()); 
+            for (Turista turista : turistas) { 
+                if (turista.getDni() == dni) { 
+                    turista.setActivo(true); 
+                    JOptionPane.showMessageDialog(null, "Turista dado de alta: " + turista.getNombre()); 
+                    limpiarCampos(); 
+                    return; 
+                } 
+            } 
+            JOptionPane.showMessageDialog(null, "Turista no encontrado."); 
+        } catch (NumberFormatException e) { 
+            JOptionPane.showMessageDialog(null, "Error: Por favor ingresa un DNI válido."); 
+        } catch (Exception e) { 
+            JOptionPane.showMessageDialog(null, "Ocurrió un error al dar de alta el turista: " + e.getMessage()); 
+        } 
+    }
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jB_alta;
+    private javax.swing.JButton jB_baja;
+    private javax.swing.JButton jB_buscar;
     private javax.swing.JButton jB_guardar;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jB_modificar;
+    private javax.swing.JButton jB_salir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField txtdni;
     private javax.swing.JTextField txtedad;
@@ -247,6 +379,26 @@ public class Turista extends javax.swing.JInternalFrame {
         txtid.setText("");
     }
 
+    private void setNombre(String text) {
+    }
 
+    private int getDni() {
+        return 0;
+    }
 
+    private void setActivo(boolean b) {
+        
+    }
+
+    private void setEdad(int parseInt) {
+       
+    }
+
+    private void setIdPaquete(int parseInt) {
+    }
+
+    private String getNombre() {   
+        return null;
+    }
+    
 }

@@ -16,19 +16,19 @@ public class TuristaData {
         this.conn = (Connection) Conexion.getConexion();
     }
     
-    public void guardarTurista (Turista turista){
+    public void guardarTurista (Turista tu){
         System.out.println("\nGuardar turista: ");
         String sql = "INSERT INTO Turista (dni, nombre, edad, idpaquete) VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, turista.getDni());
-            ps.setString(2, turista.getNombre());
-            ps.setInt(3, turista.getEdad());
-            ps.setInt(4, turista.getIdPaquete());
+            ps.setInt(1, tu.getDni());
+            ps.setString(2, tu.getNombre());
+            ps.setInt(3, tu.getEdad());
+            ps.setInt(4, tu.getIdPaquete());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                turista.setDni(rs.getInt(1));
+                tu.setDni(rs.getInt(1));
             }
             ps.close();
         } catch (SQLException ex) {
@@ -39,7 +39,7 @@ public class TuristaData {
     public Turista buscarTurista (int dni) {
         System.out.println("\nbuscar Turista: " + dni);
         Turista turista= null;
-        String sql = "SELECT dni, nombre, edad, idPaquete  FROM turista WHERE dni = ?";
+        String sql = "SELECT nombre FROM turista WHERE dni = ? ";;
         
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -114,5 +114,12 @@ public class TuristaData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla turista");
         }
 }
+
+    public void guardarTurista(Vista.Turista turista) {
+        
+    }
+
+
+    
 }
 
