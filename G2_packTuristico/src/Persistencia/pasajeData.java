@@ -31,7 +31,6 @@ public class pasajeData {
             }
             ps.close();
         } catch (SQLException ex) {
-            System.out.println("pruebas");
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla pasaje");
         }
     }

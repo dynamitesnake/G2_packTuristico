@@ -13,31 +13,45 @@ public class SistemaReservas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         sistema = new javax.swing.JDesktopPane();
-        jLabel1 = new javax.swing.JLabel();
+        Escritorio = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jM_destinos = new javax.swing.JMenu();
         jM_pasajes = new javax.swing.JMenu();
+        menuTurista = new javax.swing.JMenu();
+        Jturista = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenu1.setText("File");
+        jMenuBar2.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar2.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agencia.jpg"))); // NOI18N
-        jLabel1.setText("imagen");
+        Escritorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agencia.jpg"))); // NOI18N
+        Escritorio.setText("imagen");
 
-        sistema.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        sistema.setLayer(Escritorio, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout sistemaLayout = new javax.swing.GroupLayout(sistema);
         sistema.setLayout(sistemaLayout);
         sistemaLayout.setHorizontalGroup(
             sistemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sistemaLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         sistemaLayout.setVerticalGroup(
             sistemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jM_destinos.setText("Destinos");
@@ -55,6 +69,18 @@ public class SistemaReservas extends javax.swing.JFrame {
             }
         });
         jMenuBar1.add(jM_pasajes);
+
+        menuTurista.setText("Turistas");
+
+        Jturista.setText("Turista");
+        Jturista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JturistaActionPerformed(evt);
+            }
+        });
+        menuTurista.add(Jturista);
+
+        jMenuBar1.add(menuTurista);
 
         jMenu4.setText("Salir");
         jMenuBar1.add(jMenu4);
@@ -87,6 +113,15 @@ public class SistemaReservas extends javax.swing.JFrame {
         pasaje.setVisible(true);
         
     }//GEN-LAST:event_jM_pasajesActionPerformed
+
+    private void JturistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JturistaActionPerformed
+       sistema.removeAll();
+        sistema.repaint();
+        Turista turista = new Turista();
+        sistema.add(turista);
+        turista.setVisible(true);
+        sistema.moveToFront(this);
+    }//GEN-LAST:event_JturistaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,11 +159,17 @@ public class SistemaReservas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel Escritorio;
+    private javax.swing.JMenuItem Jturista;
     private javax.swing.JMenu jM_destinos;
     private javax.swing.JMenu jM_pasajes;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu menuTurista;
     private javax.swing.JDesktopPane sistema;
     // End of variables declaration//GEN-END:variables
 }
