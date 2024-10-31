@@ -44,6 +44,7 @@ public class Alojamientos extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbMostarAlojamientos = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
+        btnMostrar = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -101,6 +102,14 @@ public class Alojamientos extends javax.swing.JInternalFrame {
         btnEliminar.setText("Eliminar");
         panelAlojamiento.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(336, 371, -1, -1));
 
+        btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
+        panelAlojamiento.add(btnMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 150, -1));
+
         getContentPane().add(panelAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 600, 460));
 
         pack();
@@ -114,12 +123,17 @@ public class Alojamientos extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnModificarActionPerformed
 
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMostrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlta;
     private javax.swing.JButton btnBaja;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnMostrar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<Alojamiento> comboAlojamientos;
     private javax.swing.JLabel jLabel1;
@@ -156,7 +170,7 @@ public class Alojamientos extends javax.swing.JInternalFrame {
             modelo.removeRow(i);
         }
     }
-    private void cargarMateriasInscriptas (){
+    private void cargarAlojamientos (){
         Alojamiento selec = (Alojamiento) comboAlojamientos.getSelectedItem();
        List <Alojamiento> lista = alojaData.listarAlojamiento();
        for (Alojamiento a : lista){
