@@ -118,8 +118,6 @@ public class TuristaData {
     public void guardarTurista(Vista.Turista turista) {
         
     }
-
-
+    
     
 }
-

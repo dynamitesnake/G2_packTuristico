@@ -83,6 +83,5 @@ public class Alojamiento {
     public String toString() {
         return "Alojamiento{" + "idAlojamiento=" + idAlojamiento + ", nombre=" + nombre + ", capacidad=" + capacidad + ", nroAmbientes=" + nroAmbientes + ", camas=" + camas + ", ba\u00f1os=" + baños + ", precioNoche=" + precioNoche + '}';
     }
-   
     
 }

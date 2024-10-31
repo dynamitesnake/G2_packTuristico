@@ -123,7 +123,6 @@ public class alojamientoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alojamiento");
         }
     
-    
 }
 
 }

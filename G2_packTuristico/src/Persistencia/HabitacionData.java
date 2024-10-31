@@ -5,29 +5,16 @@ import AccesoDatos.Conexion;
 import Modelo.Habitacion;
 import java.sql.*;
 
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
-
-
-
-
-/**
- *
- * @author deborahhhh
- */
-
 
 public class HabitacionData {
   private Connection conn = null;
     
     
- public void guardarHabitacion(Habitacion habitacion){
-     Connection conn = Conexion.getConexion();
+public void guardarHabitacion(Habitacion habitacion){
+    Connection conn = Conexion.getConexion();
     
- String sql = "INSERT INTO habitacion(planta, numeracion, cupo, estado) VALUES (?, ?, ?, ?)";
+String sql = "INSERT INTO habitacion(planta, numeracion, cupo, estado) VALUES (?, ?, ?, ?)";
  
         try {
             PreparedStatement ps = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -116,14 +103,6 @@ public class HabitacionData {
           JOptionPane.showMessageDialog(null, "No existe habitacion con ese ID");
       }
         
-        
-        
-
- 
- 
- 
  }
-
-    
-    
+   
 }
