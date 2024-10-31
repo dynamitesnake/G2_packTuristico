@@ -134,7 +134,7 @@ public List<Alojamiento> listarAlojamiento() {
         java.sql.Connection conn = Conexion.getConexion();
         List<Alojamiento> lista = new ArrayList<>();
         try {
-            String query = "SELECT * FROM pension";
+            String query = "SELECT * FROM alojamiento";
             PreparedStatement stmt = conn.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {

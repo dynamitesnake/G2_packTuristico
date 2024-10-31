@@ -62,14 +62,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Alojamientos"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jM_alojamientosActionPerformed"/>
-          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuAlojamientos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Alojamientos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuAlojamientosActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

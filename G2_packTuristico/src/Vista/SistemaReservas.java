@@ -85,13 +85,13 @@ public class SistemaReservas extends javax.swing.JFrame {
         jMenuBar1.add(menuTurista);
 
         jM_alojamientos.setText("Alojamientos");
-        jM_alojamientos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jM_alojamientosActionPerformed(evt);
-            }
-        });
 
         menuAlojamientos.setText("Alojamientos");
+        menuAlojamientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAlojamientosActionPerformed(evt);
+            }
+        });
         jM_alojamientos.add(menuAlojamientos);
 
         jMenuBar1.add(jM_alojamientos);
@@ -137,14 +137,14 @@ public class SistemaReservas extends javax.swing.JFrame {
         sistema.moveToFront(this);
     }//GEN-LAST:event_JturistaActionPerformed
 
-    private void jM_alojamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_alojamientosActionPerformed
+    private void menuAlojamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlojamientosActionPerformed
         sistema.removeAll();
         sistema.repaint();
-        Alojamientos alojamiento = new Alojamientos();
+        vistaAlojamiento alojamiento = new vistaAlojamiento();
         sistema.add(alojamiento);
         alojamiento.setVisible(true);
         sistema.moveToFront(this);
-    }//GEN-LAST:event_jM_alojamientosActionPerformed
+    }//GEN-LAST:event_menuAlojamientosActionPerformed
 
     /**
      * @param args the command line arguments
