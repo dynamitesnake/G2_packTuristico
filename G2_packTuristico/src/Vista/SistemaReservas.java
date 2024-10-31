@@ -131,7 +131,7 @@ public class SistemaReservas extends javax.swing.JFrame {
     private void JturistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JturistaActionPerformed
        sistema.removeAll();
         sistema.repaint();
-        Turista turista = new Turista();
+        VistaTurista turista = new VistaTurista();
         sistema.add(turista);
         turista.setVisible(true);
         sistema.moveToFront(this);
