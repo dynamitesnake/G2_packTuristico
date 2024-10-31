@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Pension;
 import org.mariadb.jdbc.Connection;
@@ -127,6 +129,23 @@ public Alojamiento buscarAlojamiento(int idAlojamiento) {
             e.printStackTrace();
         }
          return alojamiento;
+    }
+public List<Alojamiento> listarAlojamiento() {
+        java.sql.Connection conn = Conexion.getConexion();
+        List<Alojamiento> lista = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM pension";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Alojamiento alojamiento = new Alojamiento(rs.getInt("idAlojamiento"), rs.getString("nombre"), rs.getInt("capacidad"), rs.getInt("nroAmbientes"), rs.getInt("camas"), rs.getInt("baños"), rs.getDouble("precioNoche") );
+                lista.add(alojamiento);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al listar alojamientos.");
+            e.printStackTrace();
+        }
+        return lista;
     }
 }
 

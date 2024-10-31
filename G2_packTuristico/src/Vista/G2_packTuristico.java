@@ -64,8 +64,9 @@ public class G2_packTuristico {
    //alo.guardarAlojamiento(alo1);
    //alo.modificarAlojamiento(alo1);
    //alo.eliminarAlojamiento(2);
-   alo.buscarAlojamiento(3);
-        System.out.println( alo.buscarAlojamiento(3));    
+   //alo.buscarAlojamiento(3);
+     //   System.out.println( alo.buscarAlojamiento(3));   
+       
                 
     }
 }
