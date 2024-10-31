@@ -1,20 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
+
 package Vista;
 
-/**
- *
- * @author Xethias
- */
-public class Alojamientos extends javax.swing.JInternalFrame {
+import Modelo.Alojamiento;
+import Persistencia.alojamientoData;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
-    /**
-     * Creates new form Alojamientos
-     */
+
+public class Alojamientos extends javax.swing.JInternalFrame { 
+    private alojamientoData alojaData;
+    private ArrayList <Alojamiento> listaAloja;
+    private DefaultTableModel modelo;
+    
     public Alojamientos() {
         initComponents();
+        alojaData = new alojamientoData();
+        listaAloja = (ArrayList <Alojamiento>)alojaData.listarAlojamiento();
+        modelo = new DefaultTableModel();
+        comboAlojamiento();
+       armarCabeceraTabla();
+        
+        
     }
 
     /**
@@ -26,7 +33,7 @@ public class Alojamientos extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        panelAlojamiento = new javax.swing.JDesktopPane();
         jlbAlojamiento = new javax.swing.JLabel();
         comboAlojamientos = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -40,15 +47,19 @@ public class Alojamientos extends javax.swing.JInternalFrame {
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        panelAlojamiento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jlbAlojamiento.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jlbAlojamiento.setForeground(new java.awt.Color(51, 153, 255));
         jlbAlojamiento.setText("Alojamiento");
+        panelAlojamiento.add(jlbAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
 
-        comboAlojamientos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        panelAlojamiento.add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 65, 252, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 255));
         jLabel1.setText("Alojamientos:");
+        panelAlojamiento.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 63, -1, -1));
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -56,10 +67,13 @@ public class Alojamientos extends javax.swing.JInternalFrame {
                 btnModificarActionPerformed(evt);
             }
         });
+        panelAlojamiento.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 371, -1, -1));
 
         btnAlta.setText("Alta");
+        panelAlojamiento.add(btnAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 371, -1, -1));
 
         btnBaja.setText("Baja");
+        panelAlojamiento.add(btnBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 371, -1, -1));
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +81,7 @@ public class Alojamientos extends javax.swing.JInternalFrame {
                 btnSalirActionPerformed(evt);
             }
         });
+        panelAlojamiento.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 371, -1, -1));
 
         jtbMostarAlojamientos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,83 +96,22 @@ public class Alojamientos extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jtbMostarAlojamientos);
 
+        panelAlojamiento.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 132, 487, 233));
+
         btnEliminar.setText("Eliminar");
+        panelAlojamiento.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(336, 371, -1, -1));
 
-        jDesktopPane1.setLayer(jlbAlojamiento, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(comboAlojamientos, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnModificar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnAlta, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnBaja, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnSalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel1)
-                        .addGap(66, 66, 66)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlbAlojamiento)
-                            .addComponent(comboAlojamientos, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(btnModificar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAlta)
-                                .addGap(30, 30, 30)
-                                .addComponent(btnBaja)
-                                .addGap(26, 26, 26)
-                                .addComponent(btnEliminar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSalir)
-                                .addGap(11, 11, 11)))))
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jlbAlojamiento)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnModificar)
-                            .addComponent(btnAlta)
-                            .addComponent(btnBaja)
-                            .addComponent(btnSalir)
-                            .addComponent(btnEliminar))
-                        .addGap(56, 56, 56))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(comboAlojamientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-
-        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 560, 430));
+        getContentPane().add(panelAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 600, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        // TODO add your handling code here:
+       this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnModificarActionPerformed
 
 
@@ -167,11 +121,46 @@ public class Alojamientos extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JComboBox<String> comboAlojamientos;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JComboBox<Alojamiento> comboAlojamientos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlbAlojamiento;
     private javax.swing.JTable jtbMostarAlojamientos;
+    private javax.swing.JDesktopPane panelAlojamiento;
     // End of variables declaration//GEN-END:variables
+
+    private void comboAlojamiento() {
+     for (Alojamiento item : listaAloja);  {
+        //comboAlojamientos.addItem(item);
+    }
+    }
+
+    private void armarCabeceraTabla() {
+        ArrayList<Object> filaCabecera = new ArrayList<>();
+        filaCabecera.add("Nombre");
+        filaCabecera.add("Capacidad");
+        filaCabecera.add("nroAmbientes");
+        filaCabecera.add("camas");
+        filaCabecera.add("baños");
+        filaCabecera.add("precioNoche");
+        
+        for (Object it: filaCabecera) {
+        modelo.addColumn(it);
+    }
+        jtbMostarAlojamientos.setModel(modelo);
+    
+    }
+    private void borrarFilasdeTabla () {
+        int indice = modelo.getRowCount() -1;
+        for (int i = indice ; i>=0;i--){
+            modelo.removeRow(i);
+        }
+    }
+    private void cargarMateriasInscriptas (){
+        Alojamiento selec = (Alojamiento) comboAlojamientos.getSelectedItem();
+       List <Alojamiento> lista = alojaData.listarAlojamiento();
+       for (Alojamiento a : lista){
+           modelo.addRow(new Object [] {a.getNombre(),a.getCapacidad(),a.getCapacidad(),a.getNroAmbientes(),a.getCamas(),a.getBaños(),a.getPrecioNoche()});
+    }    
+}
 }
