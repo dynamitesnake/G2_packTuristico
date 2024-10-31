@@ -24,6 +24,8 @@ public class SistemaReservas extends javax.swing.JFrame {
         jM_pasajes = new javax.swing.JMenu();
         menuTurista = new javax.swing.JMenu();
         Jturista = new javax.swing.JMenuItem();
+        jM_alojamientos = new javax.swing.JMenu();
+        menuAlojamientos = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
@@ -82,6 +84,18 @@ public class SistemaReservas extends javax.swing.JFrame {
 
         jMenuBar1.add(menuTurista);
 
+        jM_alojamientos.setText("Alojamientos");
+        jM_alojamientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jM_alojamientosActionPerformed(evt);
+            }
+        });
+
+        menuAlojamientos.setText("Alojamientos");
+        jM_alojamientos.add(menuAlojamientos);
+
+        jMenuBar1.add(jM_alojamientos);
+
         jMenu4.setText("Salir");
         jMenuBar1.add(jMenu4);
 
@@ -123,6 +137,15 @@ public class SistemaReservas extends javax.swing.JFrame {
         sistema.moveToFront(this);
     }//GEN-LAST:event_JturistaActionPerformed
 
+    private void jM_alojamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_alojamientosActionPerformed
+        sistema.removeAll();
+        sistema.repaint();
+        Alojamientos alojamiento = new Alojamientos();
+        sistema.add(alojamiento);
+        alojamiento.setVisible(true);
+        sistema.moveToFront(this);
+    }//GEN-LAST:event_jM_alojamientosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -161,6 +184,7 @@ public class SistemaReservas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Escritorio;
     private javax.swing.JMenuItem Jturista;
+    private javax.swing.JMenu jM_alojamientos;
     private javax.swing.JMenu jM_destinos;
     private javax.swing.JMenu jM_pasajes;
     private javax.swing.JMenu jMenu1;
@@ -169,6 +193,7 @@ public class SistemaReservas extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem menuAlojamientos;
     private javax.swing.JMenu menuTurista;
     private javax.swing.JDesktopPane sistema;
     // End of variables declaration//GEN-END:variables

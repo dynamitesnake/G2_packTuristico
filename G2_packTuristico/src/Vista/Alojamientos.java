@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class Alojamientos extends javax.swing.JInternalFrame { 
-    private alojamientoData alojaData;
+    private alojamientoData alojaData = new alojamientoData();
     private ArrayList <Alojamiento> listaAloja;
     private DefaultTableModel modelo;
     
@@ -33,56 +33,32 @@ public class Alojamientos extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelAlojamiento = new javax.swing.JDesktopPane();
         jlbAlojamiento = new javax.swing.JLabel();
-        comboAlojamientos = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        comboAlojamientos = new javax.swing.JComboBox<>();
+        btnMostrar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtbMostarAlojamientos = new javax.swing.JTable();
         btnModificar = new javax.swing.JButton();
         btnAlta = new javax.swing.JButton();
         btnBaja = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtbMostarAlojamientos = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
-        btnMostrar = new javax.swing.JButton();
-
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        panelAlojamiento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        btnSalir = new javax.swing.JButton();
 
         jlbAlojamiento.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jlbAlojamiento.setForeground(new java.awt.Color(51, 153, 255));
         jlbAlojamiento.setText("Alojamiento");
-        panelAlojamiento.add(jlbAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
-
-        panelAlojamiento.add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 65, 252, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 255));
         jLabel1.setText("Alojamientos:");
-        panelAlojamiento.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 63, -1, -1));
 
-        btnModificar.setText("Modificar");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+        btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
+                btnMostrarActionPerformed(evt);
             }
         });
-        panelAlojamiento.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 371, -1, -1));
-
-        btnAlta.setText("Alta");
-        panelAlojamiento.add(btnAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 371, -1, -1));
-
-        btnBaja.setText("Baja");
-        panelAlojamiento.add(btnBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 371, -1, -1));
-
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-        panelAlojamiento.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 371, -1, -1));
 
         jtbMostarAlojamientos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,35 +73,93 @@ public class Alojamientos extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jtbMostarAlojamientos);
 
-        panelAlojamiento.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 132, 487, 233));
-
-        btnEliminar.setText("Eliminar");
-        panelAlojamiento.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(336, 371, -1, -1));
-
-        btnMostrar.setText("Mostrar");
-        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostrarActionPerformed(evt);
+                btnModificarActionPerformed(evt);
             }
         });
-        panelAlojamiento.add(btnMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 150, -1));
 
-        getContentPane().add(panelAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 600, 460));
+        btnAlta.setText("Alta");
+
+        btnBaja.setText("Baja");
+
+        btnEliminar.setText("Eliminar");
+
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(230, 230, 230)
+                .addComponent(jlbAlojamiento))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addGap(81, 81, 81)
+                .addComponent(comboAlojamientos, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(220, 220, 220)
+                .addComponent(btnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(btnModificar)
+                .addGap(29, 29, 29)
+                .addComponent(btnAlta)
+                .addGap(28, 28, 28)
+                .addComponent(btnBaja)
+                .addGap(28, 28, 28)
+                .addComponent(btnEliminar)
+                .addGap(37, 37, 37)
+                .addComponent(btnSalir))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jlbAlojamiento)
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(comboAlojamientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnMostrar)
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnModificar)
+                    .addComponent(btnAlta)
+                    .addComponent(btnBaja)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnSalir)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        borrarFilasdeTabla();
+        cargarAlojamientos ();
+    }//GEN-LAST:event_btnMostrarActionPerformed
+
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        
-    }//GEN-LAST:event_btnModificarActionPerformed
 
-    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMostrarActionPerformed
+    }//GEN-LAST:event_btnModificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -140,12 +174,11 @@ public class Alojamientos extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlbAlojamiento;
     private javax.swing.JTable jtbMostarAlojamientos;
-    private javax.swing.JDesktopPane panelAlojamiento;
     // End of variables declaration//GEN-END:variables
 
     private void comboAlojamiento() {
-     for (Alojamiento item : listaAloja);  {
-        //comboAlojamientos.addItem(item);
+     for (Alojamiento item : listaAloja)  {
+        comboAlojamientos.addItem(item);
     }
     }
 
@@ -164,7 +197,7 @@ public class Alojamientos extends javax.swing.JInternalFrame {
         jtbMostarAlojamientos.setModel(modelo);
     
     }
-    private void borrarFilasdeTabla () {
+    private void borrarFilasdeTabla() {
         int indice = modelo.getRowCount() -1;
         for (int i = indice ; i>=0;i--){
             modelo.removeRow(i);
