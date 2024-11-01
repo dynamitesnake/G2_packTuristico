@@ -9,9 +9,14 @@ public class Turista {
     private int idPaquete;
     private boolean activo;
     
+    
     public Turista() {}
     
-    public Turista(int dni, String nombre, int edad, int idPaquete) {
+    public Turista (int dni){
+            this.dni = dni;
+    }
+    
+    public Turista(int dni, String nombre, int edad, int idPaquete, boolean activo) {
         this.dni = dni;
         this.nombre = nombre;
         this.edad = edad;
@@ -50,17 +55,21 @@ public class Turista {
     public void setIdPaquete(int idPaquete) {
         this.idPaquete = idPaquete;
     }
-    public boolean isActivo() { 
-        return activo; 
-    } 
-    
-    public void setActivo(boolean activo) { 
-        this.activo = activo; 
+
+    public boolean isActivo() {
+        return activo;
     }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+    
+    
     
     @Override
     public String toString() {
         return "Turista{" + "DNI=" + dni + ", nombre=" + nombre + ", edad=" + edad + ", Id Paquete=" + idPaquete + ", activo=" + activo + '}';
     }
+
    
 }

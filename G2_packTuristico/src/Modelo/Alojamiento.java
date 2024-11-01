@@ -81,7 +81,7 @@ public class Alojamiento {
 
     @Override
     public String toString() {
-        return "Alojamiento{" + "idAlojamiento=" + idAlojamiento + ", nombre=" + nombre + ", capacidad=" + capacidad + ", nroAmbientes=" + nroAmbientes + ", camas=" + camas + ", ba\u00f1os=" + baños + ", precioNoche=" + precioNoche + '}';
+        return "Alojamiento " + nombre ;
     }
     
 }
