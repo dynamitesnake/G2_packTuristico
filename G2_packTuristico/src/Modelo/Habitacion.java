@@ -10,19 +10,19 @@ public class Habitacion {
     private int Planta;
     private int Numeracion;
     private int Cupo;
-    private int Estado;
+    private boolean Estado;
 
     public Habitacion() {
     }
 
-    public Habitacion(int Planta, int Numeracion, int Cupo, int Estado) {
+    public Habitacion(int Planta, int Numeracion, int Cupo, boolean Estado) {
         this.Planta = Planta;
         this.Numeracion = Numeracion;
         this.Cupo = Cupo;
         this.Estado = Estado;
     }
 
-    public Habitacion(int IdHabitacion, int Planta, int Numeracion, int Cupo, int Estado) {
+    public Habitacion(int IdHabitacion, int Planta, int Numeracion, int Cupo, boolean Estado) {
         this.IdHabitacion = IdHabitacion;
         this.Planta = Planta;
         this.Numeracion = Numeracion;
@@ -62,11 +62,11 @@ public class Habitacion {
         this.Cupo = Cupo;
     }
 
-    public int getEstado() {
+    public boolean getEstado() {
         return Estado;
     }
 
-    public void setEstado(int Estado) {
+    public void setEstado(boolean Estado) {
         this.Estado = Estado;
     }
 
