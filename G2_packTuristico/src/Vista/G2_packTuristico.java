@@ -21,7 +21,8 @@ public class G2_packTuristico {
     
     public static void main(String[] args) {
        Connection conn = Conexion.getConexion();
-       conectarAlojamiento ();
+       //conectarAlojamiento ();
+       
        //conectaTurista();
        
       /* Pasaje pasaje = new Pasaje(1,LocalDate.now(),"san luis","mar del plata",4);
@@ -33,10 +34,10 @@ public class G2_packTuristico {
        
        pasaData.darDeBajaPorId(1);
        
-       pasaData.darDeAltaPorId(1);}
+       pasaData.darDeAltaPorId(1);}*/
        
-   public static void conectaTurista() {
-       Turista turista = new Turista(666666,"Agostina Camargo", 36, 1);
+ 
+       Turista turista = new Turista(666666,"Agostina Camargo", 36, 0, true);
        TuristaData turiData= new TuristaData();
        
        turiData.guardarTurista(turista);
@@ -54,21 +55,22 @@ public class G2_packTuristico {
    
    hab.guardarHabitacion(hab3);
    hab.modificarHabitacion(hab3);
-   hab.eliminarHabitacion(2);  */}
+   hab.eliminarHabitacion(2);  */ 
+
    
    
-    public static void conectarAlojamiento () {
-   alojamientoData alo = new alojamientoData();
-   Alojamiento alo1 = new Alojamiento (0,"cabaña los pepitos",3,2,6,1,20000);
+   // public static void conectarAlojamiento () {
+   //alojamientoData alo = new alojamientoData();
+   //Alojamiento alo1 = new Alojamiento (0,"cabaña los pepitos",3,2,6,1,20000);
    
    //alo.guardarAlojamiento(alo1);
    //alo.modificarAlojamiento(alo1);
    //alo.eliminarAlojamiento(2);
    //alo.buscarAlojamiento(3);
-     //   System.out.println( alo.buscarAlojamiento(3));   
+     //   System.out.println( alo.buscarAlojamiento(3));   }
        
                 
-    }
+
 }
 
 
