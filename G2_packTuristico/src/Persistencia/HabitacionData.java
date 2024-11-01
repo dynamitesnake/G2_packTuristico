@@ -103,7 +103,7 @@ public class HabitacionData {
           habitacion.setPlanta(rs.getInt("planta"));
           habitacion.setNumeracion(rs.getInt("numeracion"));
           habitacion.setCupo(rs.getInt("cupo"));
-          habitacion.setEstado(rs.getInt("Estado"));
+          habitacion.setEstado(rs.getBoolean("Estado"));
           
           } else {
             JOptionPane.showMessageDialog(null, "No existe la habitacion");
