@@ -34,7 +34,7 @@ public class HabitacionData {
             ps.setInt(1, habitacion.getPlanta());
             ps.setInt(2, habitacion.getNumeracion());
             ps.setInt(3,habitacion.getCupo());
-            ps.setInt(4,habitacion.getEstado());
+            ps.setBoolean(4, habitacion.getEstado()); 
             ps.executeUpdate();
             
          ResultSet rs = ps.getGeneratedKeys();
@@ -50,14 +50,14 @@ public class HabitacionData {
  
  public void modificarHabitacion (Habitacion habitacion){
          Connection conn = Conexion.getConexion();
- String sql = "UPDATE habitacion SET planta= ?, numeracion= ?, cupo= ?, estado=? + WHERE idHabitacion = ?";
+ String sql = "UPDATE habitacion SET planta= ?, numeracion= ?, cupo= ? + WHERE idHabitacion = ?";
       try {
           PreparedStatement ps = conn.prepareStatement(sql);
           ps.setInt(2, habitacion.getPlanta());
           ps.setInt(3, habitacion.getNumeracion());
           ps.setInt(4, habitacion.getCupo());
-          ps.setInt(5, habitacion.getEstado());
-          ps.setInt(6, habitacion.getIdHabitacion());
+            //(5, habitacion.getEstado());
+          ps.setInt(5, habitacion.getIdHabitacion());
          int exito = ps.executeUpdate();
          if(exito ==1){
          JOptionPane.showMessageDialog(null, "Habitacion Modificada");
@@ -103,7 +103,7 @@ public class HabitacionData {
           habitacion.setPlanta(rs.getInt("planta"));
           habitacion.setNumeracion(rs.getInt("numeracion"));
           habitacion.setCupo(rs.getInt("cupo"));
-          habitacion.setEstado(rs.getInt("Estado"));
+          habitacion.setEstado(rs.getBoolean("Estado"));
           
           } else {
             JOptionPane.showMessageDialog(null, "No existe la habitacion");
