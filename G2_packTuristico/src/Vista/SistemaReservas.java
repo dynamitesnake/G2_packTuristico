@@ -17,7 +17,8 @@ public class SistemaReservas extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        Escritorio = new javax.swing.JLabel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jM_destinos = new javax.swing.JMenu();
         jM_pasajes = new javax.swing.JMenu();
@@ -39,8 +40,11 @@ public class SistemaReservas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Escritorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/EDAD (1).png"))); // NOI18N
-        getContentPane().add(Escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 690));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agencia.png"))); // NOI18N
+        jDesktopPane1.add(jLabel1);
+        jLabel1.setBounds(0, 0, 1120, 690);
+
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 690));
 
         jM_destinos.setText("Destinos");
         jM_destinos.addActionListener(new java.awt.event.ActionListener() {
@@ -175,8 +179,9 @@ public class SistemaReservas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Escritorio;
     private javax.swing.JMenuItem Jturista;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jM_alojamientos;
     private javax.swing.JMenu jM_destinos;
     private javax.swing.JMenu jM_pasajes;
