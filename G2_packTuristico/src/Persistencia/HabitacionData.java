@@ -56,7 +56,6 @@ public class HabitacionData {
           ps.setInt(2, habitacion.getPlanta());
           ps.setInt(3, habitacion.getNumeracion());
           ps.setInt(4, habitacion.getCupo());
-            //(5, habitacion.getEstado());
           ps.setInt(5, habitacion.getIdHabitacion());
          int exito = ps.executeUpdate();
          if(exito ==1){
@@ -92,7 +91,7 @@ public class HabitacionData {
      System.out.println("\nBuscar habitacion por id:" + id);
         Habitacion habitacion = null;
         
-        String sql = "SELECT idHabitacion, planta, numeracion, cupo, estado, idalojamiento FROM habitacion WHERE = ?";
+        String sql = "SELECT  planta, numeracion, cupo idalojamiento FROM habitacion WHERE idHabitacion = ? AND estado =1" ;
       try {
           PreparedStatement ps = conn.prepareStatement(sql);
           ps.setInt(1,id);
@@ -103,7 +102,7 @@ public class HabitacionData {
           habitacion.setPlanta(rs.getInt("planta"));
           habitacion.setNumeracion(rs.getInt("numeracion"));
           habitacion.setCupo(rs.getInt("cupo"));
-          habitacion.setEstado(rs.getInt("Estado"));
+          habitacion.setEstado(true);
           
           } else {
             JOptionPane.showMessageDialog(null, "No existe la habitacion");
