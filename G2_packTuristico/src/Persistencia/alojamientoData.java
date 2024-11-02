@@ -148,4 +148,3 @@ public List<Alojamiento> listarAlojamiento() {
         return lista;
     }
 }
-

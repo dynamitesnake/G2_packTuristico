@@ -112,7 +112,5 @@ public class pasajeData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla pasaje");
         }
     }
-    
-    
-    
+      
 }

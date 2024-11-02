@@ -11,6 +11,12 @@ public class Pension {
         this.nombre = nombre;
         this.porcentaje = porcentaje;
     }
+    
+    public Pension(String nombre, double porcentaje) {
+        this.idPension = idPension;
+        this.nombre = nombre;
+        this.porcentaje = porcentaje;
+    }
 
     public int getIdPension() {
         return idPension;
@@ -37,5 +43,3 @@ public class Pension {
     }
     
 }
-
-

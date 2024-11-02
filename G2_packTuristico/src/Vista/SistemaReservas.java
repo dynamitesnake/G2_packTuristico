@@ -18,10 +18,11 @@ public class SistemaReservas extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         sistema = new javax.swing.JDesktopPane();
-        Escritorio = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jM_destinos = new javax.swing.JMenu();
         jM_pasajes = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         menuTurista = new javax.swing.JMenu();
         Jturista = new javax.swing.JMenuItem();
         jM_alojamientos = new javax.swing.JMenu();
@@ -37,24 +38,13 @@ public class SistemaReservas extends javax.swing.JFrame {
         jMenuBar2.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Escritorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agencia.jpg"))); // NOI18N
-        Escritorio.setText("imagen");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agencia.png"))); // NOI18N
+        sistema.add(jLabel1);
+        jLabel1.setBounds(0, 0, 1120, 690);
 
-        sistema.setLayer(Escritorio, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout sistemaLayout = new javax.swing.GroupLayout(sistema);
-        sistema.setLayout(sistemaLayout);
-        sistemaLayout.setHorizontalGroup(
-            sistemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sistemaLayout.createSequentialGroup()
-                .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        sistemaLayout.setVerticalGroup(
-            sistemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(sistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 690));
 
         jM_destinos.setText("Destinos");
         jM_destinos.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +60,15 @@ public class SistemaReservas extends javax.swing.JFrame {
                 jM_pasajesActionPerformed(evt);
             }
         });
+
+        jMenuItem2.setText("Cargar Pasaje");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jM_pasajes.add(jMenuItem2);
+
         jMenuBar1.add(jM_pasajes);
 
         menuTurista.setText("Turistas");
@@ -100,17 +99,6 @@ public class SistemaReservas extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sistema)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sistema, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -145,6 +133,15 @@ public class SistemaReservas extends javax.swing.JFrame {
         alojamiento.setVisible(true);
         sistema.moveToFront(this);
     }//GEN-LAST:event_menuAlojamientosActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        sistema.removeAll();
+        sistema.repaint();
+        VistaPasajes pasaje = new VistaPasajes();
+        sistema.add(pasaje);
+        pasaje.setVisible(true);
+        sistema.moveToFront(this);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,8 +179,8 @@ public class SistemaReservas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Escritorio;
     private javax.swing.JMenuItem Jturista;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jM_alojamientos;
     private javax.swing.JMenu jM_destinos;
     private javax.swing.JMenu jM_pasajes;
@@ -193,6 +190,7 @@ public class SistemaReservas extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem menuAlojamientos;
     private javax.swing.JMenu menuTurista;
     private javax.swing.JDesktopPane sistema;

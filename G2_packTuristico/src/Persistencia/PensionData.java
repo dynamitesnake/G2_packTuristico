@@ -45,7 +45,7 @@ public class PensionData {
     public void modificarPension(Pension pension) {
         Connection conn = Conexion.getConexion();
         try {
-            String query = "UPDATE pension SET nombre = ?, porcentaje = ? WHERE codAdicional = ?";
+            String query = "UPDATE pension SET nombre = ?, porcentaje = ? WHERE idPension = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, pension.getNombre());
             stmt.setDouble(2, pension.getPorcentaje());
@@ -97,5 +97,3 @@ public class PensionData {
     }
     
 }
-
-

@@ -4,6 +4,7 @@ package Persistencia;
 import AccesoDatos.Conexion;
 import org.mariadb.jdbc.Connection;
 import Modelo.Turista;
+import Vista.VistaTurista;
 import java.sql.*;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -16,20 +17,19 @@ public class TuristaData {
         this.conn = (Connection) Conexion.getConexion();
     }
     
-    public void guardarTurista (Turista turista){
+    public void guardarTurista (Turista tu){
         System.out.println("\nGuardar turista: ");
-        String sql = "INSERT INTO Turista (dni, nombre, edad, idpaquete, activo) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Turista (dni, nombre, edad, idpaquete) VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, turista.getDni());
-            ps.setString(2, turista.getNombre());
-            ps.setInt(3, turista.getEdad());
-            ps.setInt(4, turista.getIdPaquete());
-            ps.setBoolean(5, turista.isActivo());
+            ps.setInt(1, tu.getDni());
+            ps.setString(2, tu.getNombre());
+            ps.setInt(3, tu.getEdad());
+            ps.setInt(4, tu.getIdPaquete());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                turista.setDni(rs.getInt(1));
+                tu.setDni(rs.getInt(1));
             }
             ps.close();
         } catch (SQLException ex) {
@@ -52,7 +52,6 @@ public class TuristaData {
                 turista.setNombre(rs.getString("nombre"));
                 turista.setEdad(rs.getInt("edad"));
                 turista.setIdPaquete(rs.getInt("idPaquete"));
-                turista.setActivo(true);
              }
             else {
                 JOptionPane.showMessageDialog(null, "No existe el cliente");
@@ -74,7 +73,6 @@ public class TuristaData {
             ps.setString(2, turista.getNombre());
             ps.setInt(3, turista.getEdad());
             ps.setInt(4, turista.getIdPaquete());
-            
            int exito = ps.executeUpdate();
             System.out.println("Cliente modificado ");
             if (exito == 1) {
@@ -118,8 +116,9 @@ public class TuristaData {
         }
 }
 
-   
-
+    public void guardarTurista(VistaTurista turista) {
+        
+    }
+    
     
 }
-

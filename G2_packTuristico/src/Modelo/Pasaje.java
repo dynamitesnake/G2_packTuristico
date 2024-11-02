@@ -75,6 +75,4 @@ public class Pasaje {
         return "Pasaje{" + "codPasaje=" + codPasaje + ", fechaHora=" + fechaHora + ", origen=" + origen + ", destino=" + destino + ", asiento=" + asiento + '}';
     }
     
-    
-    
 }
