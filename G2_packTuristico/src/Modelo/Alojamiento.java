@@ -83,5 +83,6 @@ public class Alojamiento {
     public String toString() {
         return "Alojamiento " + nombre ;
     }
+   
     
 }

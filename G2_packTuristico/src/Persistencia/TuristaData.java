@@ -4,6 +4,7 @@ package Persistencia;
 import AccesoDatos.Conexion;
 import org.mariadb.jdbc.Connection;
 import Modelo.Turista;
+import Vista.VistaTurista;
 import java.sql.*;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -115,7 +116,7 @@ public class TuristaData {
         }
 }
 
-    public void guardarTurista(Vista.Turista turista) {
+    public void guardarTurista(VistaTurista turista) {
         
     }
     
