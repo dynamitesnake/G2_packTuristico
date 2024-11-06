@@ -126,7 +126,12 @@ public class SistemaReservas extends javax.swing.JFrame {
     }//GEN-LAST:event_jM_pasajeActionPerformed
 
     private void jM_paqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_paqueteActionPerformed
-
+        sistema.removeAll();
+        sistema.repaint();
+        VistaPaquete paquete = new VistaPaquete();
+        sistema.add(paquete);
+        paquete.setVisible(true);
+        sistema.moveToFront(this);
     }//GEN-LAST:event_jM_paqueteActionPerformed
 
     /**
