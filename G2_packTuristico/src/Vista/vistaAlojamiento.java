@@ -36,7 +36,7 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
         comboAlojamientos = new javax.swing.JComboBox<>();
         btnGuardar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
-        btnBaja = new javax.swing.JButton();
+        btnNuevo = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         txtIdAlojamiento = new javax.swing.JTextField();
@@ -68,8 +68,13 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 240, -1, -1));
 
-        btnBaja.setText("Baja");
-        getContentPane().add(btnBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 350, -1, -1));
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 350, -1, -1));
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -119,12 +124,16 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
         buscarAlojamiento();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBaja;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<Alojamiento> comboAlojamientos;
     private javax.swing.JLabel jLabel2;
@@ -212,6 +221,7 @@ private void guardarAlojamiento() {
             JOptionPane.showMessageDialog(null, " Por favor ingrese un alojamiento valido.");     
         }
      } private void limpiarCampos() {
+         txtIdAlojamiento.setText("");
         txtNombre.setText("");
         txtCapacidad.setText("");
         txtAmbientes.setText("");
