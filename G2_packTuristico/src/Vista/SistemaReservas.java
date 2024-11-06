@@ -23,11 +23,12 @@ public class SistemaReservas extends javax.swing.JFrame {
         jM_paquete = new javax.swing.JMenu();
         jM_pasajes = new javax.swing.JMenu();
         jM_pasaje = new javax.swing.JMenuItem();
-        menuTurista = new javax.swing.JMenu();
-        jM_turis = new javax.swing.JMenuItem();
+        jm_Turista = new javax.swing.JMenu();
         jM_alojamientos = new javax.swing.JMenu();
         menuAlojamientos = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        jM_habitacion = new javax.swing.JMenuItem();
+        jM_pension = new javax.swing.JMenuItem();
+        jM_salir = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -42,7 +43,7 @@ public class SistemaReservas extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuprincipal (1).png"))); // NOI18N
         sistema.add(jLabel1);
-        jLabel1.setBounds(0, -50, 1100, 770);
+        jLabel1.setBounds(0, -50, 1120, 770);
 
         getContentPane().add(sistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 690));
 
@@ -66,17 +67,13 @@ public class SistemaReservas extends javax.swing.JFrame {
 
         jMenuBar1.add(jM_pasajes);
 
-        menuTurista.setText("Turistas");
-
-        jM_turis.setText("Turista");
-        jM_turis.addActionListener(new java.awt.event.ActionListener() {
+        jm_Turista.setText("Turistas");
+        jm_Turista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jM_turisActionPerformed(evt);
+                jm_TuristaActionPerformed(evt);
             }
         });
-        menuTurista.add(jM_turis);
-
-        jMenuBar1.add(menuTurista);
+        jMenuBar1.add(jm_Turista);
 
         jM_alojamientos.setText("Alojamientos");
 
@@ -88,24 +85,36 @@ public class SistemaReservas extends javax.swing.JFrame {
         });
         jM_alojamientos.add(menuAlojamientos);
 
+        jM_habitacion.setText("Habitacion");
+        jM_habitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jM_habitacionActionPerformed(evt);
+            }
+        });
+        jM_alojamientos.add(jM_habitacion);
+
+        jM_pension.setText("Pension");
+        jM_pension.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jM_pensionActionPerformed(evt);
+            }
+        });
+        jM_alojamientos.add(jM_pension);
+
         jMenuBar1.add(jM_alojamientos);
 
-        jMenu4.setText("Salir");
-        jMenuBar1.add(jMenu4);
+        jM_salir.setText("Salir");
+        jM_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jM_salirActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jM_salir);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jM_turisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_turisActionPerformed
-       sistema.removeAll();
-        sistema.repaint();
-        VistaTurista turista = new VistaTurista();
-        sistema.add(turista);
-        turista.setVisible(true);
-        sistema.moveToFront(this);
-    }//GEN-LAST:event_jM_turisActionPerformed
 
     private void menuAlojamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlojamientosActionPerformed
         sistema.removeAll();
@@ -133,6 +142,38 @@ public class SistemaReservas extends javax.swing.JFrame {
         paquete.setVisible(true);
         sistema.moveToFront(this);
     }//GEN-LAST:event_jM_paqueteActionPerformed
+
+    private void jM_habitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_habitacionActionPerformed
+        sistema.removeAll();
+        sistema.repaint();
+        VistaHabitacion habitacion = new VistaHabitacion();
+        sistema.add(habitacion);
+        habitacion.setVisible(true);
+        sistema.moveToFront(this);
+    }//GEN-LAST:event_jM_habitacionActionPerformed
+
+    private void jM_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_salirActionPerformed
+       dispose();
+    }//GEN-LAST:event_jM_salirActionPerformed
+
+    private void jm_TuristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_TuristaActionPerformed
+        sistema.removeAll();
+        sistema.repaint();
+        VistaTurista turista = new VistaTurista();
+        sistema.add(turista);
+        turista.setVisible(true);
+        sistema.moveToFront(this);
+        
+    }//GEN-LAST:event_jm_TuristaActionPerformed
+
+    private void jM_pensionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_pensionActionPerformed
+        sistema.removeAll();
+        sistema.repaint();
+        VistaPension pension = new VistaPension();
+        sistema.add(pension);
+        pension.setVisible(true);
+        sistema.moveToFront(this);
+    }//GEN-LAST:event_jM_pensionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,18 +213,19 @@ public class SistemaReservas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jM_alojamientos;
+    private javax.swing.JMenuItem jM_habitacion;
     private javax.swing.JMenu jM_paquete;
     private javax.swing.JMenuItem jM_pasaje;
     private javax.swing.JMenu jM_pasajes;
-    private javax.swing.JMenuItem jM_turis;
+    private javax.swing.JMenuItem jM_pension;
+    private javax.swing.JMenu jM_salir;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu jm_Turista;
     private javax.swing.JMenuItem menuAlojamientos;
-    private javax.swing.JMenu menuTurista;
     private javax.swing.JDesktopPane sistema;
     // End of variables declaration//GEN-END:variables
 }
