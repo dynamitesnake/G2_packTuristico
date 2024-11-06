@@ -104,16 +104,11 @@ public class SistemaReservas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jM_destinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_destinosActionPerformed
-        Destinos destino = new Destinos();
-        sistema.add(destino);
-        destino.setVisible(true);
+  
     }//GEN-LAST:event_jM_destinosActionPerformed
 
     private void jM_pasajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_pasajesActionPerformed
-        Pasajes pasaje = new Pasajes();
-        sistema.add(pasaje);
-        pasaje.setVisible(true);
-        
+      
     }//GEN-LAST:event_jM_pasajesActionPerformed
 
     private void JturistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JturistaActionPerformed
