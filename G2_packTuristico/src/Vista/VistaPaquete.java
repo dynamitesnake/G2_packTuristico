@@ -9,12 +9,12 @@ package Vista;
  *
  * @author 54266
  */
-public class Destinos extends javax.swing.JInternalFrame {
+public class VistaPaquete extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Destinos
      */
-    public Destinos() {
+    public VistaPaquete() {
         initComponents();
     }
 

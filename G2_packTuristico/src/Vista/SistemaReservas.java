@@ -20,11 +20,11 @@ public class SistemaReservas extends javax.swing.JFrame {
         sistema = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jM_destinos = new javax.swing.JMenu();
+        jM_paquete = new javax.swing.JMenu();
         jM_pasajes = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jM_pasaje = new javax.swing.JMenuItem();
         menuTurista = new javax.swing.JMenu();
-        Jturista = new javax.swing.JMenuItem();
+        jM_turis = new javax.swing.JMenuItem();
         jM_alojamientos = new javax.swing.JMenu();
         menuAlojamientos = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -46,40 +46,35 @@ public class SistemaReservas extends javax.swing.JFrame {
 
         getContentPane().add(sistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 690));
 
-        jM_destinos.setText("Destinos");
-        jM_destinos.addActionListener(new java.awt.event.ActionListener() {
+        jM_paquete.setText("Paquete");
+        jM_paquete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jM_destinosActionPerformed(evt);
+                jM_paqueteActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jM_destinos);
+        jMenuBar1.add(jM_paquete);
 
         jM_pasajes.setText("Pasajes");
-        jM_pasajes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jM_pasajesActionPerformed(evt);
-            }
-        });
 
-        jMenuItem2.setText("Cargar Pasaje");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jM_pasaje.setText("Cargar Pasaje");
+        jM_pasaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jM_pasajeActionPerformed(evt);
             }
         });
-        jM_pasajes.add(jMenuItem2);
+        jM_pasajes.add(jM_pasaje);
 
         jMenuBar1.add(jM_pasajes);
 
         menuTurista.setText("Turistas");
 
-        Jturista.setText("Turista");
-        Jturista.addActionListener(new java.awt.event.ActionListener() {
+        jM_turis.setText("Turista");
+        jM_turis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JturistaActionPerformed(evt);
+                jM_turisActionPerformed(evt);
             }
         });
-        menuTurista.add(Jturista);
+        menuTurista.add(jM_turis);
 
         jMenuBar1.add(menuTurista);
 
@@ -103,22 +98,14 @@ public class SistemaReservas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jM_destinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_destinosActionPerformed
-  
-    }//GEN-LAST:event_jM_destinosActionPerformed
-
-    private void jM_pasajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_pasajesActionPerformed
-      
-    }//GEN-LAST:event_jM_pasajesActionPerformed
-
-    private void JturistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JturistaActionPerformed
+    private void jM_turisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_turisActionPerformed
        sistema.removeAll();
         sistema.repaint();
         VistaTurista turista = new VistaTurista();
         sistema.add(turista);
         turista.setVisible(true);
         sistema.moveToFront(this);
-    }//GEN-LAST:event_JturistaActionPerformed
+    }//GEN-LAST:event_jM_turisActionPerformed
 
     private void menuAlojamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlojamientosActionPerformed
         sistema.removeAll();
@@ -129,14 +116,18 @@ public class SistemaReservas extends javax.swing.JFrame {
         sistema.moveToFront(this);
     }//GEN-LAST:event_menuAlojamientosActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jM_pasajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_pasajeActionPerformed
         sistema.removeAll();
         sistema.repaint();
         VistaPasajes pasaje = new VistaPasajes();
         sistema.add(pasaje);
         pasaje.setVisible(true);
         sistema.moveToFront(this);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jM_pasajeActionPerformed
+
+    private void jM_paqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_paqueteActionPerformed
+
+    }//GEN-LAST:event_jM_paqueteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,18 +165,18 @@ public class SistemaReservas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Jturista;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jM_alojamientos;
-    private javax.swing.JMenu jM_destinos;
+    private javax.swing.JMenu jM_paquete;
+    private javax.swing.JMenuItem jM_pasaje;
     private javax.swing.JMenu jM_pasajes;
+    private javax.swing.JMenuItem jM_turis;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem menuAlojamientos;
     private javax.swing.JMenu menuTurista;
     private javax.swing.JDesktopPane sistema;
