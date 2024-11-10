@@ -1,18 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
+
 package Vista;
+
+import Modelo.Habitacion;
+import Persistencia.HabitacionData;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author deborahhhh
  */
 public class VistaHabitacion extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form VistaHabitacion
-     */
+private HabitacionData habiData = new HabitacionData();
+private Habitacion habiActual = null;
+  
     public VistaHabitacion() {
         initComponents();
     }
@@ -68,9 +68,19 @@ public class VistaHabitacion extends javax.swing.JInternalFrame {
 
         JBbuscar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         JBbuscar.setText("Buscar");
+        JBbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBbuscarActionPerformed(evt);
+            }
+        });
 
         JBguardar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         JBguardar.setText("Guardar");
+        JBguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBguardarActionPerformed(evt);
+            }
+        });
 
         JBmodificar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         JBmodificar.setText("Modificar");
@@ -147,11 +157,12 @@ public class VistaHabitacion extends javax.swing.JInternalFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JRestado))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JBbuscar)
-                    .addComponent(JBguardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JBmodificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JBeliminar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JBguardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(JBbuscar)
+                        .addComponent(JBmodificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JBeliminar)))
                 .addGap(26, 26, 26))
         );
 
@@ -159,8 +170,107 @@ public class VistaHabitacion extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBmodificarActionPerformed
-        // TODO add your handling code here:
+        
+        try{
+        int id = Integer.parseInt(JTidHabitacion.getText());
+        habiActual = habiData.buscarHabitacion(id);
+        
+        if(habiActual != null){
+            //modifica los atributos de habiActual segun los nuevos valores:
+        habiActual.setPlanta(Integer.parseInt(JTNPlanta.getText()));
+        habiActual.setNumeracion(Integer.parseInt(JTNumeracion.getText()));
+        habiActual.setCupo(Integer.parseInt(JTcupo.getText()));
+        JRestado.setSelected(habiActual.isActivo());//si esta activo, se selecciona el boton. 
+        
+        //logica para guardar los cambios en la base de datos:
+        habiData.modificarHabitacion(habiActual);
+        
+        JOptionPane.showMessageDialog(this, "Habitacion modificada con exito");
+        }else{
+        JOptionPane.showMessageDialog(this, "Habitacion No encontrada");
+        }
+        } catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Debe Ingresar un numero valido para el ID");
+         }catch(Exception ex){
+             JOptionPane.showMessageDialog(this, "Ocurrio un error al modificar habitacion");
+         
+         }
     }//GEN-LAST:event_JBmodificarActionPerformed
+
+    private void JBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBbuscarActionPerformed
+       
+        try{
+        Integer id = Integer.parseInt(JTidHabitacion.getText());
+        habiActual = habiData.buscarHabitacion(id);
+        if (habiActual != null){
+        JTNPlanta.setText(String.valueOf(habiActual.getPlanta()));
+        JTNumeracion.setText(String.valueOf(habiActual.getNumeracion()));
+        JTcupo.setText(String.valueOf(habiActual.getCupo()));
+        JRestado.setSelected(habiActual.isActivo());
+         
+        }
+          }catch(NumberFormatException ex){
+        JOptionPane.showMessageDialog(this, "debe ingresar un numero valido");
+        }
+    }
+    
+    
+    private void limpiarCampos(){
+
+ JTidHabitacion.setText("");
+ JTNPlanta.setText("");
+ JTNumeracion.setText("");
+ JTcupo.setText("");
+ JRestado.setSelected(true);
+ 
+ 
+
+
+    }//GEN-LAST:event_JBbuscarActionPerformed
+
+    private void JBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBguardarActionPerformed
+       try{
+       String idText = JTidHabitacion.getText();
+       if(idText.isEmpty()){
+       JOptionPane.showMessageDialog(this, "El ID de la habitacion no puede estar vacio");
+       return;
+       }
+       Integer id = Integer.parseInt(idText);
+       String plantaText = JTNPlanta.getText();
+       if(plantaText.isEmpty()){
+       JOptionPane.showMessageDialog(this, "La planta no puede estar vacia");
+       return;
+       }
+       int planta = Integer.parseInt(plantaText);
+       if (planta < 1 || planta > 10 ){
+       JOptionPane.showMessageDialog(this,"La planta debe tener numero del 1 al 10");
+       return;
+       }
+       String numeracionText = JTNumeracion.getText();
+       if(numeracionText.isEmpty()){
+       JOptionPane.showMessageDialog(this, "La numeracion no puede estar vacia");
+       return;
+       }
+       int numeracion = Integer.parseInt(numeracionText);
+       
+       String cupoText = JTcupo.getText();
+       if(cupoText.isEmpty()){
+       JOptionPane.showMessageDialog(this, "el cupo no puede estar vacio");
+       return;
+       }
+       int cupo = Integer.parseInt(cupoText);
+       if(cupo < 1){//permite valores positivos
+       JOptionPane.showMessageDialog(this, "El cupo debe ser un numero positivo");
+       }
+       habiActual = habiData.guardarHabitacion(id);
+       JOptionPane.showMessageDialog(this, "Habitacion guardada con exito");
+       } catch(NumberFormatException ex){
+           JOptionPane.showMessageDialog(this, "por favor, ingrese un numero valido");
+      } catch(Exception ex){
+      JOptionPane.showMessageDialog(this, "Ocurrio un error al guardar habitacion: " + ex.getMessage());
+      }
+        
+    }//GEN-LAST:event_JBguardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

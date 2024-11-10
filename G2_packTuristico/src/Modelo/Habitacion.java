@@ -62,13 +62,13 @@ public class Habitacion {
         this.Cupo = Cupo;
     }
 
-    public boolean getEstado() {
-        return Estado;
-    }
-
-    public void setEstado(boolean Estado) {
-        this.Estado = Estado;
-    }
+  
+  public boolean isActivo(){
+  return Estado;
+  }
+  public void setActivo (boolean Estado){
+  this.Estado = Estado;
+  }
 
     @Override
   public String toString(){

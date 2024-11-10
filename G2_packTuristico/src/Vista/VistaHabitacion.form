@@ -93,11 +93,13 @@
                   <Component id="JRestado" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="JBbuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="JBguardar" alignment="1" max="32767" attributes="0"/>
-                  <Component id="JBmodificar" alignment="3" max="32767" attributes="0"/>
-                  <Component id="JBeliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="JBbuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JBmodificar" alignment="3" max="32767" attributes="0"/>
+                      <Component id="JBeliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
@@ -188,6 +190,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBbuscarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="JBguardar">
       <Properties>
@@ -196,6 +201,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Guardar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBguardarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="JBmodificar">
       <Properties>
