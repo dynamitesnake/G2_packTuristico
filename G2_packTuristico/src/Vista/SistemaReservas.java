@@ -24,6 +24,7 @@ public class SistemaReservas extends javax.swing.JFrame {
         jM_pasajes = new javax.swing.JMenu();
         jM_pasaje = new javax.swing.JMenuItem();
         jm_Turista = new javax.swing.JMenu();
+        jM_agregarTurista = new javax.swing.JMenuItem();
         jM_alojamientos = new javax.swing.JMenu();
         menuAlojamientos = new javax.swing.JMenuItem();
         jM_habitacion = new javax.swing.JMenuItem();
@@ -68,11 +69,15 @@ public class SistemaReservas extends javax.swing.JFrame {
         jMenuBar1.add(jM_pasajes);
 
         jm_Turista.setText("Turistas");
-        jm_Turista.addActionListener(new java.awt.event.ActionListener() {
+
+        jM_agregarTurista.setText("Agregar Turista");
+        jM_agregarTurista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jm_TuristaActionPerformed(evt);
+                jM_agregarTuristaActionPerformed(evt);
             }
         });
+        jm_Turista.add(jM_agregarTurista);
+
         jMenuBar1.add(jm_Turista);
 
         jM_alojamientos.setText("Alojamientos");
@@ -156,16 +161,6 @@ public class SistemaReservas extends javax.swing.JFrame {
        dispose();
     }//GEN-LAST:event_jM_salirActionPerformed
 
-    private void jm_TuristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_TuristaActionPerformed
-        sistema.removeAll();
-        sistema.repaint();
-        VistaTurista turista = new VistaTurista();
-        sistema.add(turista);
-        turista.setVisible(true);
-        sistema.moveToFront(this);
-        
-    }//GEN-LAST:event_jm_TuristaActionPerformed
-
     private void jM_pensionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_pensionActionPerformed
         sistema.removeAll();
         sistema.repaint();
@@ -174,6 +169,16 @@ public class SistemaReservas extends javax.swing.JFrame {
         pension.setVisible(true);
         sistema.moveToFront(this);
     }//GEN-LAST:event_jM_pensionActionPerformed
+
+    private void jM_agregarTuristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_agregarTuristaActionPerformed
+
+        sistema.removeAll();
+        sistema.repaint();
+        VistaTurista turista = new VistaTurista();
+        sistema.add(turista);
+        turista.setVisible(true);
+        sistema.moveToFront(this);
+    }//GEN-LAST:event_jM_agregarTuristaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,6 +217,7 @@ public class SistemaReservas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuItem jM_agregarTurista;
     private javax.swing.JMenu jM_alojamientos;
     private javax.swing.JMenuItem jM_habitacion;
     private javax.swing.JMenu jM_paquete;
