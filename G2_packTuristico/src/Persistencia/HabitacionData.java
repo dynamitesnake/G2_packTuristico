@@ -27,14 +27,15 @@ public class HabitacionData {
  public void guardarHabitacion(Habitacion habitacion){
      Connection conn = Conexion.getConexion();
     
- String sql = "INSERT INTO habitacion(planta, numeracion, cupo, estado) VALUES (?, ?, ?, ?)";
+ String sql = "INSERT INTO habitacion(planta, numeracion, cupo, idalojamiento, estado) VALUES (?, ?, ?, ?, ?)";
  
         try {
             PreparedStatement ps = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, habitacion.getPlanta());
             ps.setInt(2, habitacion.getNumeracion());
             ps.setInt(3,habitacion.getCupo());
-            ps.setBoolean(4, habitacion.isActivo()); 
+            ps.setInt(4,habitacion.getIdalojamiento() );
+            ps.setBoolean(5, habitacion.isActivo()); 
             ps.executeUpdate();
             
          ResultSet rs = ps.getGeneratedKeys();
@@ -53,10 +54,12 @@ public class HabitacionData {
  String sql = "UPDATE habitacion SET planta= ?, numeracion= ?, cupo= ? + WHERE idHabitacion = ?";
       try {
           PreparedStatement ps = conn.prepareStatement(sql);
+          ps.setInt(1, habitacion.getIdHabitacion());
           ps.setInt(2, habitacion.getPlanta());
           ps.setInt(3, habitacion.getNumeracion());
           ps.setInt(4, habitacion.getCupo());
-          ps.setInt(5, habitacion.getIdHabitacion());
+          ps.setInt(5,habitacion.getIdalojamiento());
+         
          int exito = ps.executeUpdate();
          if(exito ==1){
          JOptionPane.showMessageDialog(null, "Habitacion Modificada");
@@ -102,6 +105,7 @@ public class HabitacionData {
           habitacion.setPlanta(rs.getInt("planta"));
           habitacion.setNumeracion(rs.getInt("numeracion"));
           habitacion.setCupo(rs.getInt("cupo"));
+          habitacion.setIdalojamiento(rs.getInt("idalojamiento"));
           habitacion.setActivo(true);
           
           } else {

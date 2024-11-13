@@ -10,26 +10,37 @@ public class Habitacion {
     private int Planta;
     private int Numeracion;
     private int Cupo;
+    private int idalojamiento;
     private boolean Estado;
 
     public Habitacion() {
     }
 
-    public Habitacion(int Planta, int Numeracion, int Cupo, boolean Estado) {
+    public Habitacion(int Planta, int Numeracion, int Cupo, int idalojamiento, boolean Estado) {
         this.Planta = Planta;
         this.Numeracion = Numeracion;
         this.Cupo = Cupo;
+        this.idalojamiento = idalojamiento;
         this.Estado = Estado;
     }
 
-    public Habitacion(int IdHabitacion, int Planta, int Numeracion, int Cupo, boolean Estado) {
+    public Habitacion(int IdHabitacion, int Planta, int Numeracion, int Cupo, int idalojamiento, boolean Estado) {
         this.IdHabitacion = IdHabitacion;
         this.Planta = Planta;
         this.Numeracion = Numeracion;
         this.Cupo = Cupo;
+        this.idalojamiento = idalojamiento;
         this.Estado = Estado;
     }
 
+    public int getIdalojamiento() {
+        return idalojamiento;
+    }
+
+    public void setIdalojamiento(int idalojamiento) {
+        this.idalojamiento = idalojamiento;
+    }
+    
     public int getIdHabitacion() {
         return IdHabitacion;
     }
@@ -73,7 +84,7 @@ public class Habitacion {
     @Override
   public String toString(){
       
-        return "Habitacion" + "IdHabitacion=" + IdHabitacion + ", Planta" + Planta + ", Numeracion" + Numeracion + ", Cupo=" + Cupo + ", Estado=" + Estado + "}" ;
+        return "Habitacion" + "IdHabitacion=" + IdHabitacion + ", Planta" + Planta + ", Numeracion" + Numeracion + ", Cupo=" + Cupo + ", idalojamiento="+ idalojamiento +", Estado=" + Estado + "}" ;
       
   }
 }
