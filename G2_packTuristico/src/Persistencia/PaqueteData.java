@@ -7,6 +7,7 @@ import Modelo.Paquete;
 import Vista.VistaPaquete;
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.*;
 import javax.swing.JOptionPane;
 
@@ -166,5 +167,19 @@ public class PaqueteData {
     } catch (SQLException ex) {
         JOptionPane.showMessageDialog(null, "Error al acceder a la tabla paquete: " + ex.getMessage());
     }
+    }
+          public String tipoTemporada(LocalDate fecha1, LocalDate fecha2) {
+        int inicio = fecha1.getMonthValue();
+        int fin = fecha2.getMonthValue();
+
+        if (inicio == Month.JANUARY.getValue() || inicio == Month.JULY.getValue() && fin == Month.JANUARY.getValue() || inicio == Month.JULY.getValue()) {
+            return "Alta";
+        } else if ((inicio == Month.FEBRUARY.getValue() || inicio == Month.JUNE.getValue())
+                && (fin == Month.FEBRUARY.getValue() || fin == Month.JUNE.getValue())) {
+            return "Media";
+        } else {
+            return "Baja";
+        }
+
     }
 }

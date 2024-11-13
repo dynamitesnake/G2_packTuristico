@@ -100,7 +100,7 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
         getContentPane().add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 580, 610, 30));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Alojamiento.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Alojamiento1.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 1210, 720));
 

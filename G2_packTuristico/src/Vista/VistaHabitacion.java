@@ -229,47 +229,52 @@ private Habitacion habiActual = null;
     }//GEN-LAST:event_JBbuscarActionPerformed
 
     private void JBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBguardarActionPerformed
-       try{
-       String idText = JTidHabitacion.getText();
-       if(idText.isEmpty()){
-       JOptionPane.showMessageDialog(this, "El ID de la habitacion no puede estar vacio");
-       return;
-       }
-       Integer id = Integer.parseInt(idText);
-       String plantaText = JTNPlanta.getText();
-       if(plantaText.isEmpty()){
-       JOptionPane.showMessageDialog(this, "La planta no puede estar vacia");
-       return;
-       }
-       int planta = Integer.parseInt(plantaText);
-       if (planta < 1 || planta > 10 ){
-       JOptionPane.showMessageDialog(this,"La planta debe tener numero del 1 al 10");
-       return;
-       }
-       String numeracionText = JTNumeracion.getText();
-       if(numeracionText.isEmpty()){
-       JOptionPane.showMessageDialog(this, "La numeracion no puede estar vacia");
-       return;
-       }
-       int numeracion = Integer.parseInt(numeracionText);
-       
-       String cupoText = JTcupo.getText();
-       if(cupoText.isEmpty()){
-       JOptionPane.showMessageDialog(this, "el cupo no puede estar vacio");
-       return;
-       }
-       int cupo = Integer.parseInt(cupoText);
-       if(cupo < 1){//permite valores positivos
-       JOptionPane.showMessageDialog(this, "El cupo debe ser un numero positivo");
-       }
-       habiActual = habiData.guardarHabitacion(id);
-       JOptionPane.showMessageDialog(this, "Habitacion guardada con exito");
-       } catch(NumberFormatException ex){
-           JOptionPane.showMessageDialog(this, "por favor, ingrese un numero valido");
-      } catch(Exception ex){
-      JOptionPane.showMessageDialog(this, "Ocurrio un error al guardar habitacion: " + ex.getMessage());
-      }
-        
+       try {
+    String idText = JTidHabitacion.getText();
+    if (idText.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El ID de la habitación no puede estar vacío");
+        return;
+    }
+    int IdHabitacion = Integer.parseInt(idText);
+
+    String plantaText = JTNPlanta.getText();
+    if (plantaText.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "La planta no puede estar vacía");
+        return;
+    }
+    int planta = Integer.parseInt(plantaText);
+    if (planta < 1 || planta > 10) {
+        JOptionPane.showMessageDialog(this, "La planta debe tener un número del 1 al 10");
+        return;
+    }
+
+    String numeracionText = JTNumeracion.getText();
+    if (numeracionText.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "La numeración no puede estar vacía");
+        return;
+    }
+    int numeracion = Integer.parseInt(numeracionText);
+
+    String cupoText = JTcupo.getText();
+    if (cupoText.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El cupo no puede estar vacío");
+        return;
+    }
+    int cupo = Integer.parseInt(cupoText);
+    if (cupo < 1) {  // Permitir solo valores positivos
+        JOptionPane.showMessageDialog(this, "El cupo debe ser un número positivo");
+        return;
+    }
+    boolean estado = true;
+     Habitacion habitacion = new Habitacion (IdHabitacion, planta, numeracion, cupo, estado);
+    habiData.guardarHabitacion(habitacion);
+    JOptionPane.showMessageDialog(this, "Habitación guardada con éxito");
+
+} catch (NumberFormatException ex) {
+    JOptionPane.showMessageDialog(this, "Por favor, ingrese un número válido");
+} catch (Exception ex) {
+    JOptionPane.showMessageDialog(this, "Ocurrió un error al guardar la habitación: " + ex.getMessage());
+}
     }//GEN-LAST:event_JBguardarActionPerformed
 
 
