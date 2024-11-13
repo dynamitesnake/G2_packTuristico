@@ -133,7 +133,7 @@ public class SistemaReservas extends javax.swing.JFrame {
     private void jM_pasajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_pasajeActionPerformed
         sistema.removeAll();
         sistema.repaint();
-        VistaPasajes pasaje = new VistaPasajes();
+        VistaPasaje pasaje = new VistaPasaje();
         sistema.add(pasaje);
         pasaje.setVisible(true);
         sistema.moveToFront(this);

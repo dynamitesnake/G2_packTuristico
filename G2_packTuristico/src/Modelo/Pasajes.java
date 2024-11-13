@@ -4,29 +4,32 @@ package Modelo;
 import java.time.LocalDate;
 
 
-public class Pasaje {
+public class Pasajes {
     private int codPasaje;
-    private LocalDate fechaHora;
+    private LocalDate fechaida;
+    private LocalDate fechavuelta;
     private String origen;
     private String destino;
     private int asiento;
 
-    public Pasaje(int codPasaje, LocalDate fechaHora, String origen, String destino, int asiento) {
+    public Pasajes(int codPasaje, LocalDate fechaida, LocalDate fechavuelta, String origen, String destino, int asiento) {
         this.codPasaje = codPasaje;
-        this.fechaHora = fechaHora;
+        this.fechaida = fechaida;
+        this.fechavuelta = fechavuelta;
         this.origen = origen;
         this.destino = destino;
         this.asiento = asiento;
     }
 
-    public Pasaje(LocalDate fechaHora, String origen, String destino, int asiento) {
-        this.fechaHora = fechaHora;
+    public Pasajes( LocalDate fechaida, LocalDate fechavuelta, String origen, String destino, int asiento) {
+        this.fechaida = fechaida;
+        this.fechavuelta = fechavuelta;
         this.origen = origen;
         this.destino = destino;
         this.asiento = asiento;
     }
 
-    public Pasaje() {
+    public Pasajes() {
       
     }
 
@@ -34,9 +37,7 @@ public class Pasaje {
         return codPasaje;
     }
 
-    public LocalDate getFechaHora() {
-        return fechaHora;
-    }
+   
 
     public String getOrigen() {
         return origen;
@@ -54,9 +55,7 @@ public class Pasaje {
         this.codPasaje = codPasaje;
     }
 
-    public void setFechaHora(LocalDate fechaHora) {
-        this.fechaHora = fechaHora;
-    }
+   
 
     public void setOrigen(String origen) {
         this.origen = origen;
@@ -70,9 +69,27 @@ public class Pasaje {
         this.asiento = asiento;
     }
 
+    public LocalDate getFechaida() {
+        return fechaida;
+    }
+
+    public LocalDate getFechavuelta() {
+        return fechavuelta;
+    }
+
+    public void setFechaida(LocalDate fechaida) {
+        this.fechaida = fechaida;
+    }
+
+    public void setFechavuelta(LocalDate fechavuelta) {
+        this.fechavuelta = fechavuelta;
+    }
+
     @Override
     public String toString() {
-        return "Pasaje{" + "codPasaje=" + codPasaje + ", fechaHora=" + fechaHora + ", origen=" + origen + ", destino=" + destino + ", asiento=" + asiento + '}';
+        return "Pasaje{" + "codPasaje=" + codPasaje + ", fechaida=" + fechaida + ", fechavuelta=" + fechavuelta + ", origen=" + origen + ", destino=" + destino + ", asiento=" + asiento + '}';
     }
+
+  
     
 }

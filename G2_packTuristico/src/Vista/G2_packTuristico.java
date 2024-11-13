@@ -4,11 +4,11 @@ package Vista;
 import AccesoDatos.Conexion;
 import Modelo.Alojamiento;
 import Modelo.Habitacion;
-import Modelo.Pasaje;
+import Modelo.Pasajes;
 import Modelo.Turista;
 import Persistencia.HabitacionData;
 
-import Persistencia.pasajeData;
+import Persistencia.pasajeDatas;
 import Persistencia.TuristaData;
 import Persistencia.alojamientoData;
 import java.sql.Connection;

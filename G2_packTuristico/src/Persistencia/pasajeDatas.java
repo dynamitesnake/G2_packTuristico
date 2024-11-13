@@ -3,27 +3,29 @@ package Persistencia;
 
 import AccesoDatos.Conexion;
 import org.mariadb.jdbc.Connection;
-import Modelo.Pasaje;
+import Modelo.Pasajes;
 import java.sql.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 
 
-public class pasajeData {
+public class pasajeDatas {
     private Connection conn = null;
 
-    public pasajeData() {
+    public pasajeDatas() {
         this.conn = (Connection) Conexion.getConexion();
     }
-     public void guardPasaje(Pasaje pasaje) {
+     public void guardPasaje(Pasajes pasaje) {
         System.out.println("\nGuardar pasaje: ");
-        String sql = "INSERT INTO pasaje (fechaHora, origen, destino, asiento) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO pasaje ( idPasaje, origen, destino, asiento, fecha_ida, fecha_vuelta) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setDate(1, java.sql.Date.valueOf(pasaje.getFechaHora()));
+            ps.setInt(1, pasaje.getCodPasaje());
             ps.setString(2, pasaje.getOrigen());
             ps.setString(3,pasaje.getDestino());
             ps.setInt(4,pasaje.getAsiento());
+            ps.setDate(5, java.sql.Date.valueOf(pasaje.getFechaida()));
+            ps.setDate(6, java.sql.Date.valueOf(pasaje.getFechavuelta()));
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -34,7 +36,7 @@ public class pasajeData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla pasaje");
         }
     }
-     public Pasaje buscarPasajeId(int codPasaje) {
+     /*public Pasaje buscarPasajeId(int codPasaje) {
         System.out.println("\nBuscar pasaje por id: " + codPasaje);
         Pasaje pasaje = null;
         String sql = "SELECT idPasaje, fechaHora, origen, destino, asiento FROM pasaje WHERE idPasaje = ? ";
@@ -59,13 +61,13 @@ public class pasajeData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla pasaje");
         }
         return pasaje;
-    }
-     public void modificarPasaje(Pasaje pasaje) {
+    }*/
+     /*public void modificarPasaje(Pasaje pasaje) {
         System.out.println("\nModificar pasaje: ");
         String sql = "UPDATE pasaje SET fechaHora = ?, origen = ?, destino = ?, asiento = ? WHERE idPasaje = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setDate(1, java.sql.Date.valueOf(pasaje.getFechaHora()));
+           // ps.setDate(1, java.sql.Date.valueOf(pasaje.getFechaHora()));
             ps.setString(2, pasaje.getOrigen());
             ps.setString(3, pasaje.getDestino());
             ps.setInt(4,pasaje.getAsiento());
@@ -81,7 +83,7 @@ public class pasajeData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla pasaje");
         }
-    }
+    }*/
      public void darDeBajaPorId(int codPasaje) {
         System.out.println("\nDar de baja a id: " + codPasaje);
         String sql = "UPDATE pasaje SET idPasaje = 0 WHERE idPasaje = ? ";
@@ -112,5 +114,6 @@ public class pasajeData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla pasaje");
         }
     }
+
       
 }
