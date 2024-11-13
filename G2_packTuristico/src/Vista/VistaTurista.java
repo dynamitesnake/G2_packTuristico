@@ -46,10 +46,10 @@ public class VistaTurista extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(txtdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 280, 30));
-        getContentPane().add(txtnom, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 180, 30));
-        getContentPane().add(txtedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 240, 30));
-        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 110, 30));
+        getContentPane().add(txtdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 280, 30));
+        getContentPane().add(txtnom, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 210, 30));
+        getContentPane().add(txtedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 260, 30));
+        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 420, 150, 30));
 
         jB_guardar.setBackground(new java.awt.Color(255, 255, 255));
         jB_guardar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
@@ -62,7 +62,7 @@ public class VistaTurista extends javax.swing.JInternalFrame {
                 jB_guardarActionPerformed(evt);
             }
         });
-        getContentPane().add(jB_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 140, 80));
+        getContentPane().add(jB_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 200, 170, 110));
 
         jB_buscar.setBackground(new java.awt.Color(255, 255, 255));
         jB_buscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
@@ -75,7 +75,7 @@ public class VistaTurista extends javax.swing.JInternalFrame {
                 jB_buscarActionPerformed(evt);
             }
         });
-        getContentPane().add(jB_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 440, 140, 80));
+        getContentPane().add(jB_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 370, 170, 110));
 
         jB_modificar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_modificar.setForeground(new java.awt.Color(255, 153, 51));
@@ -126,9 +126,9 @@ public class VistaTurista extends javax.swing.JInternalFrame {
         getContentPane().add(jB_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 570, 130, 60));
 
         jB_activo.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jB_activo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 470, -1, 20));
+        getContentPane().add(jB_activo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, 20, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/TURISTA.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/turista (2).png"))); // NOI18N
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 670));
 
