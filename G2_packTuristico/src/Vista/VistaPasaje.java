@@ -59,7 +59,7 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
         setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jCorigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "San Luis", "Villa Mercedes", "Merlo", " " }));
+        jCorigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "San Luis", "Villa Mercedes", " ", " " }));
         getContentPane().add(jCorigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 160, -1));
 
         jCdestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mar del Plata", "Bariloche", "Mendoza", "Salta", "Jujuy", "Las Grutas", "Puerto Madryn", "Carlos Paz", "Mina Clavero", "Pinamar", "Miramar", "Villa Gesell", "Necochea", "Puerto Iguazu", "Termas de Rio Hondo", "Merlo", "Calafate", "Ushuaia", "Tucuman", "Chubut", "Buenos Aires", "Mar de Ajó", "Santiago de Chile", "Florianapolis", "Camboriú", "Punta del Este", "Punta Cana", "Cancun", "Viña del Mar", "Montevideo", "Cordoba", "" }));
@@ -147,7 +147,7 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
 
                         // Guardar el pasaje
                         pasaData.guardPasaje(new Pasajes(id, fechaIda, fechaVuelta, origen, destino, asiento));
-                        JOptionPane.showMessageDialog(null, "Pasaje guardado ");
+                        JOptionPane.showMessageDialog(null, "Pasaje con D.N.I "+id+" guardado correctamente");
                     } else {
                         JOptionPane.showMessageDialog(null, "El campo de precio está vacío.");
                     }

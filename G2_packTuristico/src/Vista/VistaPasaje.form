@@ -37,7 +37,7 @@
           <StringArray count="4">
             <StringItem index="0" value="San Luis"/>
             <StringItem index="1" value="Villa Mercedes"/>
-            <StringItem index="2" value="Merlo"/>
+            <StringItem index="2" value=" "/>
             <StringItem index="3" value=" "/>
           </StringArray>
         </Property>
