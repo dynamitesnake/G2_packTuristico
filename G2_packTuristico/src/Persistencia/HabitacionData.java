@@ -22,6 +22,12 @@ import javax.swing.JOptionPane;
 
 public class HabitacionData {
   private Connection conn = null;
+
+    public HabitacionData() {
+        this.conn =  (org.mariadb.jdbc.Connection) Conexion.getConexion();
+    }
+  
+  
     
     
  public void guardarHabitacion(Habitacion habitacion){
