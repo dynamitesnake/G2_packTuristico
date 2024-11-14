@@ -80,12 +80,11 @@ CREATE TABLE `paquete` (
 CREATE TABLE `pasaje` (
   `idPasaje` int(11) NOT NULL,
   `medioViaje` varchar(50) DEFAULT NULL,
-  `fechaIda` datetime DEFAULT NULL,
-  `fechaVuelta` datetime DEFAULT NULL,
+  `fecha_ida` datetime DEFAULT NULL,
+  `fecha_vuelta` datetime DEFAULT NULL,
   `origen` varchar(50) DEFAULT NULL,
   `destino` varchar(50) DEFAULT NULL,
-  `asiento` int(11) DEFAULT NULL,
-  `presupuesto` int(11) DEFAULT NULL
+  `asiento` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
