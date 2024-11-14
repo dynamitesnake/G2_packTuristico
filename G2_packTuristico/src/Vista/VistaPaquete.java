@@ -34,7 +34,6 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel11 = new javax.swing.JLabel();
         comboAlojamientos = new javax.swing.JComboBox<>();
         jCorigen = new javax.swing.JComboBox<>();
         jCdestino = new javax.swing.JComboBox<>();
@@ -50,6 +49,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         btnCalcular = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        txt_temp = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -58,23 +58,20 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel11.setText("Temporada");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 220, 40));
-
         getContentPane().add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 200, 30));
 
-        getContentPane().add(jCorigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 170, 30));
+        getContentPane().add(jCorigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 170, 30));
 
-        getContentPane().add(jCdestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 170, 30));
+        getContentPane().add(jCdestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 170, 30));
 
         cboxTransporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(cboxTransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, 140, 30));
-        getContentPane().add(txtIdPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 240, 30));
-        getContentPane().add(calendIda, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 110, 30));
+        getContentPane().add(cboxTransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, 170, 30));
+        getContentPane().add(txtIdPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 240, 30));
+        getContentPane().add(calendIda, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 110, 30));
         getContentPane().add(calendVuelta, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 110, 30));
         getContentPane().add(jtCantidadPasajeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 160, 30));
-        getContentPane().add(txtIdPension, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 160, 30));
-        getContentPane().add(txtMontoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, 120, 40));
+        getContentPane().add(txtIdPension, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 160, 30));
+        getContentPane().add(txtMontoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 120, 40));
 
         jB_guardarPaquete.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_guardarPaquete.setForeground(new java.awt.Color(255, 153, 0));
@@ -121,7 +118,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, 110, 30));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, 110, 30));
 
         jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 153, 0));
@@ -132,12 +129,12 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 460, 90, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 450, 90, 30));
+        getContentPane().add(txt_temp, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 160, 30));
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vista paquete.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -240, 1320, 980));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 900, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -171,14 +168,14 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
 
     if ((inicio == Month.JANUARY.getValue() || inicio == Month.JULY.getValue()) &&
         (fin == Month.JANUARY.getValue() || fin == Month.JULY.getValue())) {
-        jLabel11.setText("Alta");
+        txt_temp.setText("Alta");
         temporada ="Alta";
     } else if ((inicio == Month.FEBRUARY.getValue() || inicio == Month.JUNE.getValue()) &&
                (fin == Month.FEBRUARY.getValue() || fin == Month.JUNE.getValue())) {
-        jLabel11.setText("Media");
+        txt_temp.setText("Media");
          temporada ="Media";
     } else {
-        jLabel11.setText("Baja");
+        txt_temp.setText("Baja");
          temporada ="Baja";
     }
         
@@ -229,11 +226,11 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> jCdestino;
     private javax.swing.JComboBox<String> jCorigen;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JTextField jtCantidadPasajeros;
     private javax.swing.JTextField txtIdPaquete;
     private javax.swing.JTextField txtIdPension;
     private javax.swing.JTextField txtMontoFinal;
+    private javax.swing.JTextField txt_temp;
     // End of variables declaration//GEN-END:variables
 
     
