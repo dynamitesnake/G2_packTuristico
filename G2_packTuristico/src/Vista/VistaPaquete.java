@@ -59,22 +59,22 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setText("Temporada");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 566, 220, 40));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 220, 40));
 
-        getContentPane().add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 200, 30));
+        getContentPane().add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 200, 30));
 
-        getContentPane().add(jCorigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, 200, 30));
+        getContentPane().add(jCorigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 170, 30));
 
-        getContentPane().add(jCdestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, 200, 30));
+        getContentPane().add(jCdestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 170, 30));
 
         cboxTransporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(cboxTransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 240, 140, 30));
-        getContentPane().add(txtIdPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 240, 30));
-        getContentPane().add(calendIda, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 140, 30));
-        getContentPane().add(calendVuelta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 130, 30));
-        getContentPane().add(jtCantidadPasajeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 160, 30));
-        getContentPane().add(txtIdPension, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 520, 160, 30));
-        getContentPane().add(txtMontoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 430, 120, 40));
+        getContentPane().add(cboxTransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, 140, 30));
+        getContentPane().add(txtIdPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 240, 30));
+        getContentPane().add(calendIda, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 110, 30));
+        getContentPane().add(calendVuelta, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 110, 30));
+        getContentPane().add(jtCantidadPasajeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 160, 30));
+        getContentPane().add(txtIdPension, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 160, 30));
+        getContentPane().add(txtMontoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, 120, 40));
 
         jB_guardarPaquete.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_guardarPaquete.setForeground(new java.awt.Color(255, 153, 0));
@@ -86,7 +86,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
                 jB_guardarPaqueteActionPerformed(evt);
             }
         });
-        getContentPane().add(jB_guardarPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 500, 190, 80));
+        getContentPane().add(jB_guardarPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 160, 70));
 
         JBbuscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         JBbuscar.setForeground(new java.awt.Color(255, 153, 0));
@@ -98,7 +98,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
                 JBbuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(JBbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 500, 190, 80));
+        getContentPane().add(JBbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 370, 160, 70));
 
         btnCalcular.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         btnCalcular.setForeground(new java.awt.Color(255, 153, 0));
@@ -110,7 +110,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
                 btnCalcularActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 500, 170, 80));
+        getContentPane().add(btnCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 370, 180, 70));
 
         jButton4.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 153, 0));
@@ -121,7 +121,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 600, 110, 40));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, 110, 30));
 
         jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 153, 0));
@@ -132,12 +132,12 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 600, 100, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 460, 90, 30));
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/VistaPaquete.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vista paquete.png"))); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 620));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -240, 1320, 980));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
