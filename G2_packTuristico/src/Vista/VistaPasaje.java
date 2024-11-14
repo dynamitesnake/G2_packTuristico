@@ -77,7 +77,7 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, 160, -1));
 
         jBpresupuesto.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jBpresupuesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-carrito-de-compras-48.png"))); // NOI18N
+        jBpresupuesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono compras.png"))); // NOI18N
         jBpresupuesto.setText("PRESUPUESTAR");
         jBpresupuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
