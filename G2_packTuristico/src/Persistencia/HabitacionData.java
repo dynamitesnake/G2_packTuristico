@@ -27,20 +27,21 @@ public class HabitacionData {
  public void guardarHabitacion(Habitacion habitacion){
      Connection conn = Conexion.getConexion();
     
- String sql = "INSERT INTO habitacion(planta, numeracion, cupo, idalojamiento, estado) VALUES (?, ?, ?, ?, ?)";
+ String sql = "INSERT INTO habitacion (idHabitacion, planta, numeracion, cupo, idalojamiento, estado) VALUES (?, ?, ?, ?, ?, ?)";
  
         try {
             PreparedStatement ps = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, habitacion.getPlanta());
-            ps.setInt(2, habitacion.getNumeracion());
-            ps.setInt(3,habitacion.getCupo());
-            ps.setInt(4,habitacion.getIdalojamiento() );
-            ps.setBoolean(5, habitacion.isActivo()); 
+            ps.setInt(1, habitacion.getidHabitacion());
+            ps.setInt(2, habitacion.getPlanta());
+            ps.setInt(3, habitacion.getNumeracion());
+            ps.setInt(4,habitacion.getCupo());
+            ps.setInt(5,habitacion.getIdalojamiento() );
+            ps.setBoolean(6, habitacion.isActivo()); 
             ps.executeUpdate();
             
          ResultSet rs = ps.getGeneratedKeys();
          if(rs.next()){
-         habitacion.setIdHabitacion(rs.getInt(1));
+         habitacion.setidHabitacion(rs.getInt(1));
          JOptionPane.showMessageDialog(null, "Habitacio guardada");
          }
          ps.close();
@@ -54,7 +55,7 @@ public class HabitacionData {
  String sql = "UPDATE habitacion SET planta= ?, numeracion= ?, cupo= ? + WHERE idHabitacion = ?";
       try {
           PreparedStatement ps = conn.prepareStatement(sql);
-          ps.setInt(1, habitacion.getIdHabitacion());
+          ps.setInt(1, habitacion.getidHabitacion());
           ps.setInt(2, habitacion.getPlanta());
           ps.setInt(3, habitacion.getNumeracion());
           ps.setInt(4, habitacion.getCupo());
@@ -101,7 +102,7 @@ public class HabitacionData {
           ResultSet rs = ps.executeQuery();
           if(rs.next()){
           habitacion = new Habitacion();
-          habitacion.setIdHabitacion(rs.getInt("idHabitacion"));
+          habitacion.setidHabitacion(rs.getInt("idHabitacion"));
           habitacion.setPlanta(rs.getInt("planta"));
           habitacion.setNumeracion(rs.getInt("numeracion"));
           habitacion.setCupo(rs.getInt("cupo"));

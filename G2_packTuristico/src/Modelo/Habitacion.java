@@ -6,7 +6,7 @@ package Modelo;
  * @author deborahhhh
  */
 public class Habitacion {
-    private int IdHabitacion;
+    private int idHabitacion;
     private int Planta;
     private int Numeracion;
     private int Cupo;
@@ -24,8 +24,8 @@ public class Habitacion {
         this.Estado = Estado;
     }
 
-    public Habitacion(int IdHabitacion, int Planta, int Numeracion, int Cupo, int idalojamiento, boolean Estado) {
-        this.IdHabitacion = IdHabitacion;
+    public Habitacion(int idHabitacion, int Planta, int Numeracion, int Cupo, int idalojamiento, boolean Estado) {
+        this.idHabitacion = idHabitacion;
         this.Planta = Planta;
         this.Numeracion = Numeracion;
         this.Cupo = Cupo;
@@ -41,12 +41,12 @@ public class Habitacion {
         this.idalojamiento = idalojamiento;
     }
     
-    public int getIdHabitacion() {
-        return IdHabitacion;
+    public int getidHabitacion() {
+        return idHabitacion;
     }
 
-    public void setIdHabitacion(int IdHabitacion) {
-        this.IdHabitacion = IdHabitacion;
+    public void setidHabitacion(int idHabitacion) {
+        this.idHabitacion = idHabitacion;
     }
 
     public int getPlanta() {
@@ -84,7 +84,7 @@ public class Habitacion {
     @Override
   public String toString(){
       
-        return "Habitacion" + "IdHabitacion=" + IdHabitacion + ", Planta" + Planta + ", Numeracion" + Numeracion + ", Cupo=" + Cupo + ", idalojamiento="+ idalojamiento +", Estado=" + Estado + "}" ;
+        return "Habitacion" + "IdHabitacion=" + idHabitacion + ", Planta" + Planta + ", Numeracion" + Numeracion + ", Cupo=" + Cupo + ", idalojamiento="+ idalojamiento +", Estado=" + Estado + "}" ;
       
   }
 }
