@@ -27,6 +27,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         paqueData = new PaqueteData();
         listaAloja = (ArrayList <Alojamiento>)alojaData.listarAlojamiento();
         comboAlojamiento();
+        setSize(903, 535);
     }
 
     
@@ -60,11 +61,13 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
 
         getContentPane().add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 200, 30));
 
+        jCorigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "San Luis", "Villa Mercedes" }));
         getContentPane().add(jCorigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 170, 30));
 
+        jCdestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mar del Plata", "Bariloche", "Mendoza", "Salta", "Jujuy", "Las Grutas", "Puerto Madryn", "Carlos Paz", "Mina Clavero", "Pinamar", "Miramar", "Villa Gesell", "Necochea", "Puerto Iguazu", "Termas de Rio Hondo", "Merlo", "Calafate", "Ushuaia", "Tucuman", "Chubut", "Buenos Aires", "Mar de Ajó", "Santiago de Chile", "Florianapolis", "Camboriú", "Punta del Este", "Punta Cana", "Cancun", "Viña del Mar", "Montevideo", "Cordoba" }));
         getContentPane().add(jCdestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 170, 30));
 
-        cboxTransporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboxTransporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Avion", "Colectivo" }));
         getContentPane().add(cboxTransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, 170, 30));
         getContentPane().add(txtIdPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 240, 30));
         getContentPane().add(calendIda, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 110, 30));

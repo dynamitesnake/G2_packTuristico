@@ -45,7 +45,10 @@
     <Component class="javax.swing.JComboBox" name="jCorigen">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="2">
+            <StringItem index="0" value="San Luis"/>
+            <StringItem index="1" value="Villa Mercedes"/>
+          </StringArray>
         </Property>
       </Properties>
       <AuxValues>
@@ -60,7 +63,39 @@
     <Component class="javax.swing.JComboBox" name="jCdestino">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="31">
+            <StringItem index="0" value="Mar del Plata"/>
+            <StringItem index="1" value="Bariloche"/>
+            <StringItem index="2" value="Mendoza"/>
+            <StringItem index="3" value="Salta"/>
+            <StringItem index="4" value="Jujuy"/>
+            <StringItem index="5" value="Las Grutas"/>
+            <StringItem index="6" value="Puerto Madryn"/>
+            <StringItem index="7" value="Carlos Paz"/>
+            <StringItem index="8" value="Mina Clavero"/>
+            <StringItem index="9" value="Pinamar"/>
+            <StringItem index="10" value="Miramar"/>
+            <StringItem index="11" value="Villa Gesell"/>
+            <StringItem index="12" value="Necochea"/>
+            <StringItem index="13" value="Puerto Iguazu"/>
+            <StringItem index="14" value="Termas de Rio Hondo"/>
+            <StringItem index="15" value="Merlo"/>
+            <StringItem index="16" value="Calafate"/>
+            <StringItem index="17" value="Ushuaia"/>
+            <StringItem index="18" value="Tucuman"/>
+            <StringItem index="19" value="Chubut"/>
+            <StringItem index="20" value="Buenos Aires"/>
+            <StringItem index="21" value="Mar de Aj&#xf3;"/>
+            <StringItem index="22" value="Santiago de Chile"/>
+            <StringItem index="23" value="Florianapolis"/>
+            <StringItem index="24" value="Cambori&#xfa;"/>
+            <StringItem index="25" value="Punta del Este"/>
+            <StringItem index="26" value="Punta Cana"/>
+            <StringItem index="27" value="Cancun"/>
+            <StringItem index="28" value="Vi&#xf1;a del Mar"/>
+            <StringItem index="29" value="Montevideo"/>
+            <StringItem index="30" value="Cordoba"/>
+          </StringArray>
         </Property>
       </Properties>
       <AuxValues>
@@ -75,11 +110,9 @@
     <Component class="javax.swing.JComboBox" name="cboxTransporte">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="2">
+            <StringItem index="0" value="Avion"/>
+            <StringItem index="1" value="Colectivo"/>
           </StringArray>
         </Property>
       </Properties>
