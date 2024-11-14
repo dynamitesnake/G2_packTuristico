@@ -66,7 +66,6 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
 
         btnBuscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(255, 153, 0));
-        btnBuscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\find_search_card_user_16713 (1).png")); // NOI18N
         btnBuscar.setText("BUSCAR");
         btnBuscar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -78,8 +77,7 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
 
         btnNuevo.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         btnNuevo.setForeground(new java.awt.Color(255, 153, 0));
-        btnNuevo.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\pen_edit_modify_pencil_icon_181536 (1).png")); // NOI18N
-        btnNuevo.setText("AGREGAR");
+        btnNuevo.setText("LIMPIAR CAMPOS");
         btnNuevo.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,7 +88,6 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
 
         btnEliminar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 153, 0));
-        btnEliminar.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\1486564399-close_81512.png")); // NOI18N
         btnEliminar.setText("ELIMINAR");
         btnEliminar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
