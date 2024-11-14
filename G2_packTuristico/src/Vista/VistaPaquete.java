@@ -60,11 +60,13 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
 
         getContentPane().add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 200, 30));
 
+        jCorigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "San Luis", "Villa Mercedes", " " }));
         getContentPane().add(jCorigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 170, 30));
 
+        jCdestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mar del Plata", "Bariloche", "Mendoza", "Salta", "Jujuy", "Las Grutas", "Puerto Madryn", "Carlos Paz", "Mina Clavero", "Pinamar", "Miramar", "Villa Gesell", "Necochea", "Puerto Iguazu", "Termas de Rio Hondo", "Merlo", "Calafate", "Ushuaia", "Tucuman", "Chubut", "Buenos Aires", "Mar de Ajó", "Santiago de Chile", "Florianapolis", "Camboriú", "Punta del Este", "Punta Cana", "Cancun", "Viña del Mar", "Montevideo", "Cordoba", " " }));
         getContentPane().add(jCdestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 170, 30));
 
-        cboxTransporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboxTransporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Avion", "Colectivo", " " }));
         getContentPane().add(cboxTransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, 170, 30));
         getContentPane().add(txtIdPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 240, 30));
         getContentPane().add(calendIda, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 110, 30));
@@ -207,9 +209,74 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Tiene que ingresar una cantidad de pasajeros");
     
-       
       }
-        txtMontoFinal.setText(String.valueOf(precio));
+        String trans = (String) cboxTransporte.getSelectedItem();
+        String origen = (String) jCorigen.getSelectedItem();
+        String destino = (String) jCdestino.getSelectedItem();
+        double suma = 0;
+
+        
+        if (destino.equalsIgnoreCase("mar del plata") || destino.equalsIgnoreCase("pinamar")
+                || destino.equalsIgnoreCase("miramar") || destino.equalsIgnoreCase("villa gesell")
+                || destino.equalsIgnoreCase("necochea") || destino.equalsIgnoreCase("buenos aires")
+                || destino.equalsIgnoreCase("mar de ajo")) {
+            suma = 140000;
+        }
+        if (destino.equalsIgnoreCase("mendoza") || destino.equalsIgnoreCase("carlos paz")
+                || destino.equalsIgnoreCase("cordoba")) {
+            suma = 70000;
+        }
+        if (destino.equalsIgnoreCase("mina clavero") || destino.equalsIgnoreCase("merlo")) {
+            suma = 60000;
+        }
+        if (destino.equalsIgnoreCase("puerto madryn") || destino.equalsIgnoreCase("salta")
+                || destino.equalsIgnoreCase("jujuy")) {
+            suma = 200000;
+        }
+        if (destino.equalsIgnoreCase("bariloche") || destino.equalsIgnoreCase("las grutas")
+                || destino.equalsIgnoreCase("chubut") || destino.equalsIgnoreCase("tucuman")
+                || destino.equalsIgnoreCase("termas de rio hondo")) {
+            suma = 190000;
+        }
+
+        if (destino.equalsIgnoreCase("puerto iguazu") || destino.equalsIgnoreCase("ushuaia")
+                || destino.equalsIgnoreCase("calafate")) {
+            suma = 240000;
+
+        }
+        if (destino.equalsIgnoreCase("santiago de chile")) {
+            suma = 100000;
+        }
+        if (destino.equalsIgnoreCase("viña del mar")) {
+            suma = 140000;
+        }
+        if (destino.equalsIgnoreCase("florianapolis")) {
+            suma = 370000;
+        }
+        if (destino.equalsIgnoreCase("camboriu")) {
+            suma = 390000;
+        }
+        if (destino.equalsIgnoreCase("punta del este")) {
+            suma = 260000;
+        }
+        if (destino.equalsIgnoreCase("montevideo")) {
+            suma = 240000;
+        }
+        if (destino.equalsIgnoreCase("punta cana")) {
+            suma = 1600000;
+        }
+        if (destino.equalsIgnoreCase("cancun")) {
+            suma = 1900000;
+        }
+        if (trans.equalsIgnoreCase("avion")) {
+            suma = suma * 1.6;
+        }
+        if (origen.equalsIgnoreCase("villa mercedes")) {
+            suma = suma + 10000;
+        }
+        
+        
+        txtMontoFinal.setText(String.valueOf(precio + suma));
     }//GEN-LAST:event_btnCalcularActionPerformed
 
 

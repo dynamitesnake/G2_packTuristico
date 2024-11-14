@@ -67,6 +67,11 @@ public class SistemaReservas extends javax.swing.JFrame {
         jMenuBar1.add(jM_paquete);
 
         jM_pasajes.setText("Pasajes");
+        jM_pasajes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jM_pasajesActionPerformed(evt);
+            }
+        });
 
         jM_pasaje.setText("Cargar Pasaje");
         jM_pasaje.addActionListener(new java.awt.event.ActionListener() {
@@ -198,6 +203,10 @@ public class SistemaReservas extends javax.swing.JFrame {
         paquete.setVisible(true);
         sistema.moveToFront(this);
     }//GEN-LAST:event_jM_paquete1ActionPerformed
+
+    private void jM_pasajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jM_pasajesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jM_pasajesActionPerformed
 
     /**
      * @param args the command line arguments

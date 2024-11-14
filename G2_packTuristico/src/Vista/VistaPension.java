@@ -12,7 +12,7 @@ public class VistaPension extends javax.swing.JInternalFrame {
         initComponents();
         setTitle("Gestión de Pensión"); 
         setSize(900, 500);
-        setLayout(null);
+      
     }
     
     @SuppressWarnings("unchecked")

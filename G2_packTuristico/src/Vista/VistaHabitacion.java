@@ -62,7 +62,6 @@ private Habitacion habiActual = null;
 
         JBguardar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         JBguardar.setForeground(new java.awt.Color(255, 153, 0));
-        JBguardar.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\save_icon-icons.com_53618 (1).png")); // NOI18N
         JBguardar.setText("GUARDAR");
         JBguardar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         JBguardar.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +73,6 @@ private Habitacion habiActual = null;
 
         JBmodificar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         JBmodificar.setForeground(new java.awt.Color(255, 153, 0));
-        JBmodificar.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\documentediting_editdocuments_text_documentedi_2820.png")); // NOI18N
         JBmodificar.setText("MODIFICAR");
         JBmodificar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         JBmodificar.addActionListener(new java.awt.event.ActionListener() {
@@ -86,9 +84,13 @@ private Habitacion habiActual = null;
 
         JBeliminar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         JBeliminar.setForeground(new java.awt.Color(255, 153, 0));
-        JBeliminar.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\1486564399-close_81512.png")); // NOI18N
         JBeliminar.setText("ELIMINAR");
         JBeliminar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
+        JBeliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBeliminarActionPerformed(evt);
+            }
+        });
         getContentPane().add(JBeliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 370, 150, 60));
 
         JTidalojamiento.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +136,11 @@ private Habitacion habiActual = null;
     }//GEN-LAST:event_JBmodificarActionPerformed
 
     private void JBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBbuscarActionPerformed
+      
+        String idText = JTidHabitacion.getText().trim();
+       if (idText.isEmpty() || !idText.matches("\\d+")) {
+    JOptionPane.showMessageDialog(this, "Debe ingresar un número válido");
+    return; }
        
         try{
         Integer id = Integer.parseInt(JTidHabitacion.getText());
@@ -194,6 +201,17 @@ private Habitacion habiActual = null;
     private void JTidalojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTidalojamientoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTidalojamientoActionPerformed
+
+    private void JBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBeliminarActionPerformed
+        // TODO add your handling code here:
+        try{
+        int idHabitacion = Integer.parseInt(JTidHabitacion.getText());
+        habiData.eliminarHabitacion(idHabitacion);
+        JOptionPane.showMessageDialog(null,"Habitacion Eliminada");
+        } catch(NumberFormatException ex){
+        JOptionPane.showMessageDialog(null, "Ingrese una habitacion valida");
+        }
+    }//GEN-LAST:event_JBeliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
