@@ -78,11 +78,14 @@ CREATE TABLE `paquete` (
 --
 
 CREATE TABLE `pasaje` (
+  `medioViaje` varchar(50) DEFAULT NULL,
   `idPasaje` int(11) NOT NULL,
-  `fechaHora` datetime DEFAULT NULL,
+  `fechaIda` datetime DEFAULT NULL,
+  `fechaVuelta` datetime DEFAULT NULL,
   `origen` varchar(50) DEFAULT NULL,
   `destino` varchar(50) DEFAULT NULL,
-  `asiento` int(11) DEFAULT NULL
+  `asiento` int(11) DEFAULT NULL,
+  `presupuesto` int(11) DEFAULT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -107,7 +110,8 @@ CREATE TABLE `turista` (
   `dni` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
   `edad` int(11) DEFAULT NULL,
-  `idpaquete` int(11) DEFAULT NULL
+  `idpaquete` int(11) DEFAULT NULL,
+  `estado` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
