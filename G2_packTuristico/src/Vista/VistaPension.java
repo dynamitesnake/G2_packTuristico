@@ -34,61 +34,69 @@ public class VistaPension extends javax.swing.JInternalFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextFieldPorcentaje.setMinimumSize(new java.awt.Dimension(68, 22));
-        getContentPane().add(jTextFieldPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 150, -1));
+        getContentPane().add(jTextFieldPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 180, 30));
 
         jTextFieldNombre.setMinimumSize(new java.awt.Dimension(68, 22));
-        getContentPane().add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 130, -1));
+        getContentPane().add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 210, 30));
 
-        jButtonBuscar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButtonBuscar.setText("Buscar");
+        jButtonBuscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
+        jButtonBuscar.setForeground(new java.awt.Color(255, 153, 0));
+        jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono buscar (2).png"))); // NOI18N
+        jButtonBuscar.setText("BUSCAR");
+        jButtonBuscar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, -1, -1));
+        getContentPane().add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 90, 180, 70));
 
-        jButtonAgregar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButtonAgregar.setText("Agregar");
+        jButtonAgregar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
+        jButtonAgregar.setForeground(new java.awt.Color(255, 153, 0));
+        jButtonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
+        jButtonAgregar.setText("AGREGAR");
+        jButtonAgregar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAgregarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
+        getContentPane().add(jButtonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 210, 180, 70));
 
-        jButtonModificar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButtonModificar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButtonModificar.setForeground(new java.awt.Color(255, 153, 51));
-        jButtonModificar.setText("Modificar");
+        jButtonModificar.setText("MODIFICAR");
         jButtonModificar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 51)));
         jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+        getContentPane().add(jButtonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, 120, 40));
 
-        jButtonListar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButtonListar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
+        jButtonListar.setForeground(new java.awt.Color(255, 153, 0));
         jButtonListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono listar.png"))); // NOI18N
-        jButtonListar.setText("Listar");
+        jButtonListar.setText("LISTAR");
+        jButtonListar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         jButtonListar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jButtonListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonListarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 190, 70));
+        getContentPane().add(jButtonListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, 180, 70));
 
-        jButtonEliminar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButtonEliminar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButtonEliminar.setForeground(new java.awt.Color(255, 153, 51));
-        jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.setText("ELIMINAR");
         jButtonEliminar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 51)));
         jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+        getContentPane().add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 120, 40));
 
         jTextAreaListar.setColumns(20);
         jTextAreaListar.setRows(5);
@@ -97,7 +105,7 @@ public class VistaPension extends javax.swing.JInternalFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 430, 140));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Pension_imagen-transformed.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 470));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 920, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
