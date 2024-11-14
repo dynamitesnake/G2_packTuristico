@@ -49,6 +49,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Pasajes"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jM_pasajesActionPerformed"/>
+          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jM_pasaje">
               <Properties>
