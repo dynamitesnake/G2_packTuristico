@@ -2,8 +2,10 @@
 package Vista;
 
 import Modelo.Alojamiento;
+import Modelo.Paquete;
 import Persistencia.PaqueteData;
 import Persistencia.alojamientoData;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -122,6 +124,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
 
     private void jB_guardarPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_guardarPaqueteActionPerformed
         // TODO add your handling code here:
+        guardarPaquete();
     }//GEN-LAST:event_jB_guardarPaqueteActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -167,6 +170,30 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null,"Por favor ingrese un paquete valido");
         }
     } 
-}    
+    private void guardarPaquete(){
+    try{
+    int idPaquete = Integer.parseInt(txtIdPaquete.getText());
+    LocalDate fechaIni = LocalDate.parse(calendIda.getDateFormatString());
+    LocalDate fechaFin = LocalDate.parse(calendVuelta.getDateFormatString());
+    String origen = (String)jCorigen.getSelectedItem();
+    String destino = (String) jCdestino.getSelectedItem();
+    String traslados = Ctransp.getText();
+    double montoFinal = Double.parseDouble(txtMontoFinal.getText());
+    int idPasaje = Integer.parseInt(txtIdPasaje.getText());
+    int idAlojamiento = (int) comboAlojamientos.getSelectedItem();
+    int idPension = Integer.parseInt(txtIdPension.getText());
+    
+    Paquete paquete = new Paquete(idPaquete, fechaIni, fechaFin, origen, destino, traslados, montoFinal, idPasaje, idAlojamiento, idPension);
+    paqueData.guardarPaquete(paquete);
+    JOptionPane.showMessageDialog(null, "paquete guardado");
+    } catch(NumberFormatException ex){
+        JOptionPane.showMessageDialog(null, "Error ingresar valores validos");
+    } catch(Exception e) {
+    JOptionPane.showMessageDialog(null, "Ocurrio un error al guardar el paquete" + e.getMessage());
+    }
+
+    }
+    
+}
     
 

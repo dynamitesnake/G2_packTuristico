@@ -4,7 +4,6 @@ package Persistencia;
 import AccesoDatos.Conexion;
 import org.mariadb.jdbc.Connection;
 import Modelo.Paquete;
-import Vista.VistaPaquete;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.Month;
