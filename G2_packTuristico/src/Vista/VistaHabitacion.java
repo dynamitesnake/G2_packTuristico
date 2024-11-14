@@ -42,14 +42,15 @@ private Habitacion habiActual = null;
         jLabel8 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(JTidHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 330, 30));
-        getContentPane().add(JTNPlanta, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, 250, 30));
-        getContentPane().add(JTNumeracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 370, 30));
-        getContentPane().add(JTcupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 500, 30));
-        getContentPane().add(JRestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 580, -1, -1));
+        getContentPane().add(JTidHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 330, 30));
+        getContentPane().add(JTNPlanta, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 280, 30));
+        getContentPane().add(JTNumeracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 350, 30));
+        getContentPane().add(JTcupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 440, 30));
+        getContentPane().add(JRestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, -1, -1));
 
         JBbuscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         JBbuscar.setForeground(new java.awt.Color(255, 153, 0));
+        JBbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono buscar (2).png"))); // NOI18N
         JBbuscar.setText("BUSCAR");
         JBbuscar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         JBbuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -57,7 +58,7 @@ private Habitacion habiActual = null;
                 JBbuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(JBbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 250, 150, 60));
+        getContentPane().add(JBbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, 150, 60));
 
         JBguardar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         JBguardar.setForeground(new java.awt.Color(255, 153, 0));
@@ -69,7 +70,7 @@ private Habitacion habiActual = null;
                 JBguardarActionPerformed(evt);
             }
         });
-        getContentPane().add(JBguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 440, 150, 60));
+        getContentPane().add(JBguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, 150, 60));
 
         JBmodificar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         JBmodificar.setForeground(new java.awt.Color(255, 153, 0));
@@ -81,19 +82,24 @@ private Habitacion habiActual = null;
                 JBmodificarActionPerformed(evt);
             }
         });
-        getContentPane().add(JBmodificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 350, 150, 60));
+        getContentPane().add(JBmodificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 150, 60));
 
         JBeliminar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         JBeliminar.setForeground(new java.awt.Color(255, 153, 0));
         JBeliminar.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\1486564399-close_81512.png")); // NOI18N
         JBeliminar.setText("ELIMINAR");
         JBeliminar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
-        getContentPane().add(JBeliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 530, 150, 60));
-        getContentPane().add(JTidalojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 490, 320, 30));
+        getContentPane().add(JBeliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 370, 150, 60));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/habitacion (2).png"))); // NOI18N
-        jLabel8.setText("jLabel8");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 670));
+        JTidalojamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTidalojamientoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(JTidalojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 320, 30));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vista habitacion.png"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -184,6 +190,10 @@ private Habitacion habiActual = null;
     JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar la habitación: " + ex.getMessage());
 }
     }//GEN-LAST:event_JBguardarActionPerformed
+
+    private void JTidalojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTidalojamientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTidalojamientoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
