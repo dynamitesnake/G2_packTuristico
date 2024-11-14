@@ -45,7 +45,7 @@ public class SistemaReservas extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuprincipal (1).png"))); // NOI18N
         sistema.add(jLabel1);
-        jLabel1.setBounds(0, -50, 1120, 770);
+        jLabel1.setBounds(0, 0, 1100, 680);
 
         getContentPane().add(sistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 690));
 

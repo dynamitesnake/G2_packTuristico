@@ -32,12 +32,12 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         jCorigen = new javax.swing.JComboBox<>();
         jCdestino = new javax.swing.JComboBox<>();
         txtIdPaquete = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jTextField4 = new javax.swing.JTextField();
+        calendIda = new com.toedter.calendar.JDateChooser();
+        calendVuelta = new com.toedter.calendar.JDateChooser();
+        Ctransp = new javax.swing.JTextField();
         txtIdPasaje = new javax.swing.JTextField();
         txtIdPension = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        txtMontoFinal = new javax.swing.JTextField();
         jB_guardarPaquete = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -57,15 +57,16 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
 
         getContentPane().add(jCdestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, 200, 30));
         getContentPane().add(txtIdPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 240, 30));
-        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 130, 30));
-        getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 110, 30));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 230, 120, 30));
+        getContentPane().add(calendIda, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 130, 30));
+        getContentPane().add(calendVuelta, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 110, 30));
+        getContentPane().add(Ctransp, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 230, 120, 30));
         getContentPane().add(txtIdPasaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 160, 30));
         getContentPane().add(txtIdPension, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 520, 160, 30));
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 430, 120, 40));
+        getContentPane().add(txtMontoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 430, 120, 40));
 
         jB_guardarPaquete.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_guardarPaquete.setForeground(new java.awt.Color(255, 153, 0));
+        jB_guardarPaquete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono guardar.png"))); // NOI18N
         jB_guardarPaquete.setText("   AGREGAR");
         jB_guardarPaquete.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         jB_guardarPaquete.addActionListener(new java.awt.event.ActionListener() {
@@ -77,12 +78,14 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
 
         jButton2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 153, 0));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono buscar (2).png"))); // NOI18N
         jButton2.setText("   BUSCAR");
         jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 500, 190, 80));
 
         jButton3.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 153, 0));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono listar.png"))); // NOI18N
         jButton3.setText("LISTAR");
         jButton3.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 500, 170, 80));
@@ -112,7 +115,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/paquete (2).png"))); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1200, 670));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1170, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -131,6 +134,9 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Ctransp;
+    private com.toedter.calendar.JDateChooser calendIda;
+    private com.toedter.calendar.JDateChooser calendVuelta;
     private javax.swing.JComboBox<Alojamiento> comboAlojamientos;
     private javax.swing.JButton jB_guardarPaquete;
     private javax.swing.JButton jButton1;
@@ -139,14 +145,11 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jCdestino;
     private javax.swing.JComboBox<String> jCorigen;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField txtIdPaquete;
     private javax.swing.JTextField txtIdPasaje;
     private javax.swing.JTextField txtIdPension;
+    private javax.swing.JTextField txtMontoFinal;
     // End of variables declaration//GEN-END:variables
 
     
