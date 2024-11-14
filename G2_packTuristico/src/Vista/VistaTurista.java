@@ -46,15 +46,15 @@ public class VistaTurista extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(txtdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 280, 30));
-        getContentPane().add(txtnom, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 210, 30));
-        getContentPane().add(txtedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 260, 30));
-        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 420, 150, 30));
+        getContentPane().add(txtdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 280, 30));
+        getContentPane().add(txtnom, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 220, 30));
+        getContentPane().add(txtedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 260, 30));
+        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 180, 30));
 
         jB_guardar.setBackground(new java.awt.Color(255, 255, 255));
         jB_guardar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_guardar.setForeground(new java.awt.Color(255, 153, 51));
-        jB_guardar.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\save_icon-icons.com_53618 (2).png")); // NOI18N
+        jB_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono guardar.png"))); // NOI18N
         jB_guardar.setText("AGREGAR");
         jB_guardar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         jB_guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -62,12 +62,12 @@ public class VistaTurista extends javax.swing.JInternalFrame {
                 jB_guardarActionPerformed(evt);
             }
         });
-        getContentPane().add(jB_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 200, 170, 110));
+        getContentPane().add(jB_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 170, 110));
 
         jB_buscar.setBackground(new java.awt.Color(255, 255, 255));
         jB_buscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_buscar.setForeground(new java.awt.Color(255, 153, 51));
-        jB_buscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\find_search_card_user_16713 (1).png")); // NOI18N
+        jB_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono buscar (2).png"))); // NOI18N
         jB_buscar.setText("BUSCAR");
         jB_buscar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 51)));
         jB_buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -75,11 +75,10 @@ public class VistaTurista extends javax.swing.JInternalFrame {
                 jB_buscarActionPerformed(evt);
             }
         });
-        getContentPane().add(jB_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 370, 170, 110));
+        getContentPane().add(jB_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 170, 110));
 
         jB_modificar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_modificar.setForeground(new java.awt.Color(255, 153, 51));
-        jB_modificar.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\pen_edit_modify_pencil_icon_181536 (1).png")); // NOI18N
         jB_modificar.setText("MODIFICAR");
         jB_modificar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         jB_modificar.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +86,7 @@ public class VistaTurista extends javax.swing.JInternalFrame {
                 jB_modificarActionPerformed(evt);
             }
         });
-        getContentPane().add(jB_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 570, 130, 60));
+        getContentPane().add(jB_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 130, 60));
 
         jB_baja.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_baja.setForeground(new java.awt.Color(255, 153, 0));
@@ -99,7 +98,7 @@ public class VistaTurista extends javax.swing.JInternalFrame {
                 jB_bajaActionPerformed(evt);
             }
         });
-        getContentPane().add(jB_baja, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 570, 130, 60));
+        getContentPane().add(jB_baja, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 130, 60));
 
         jB_alta.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_alta.setForeground(new java.awt.Color(255, 153, 0));
@@ -111,11 +110,11 @@ public class VistaTurista extends javax.swing.JInternalFrame {
                 jB_altaActionPerformed(evt);
             }
         });
-        getContentPane().add(jB_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 570, 130, 60));
+        getContentPane().add(jB_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, 130, 60));
 
         jB_salir.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_salir.setForeground(new java.awt.Color(255, 153, 51));
-        jB_salir.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\logout_off_exit_14655.png")); // NOI18N
+        jB_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono salir.png"))); // NOI18N
         jB_salir.setText("SALIR");
         jB_salir.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         jB_salir.addActionListener(new java.awt.event.ActionListener() {
@@ -123,14 +122,13 @@ public class VistaTurista extends javax.swing.JInternalFrame {
                 jB_salirActionPerformed(evt);
             }
         });
-        getContentPane().add(jB_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 570, 130, 60));
+        getContentPane().add(jB_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 420, 130, 60));
 
         jB_activo.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jB_activo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, 20, -1));
+        getContentPane().add(jB_activo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 20, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/turista (2).png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 670));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vista turista.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
