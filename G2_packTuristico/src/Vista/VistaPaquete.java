@@ -65,6 +65,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
 
         jB_guardarPaquete.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_guardarPaquete.setForeground(new java.awt.Color(255, 153, 0));
+        jB_guardarPaquete.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\pen_edit_modify_pencil_icon_181536 (1).png")); // NOI18N
         jB_guardarPaquete.setText("   AGREGAR");
         jB_guardarPaquete.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         jB_guardarPaquete.addActionListener(new java.awt.event.ActionListener() {
@@ -76,12 +77,14 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
 
         jButton2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 153, 0));
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\find_search_card_user_16713 (1).png")); // NOI18N
         jButton2.setText("   BUSCAR");
         jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 500, 190, 80));
 
         jButton3.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 153, 0));
+        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\task_document_paper_descending_priority_tasks_documents_icon_142254.png")); // NOI18N
         jButton3.setText("LISTAR");
         jButton3.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 500, 170, 80));
