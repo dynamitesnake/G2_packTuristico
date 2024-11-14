@@ -11,7 +11,7 @@ public class VistaPension extends javax.swing.JInternalFrame {
     public VistaPension() {
         initComponents();
         setTitle("Gestión de Pensión"); 
-        setSize(500, 400);
+        setSize(900, 500);
         setLayout(null);
     }
     
@@ -19,8 +19,6 @@ public class VistaPension extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelPorcentaje = new javax.swing.JLabel();
-        jLabelNombre = new javax.swing.JLabel();
         jTextFieldPorcentaje = new javax.swing.JTextField();
         jTextFieldNombre = new javax.swing.JTextField();
         jButtonBuscar = new javax.swing.JButton();
@@ -30,16 +28,16 @@ public class VistaPension extends javax.swing.JInternalFrame {
         jButtonEliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaListar = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
-        jLabelPorcentaje.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabelPorcentaje.setText("Porcentaje:");
-
-        jLabelNombre.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabelNombre.setText("Nombre:");
+        setPreferredSize(new java.awt.Dimension(900, 500));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextFieldPorcentaje.setMinimumSize(new java.awt.Dimension(68, 22));
+        getContentPane().add(jTextFieldPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 150, -1));
 
         jTextFieldNombre.setMinimumSize(new java.awt.Dimension(68, 22));
+        getContentPane().add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 130, -1));
 
         jButtonBuscar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButtonBuscar.setText("Buscar");
@@ -48,6 +46,7 @@ public class VistaPension extends javax.swing.JInternalFrame {
                 jButtonBuscarActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, -1, -1));
 
         jButtonAgregar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButtonAgregar.setText("Agregar");
@@ -56,92 +55,49 @@ public class VistaPension extends javax.swing.JInternalFrame {
                 jButtonAgregarActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
 
-        jButtonModificar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButtonModificar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButtonModificar.setForeground(new java.awt.Color(255, 153, 51));
         jButtonModificar.setText("Modificar");
+        jButtonModificar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 51)));
         jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
         jButtonListar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButtonListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono listar.png"))); // NOI18N
         jButtonListar.setText("Listar");
+        jButtonListar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jButtonListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonListarActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 190, 70));
 
-        jButtonEliminar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jButtonEliminar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButtonEliminar.setForeground(new java.awt.Color(255, 153, 51));
         jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 51)));
         jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEliminarActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
         jTextAreaListar.setColumns(20);
         jTextAreaListar.setRows(5);
         jScrollPane1.setViewportView(jTextAreaListar);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonAgregar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                                .addComponent(jButtonModificar)
-                                .addGap(32, 32, 32))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelPorcentaje)
-                                    .addComponent(jLabelNombre))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                .addComponent(jTextFieldPorcentaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(jButtonEliminar)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonBuscar))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonListar)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelPorcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldPorcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonModificar)
-                    .addComponent(jButtonAgregar)
-                    .addComponent(jButtonBuscar)
-                    .addComponent(jButtonEliminar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonListar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 430, 140));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Pension_imagen-transformed.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -201,8 +157,7 @@ public class VistaPension extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonListar;
     private javax.swing.JButton jButtonModificar;
-    private javax.swing.JLabel jLabelNombre;
-    private javax.swing.JLabel jLabelPorcentaje;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaListar;
     private javax.swing.JTextField jTextFieldNombre;
