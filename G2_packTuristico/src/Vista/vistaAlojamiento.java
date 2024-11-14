@@ -54,7 +54,6 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
 
         btnGuardar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 153, 0));
-        btnGuardar.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\save_icon-icons.com_53618 (2).png")); // NOI18N
         btnGuardar.setText("GUARDAR");
         btnGuardar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +65,6 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
 
         btnBuscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(255, 153, 0));
-        btnBuscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\find_search_card_user_16713 (1).png")); // NOI18N
         btnBuscar.setText("BUSCAR");
         btnBuscar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +76,6 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
 
         btnNuevo.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         btnNuevo.setForeground(new java.awt.Color(255, 153, 0));
-        btnNuevo.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\add_icon_129463.png")); // NOI18N
         btnNuevo.setText("AGREGAR");
         btnNuevo.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +87,6 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
 
         btnEliminar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 153, 0));
-        btnEliminar.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\1486564399-close_81512.png")); // NOI18N
         btnEliminar.setText("ELIMINAR");
         btnEliminar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +127,7 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
         getContentPane().add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 610, 590, 30));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\hotel (3).png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Alojamiento1.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1210, 710));
 

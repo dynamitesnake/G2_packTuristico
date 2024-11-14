@@ -34,6 +34,16 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jM_paqueteActionPerformed"/>
           </Events>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jM_paquete1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Paquete"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jM_paquete1ActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jM_pasajes">
           <Properties>
