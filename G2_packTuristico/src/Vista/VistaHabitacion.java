@@ -4,6 +4,7 @@ package Vista;
 import Modelo.Habitacion;
 import Persistencia.HabitacionData;
 import javax.swing.JOptionPane;
+import AccesoDatos.Conexion;
 
 /**
  *
