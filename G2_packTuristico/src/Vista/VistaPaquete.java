@@ -2,8 +2,12 @@
 package Vista;
 
 import Modelo.Alojamiento;
+import Modelo.Paquete;
 import Persistencia.PaqueteData;
 import Persistencia.alojamientoData;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import static java.time.temporal.TemporalQueries.localDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -32,14 +36,14 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         jCorigen = new javax.swing.JComboBox<>();
         jCdestino = new javax.swing.JComboBox<>();
         txtIdPaquete = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jTextField4 = new javax.swing.JTextField();
+        calendIda = new com.toedter.calendar.JDateChooser();
+        calendVuelta = new com.toedter.calendar.JDateChooser();
+        Ctransp = new javax.swing.JTextField();
         txtIdPasaje = new javax.swing.JTextField();
         txtIdPension = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        txtMontoFinal = new javax.swing.JTextField();
         jB_guardarPaquete = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        JBbuscar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -57,12 +61,12 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
 
         getContentPane().add(jCdestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, 200, 30));
         getContentPane().add(txtIdPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 240, 30));
-        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 130, 30));
-        getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 110, 30));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 230, 120, 30));
+        getContentPane().add(calendIda, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 130, 30));
+        getContentPane().add(calendVuelta, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 110, 30));
+        getContentPane().add(Ctransp, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 230, 120, 30));
         getContentPane().add(txtIdPasaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 160, 30));
         getContentPane().add(txtIdPension, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 520, 160, 30));
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 430, 120, 40));
+        getContentPane().add(txtMontoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 430, 120, 40));
 
         jB_guardarPaquete.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_guardarPaquete.setForeground(new java.awt.Color(255, 153, 0));
@@ -75,11 +79,16 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jB_guardarPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 500, 190, 80));
 
-        jButton2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 153, 0));
-        jButton2.setText("   BUSCAR");
-        jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 500, 190, 80));
+        JBbuscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
+        JBbuscar.setForeground(new java.awt.Color(255, 153, 0));
+        JBbuscar.setText("   BUSCAR");
+        JBbuscar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
+        JBbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBbuscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(JBbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 500, 190, 80));
 
         jButton3.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 153, 0));
@@ -119,6 +128,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
 
     private void jB_guardarPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_guardarPaqueteActionPerformed
         // TODO add your handling code here:
+        guardarPaquete();
     }//GEN-LAST:event_jB_guardarPaqueteActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -129,24 +139,29 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         eliminarPaquete();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void JBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBbuscarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_JBbuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Ctransp;
+    private javax.swing.JButton JBbuscar;
+    private com.toedter.calendar.JDateChooser calendIda;
+    private com.toedter.calendar.JDateChooser calendVuelta;
     private javax.swing.JComboBox<Alojamiento> comboAlojamientos;
     private javax.swing.JButton jB_guardarPaquete;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jCdestino;
     private javax.swing.JComboBox<String> jCorigen;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField txtIdPaquete;
     private javax.swing.JTextField txtIdPasaje;
     private javax.swing.JTextField txtIdPension;
+    private javax.swing.JTextField txtMontoFinal;
     // End of variables declaration//GEN-END:variables
 
     
@@ -164,6 +179,28 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null,"Por favor ingrese un paquete valido");
         }
     } 
+    private void guardarPaquete(){
+    try{
+    int idPaquete = Integer.parseInt(txtIdPaquete.getText());
+    LocalDate fechaIni = LocalDate.parse(calendIda.getDateFormatString());
+    LocalDate fechaFin = LocalDate.parse(calendVuelta.getDateFormatString());
+    String origen = (String)jCorigen.getSelectedItem();
+    String destino = (String) jCdestino.getSelectedItem();
+    String traslados = Ctransp.getText();
+    double montoFinal = Double.parseDouble(txtMontoFinal.getText());
+    int idPasaje = Integer.parseInt(txtIdPasaje.getText());
+    int idAlojamiento = (int) comboAlojamientos.getSelectedItem();
+    int idPension = Integer.parseInt(txtIdPension.getText());
+    
+    Paquete paquete = new Paquete(idPaquete, fechaIni, fechaFin, origen, destino, traslados, montoFinal, idPasaje, idAlojamiento, idPension);
+    paqueData.guardarPaquete(paquete);
+    JOptionPane.showMessageDialog(null, "paquete guardado");
+    } catch(NumberFormatException ex){
+        JOptionPane.showMessageDialog(null, "Error ingresar valores validos");
+    } catch(Exception e) {
+    JOptionPane.showMessageDialog(null, "Ocurrio un error al guardar el paquete" + e.getMessage());
+    }
+    }
 }    
     
 

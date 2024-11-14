@@ -137,49 +137,7 @@ public class PaqueteData {
         return lista;
     }
     
-    public void bajaPaquete(int IdPaquete) {
-    System.out.println("\nDar de baja paquete: " + IdPaquete);
-    String sql = "UPDATE paquete SET idpaquete = 0 WHERE idpaquete = ?"; 
-    try {
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setInt(1, IdPaquete);
-        int fila = ps.executeUpdate();
-        if (fila == 1) {
-            JOptionPane.showMessageDialog(null, "Baja de paquete");
-        }
-        ps.close();
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla paquete: " + ex.getMessage());
-    }
-}
+  
 
-    public void altaPaquete(int IdPaquete) {
-    System.out.println("\nDar de alta paquete: " + IdPaquete);
-    String sql = "UPDATE paquete SET idpaquete = 1 WHERE idpaquete = ?"; 
-    try {
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setInt(1, IdPaquete);
-        int fila = ps.executeUpdate();
-        if (fila == 1) {
-            JOptionPane.showMessageDialog(null, "Alta de paquete");
-        }
-        ps.close();
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla paquete: " + ex.getMessage());
-    }
-    }
-          public String tipoTemporada(LocalDate fecha1, LocalDate fecha2) {
-        int inicio = fecha1.getMonthValue();
-        int fin = fecha2.getMonthValue();
-
-        if (inicio == Month.JANUARY.getValue() || inicio == Month.JULY.getValue() && fin == Month.JANUARY.getValue() || inicio == Month.JULY.getValue()) {
-            return "Alta";
-        } else if ((inicio == Month.FEBRUARY.getValue() || inicio == Month.JUNE.getValue())
-                && (fin == Month.FEBRUARY.getValue() || fin == Month.JUNE.getValue())) {
-            return "Media";
-        } else {
-            return "Baja";
-        }
-
-    }
+  
 }
