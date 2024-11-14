@@ -50,59 +50,90 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        getContentPane().add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 440, 30));
+        getContentPane().add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 440, 30));
 
-        btnGuardar.setText("Guardar");
+        btnGuardar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 153, 0));
+        btnGuardar.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\save_icon-icons.com_53618 (2).png")); // NOI18N
+        btnGuardar.setText("GUARDAR");
+        btnGuardar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 240, -1, -1));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 240, 160, 80));
 
-        btnBuscar.setText("Buscar");
+        btnBuscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 153, 0));
+        btnBuscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\find_search_card_user_16713 (1).png")); // NOI18N
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 240, -1, -1));
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 130, 160, 80));
 
-        btnNuevo.setText("Nuevo");
+        btnNuevo.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
+        btnNuevo.setForeground(new java.awt.Color(255, 153, 0));
+        btnNuevo.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\add_icon_129463.png")); // NOI18N
+        btnNuevo.setText("AGREGAR");
+        btnNuevo.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 350, -1, -1));
+        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 350, 160, 80));
 
-        btnEliminar.setText("Eliminar");
+        btnEliminar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 153, 0));
+        btnEliminar.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\1486564399-close_81512.png")); // NOI18N
+        btnEliminar.setText("ELIMINAR");
+        btnEliminar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 350, -1, -1));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 460, 160, 80));
 
-        btnSalir.setText("Salir");
+        btnSalir.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 153, 0));
+        btnSalir.setText("SALIR");
+        btnSalir.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 630, -1, -1));
-        getContentPane().add(txtIdAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 440, 30));
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 580, 30));
-        getContentPane().add(txtCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 540, 30));
-        getContentPane().add(txtAmbientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 530, 30));
-        getContentPane().add(txtCamas, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 620, 30));
-        getContentPane().add(txtBaños, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 620, 30));
-        getContentPane().add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 580, 610, 30));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 610, 90, 50));
+        getContentPane().add(txtIdAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 440, 30));
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 560, 30));
+        getContentPane().add(txtCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 510, 30));
+
+        txtAmbientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAmbientesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtAmbientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 420, 520, 30));
+        getContentPane().add(txtCamas, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 490, 590, 30));
+        getContentPane().add(txtBaños, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 550, 590, 30));
+
+        txtPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrecioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 610, 590, 30));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Alojamiento1.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\hotel (3).png")); // NOI18N
         jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 1210, 720));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1210, 710));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -127,6 +158,14 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         limpiarCampos();
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecioActionPerformed
+
+    private void txtAmbientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmbientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAmbientesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
