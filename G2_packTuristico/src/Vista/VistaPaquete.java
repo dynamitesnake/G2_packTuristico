@@ -2,12 +2,8 @@
 package Vista;
 
 import Modelo.Alojamiento;
-import Modelo.Paquete;
 import Persistencia.PaqueteData;
 import Persistencia.alojamientoData;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import static java.time.temporal.TemporalQueries.localDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -43,7 +39,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         txtIdPension = new javax.swing.JTextField();
         txtMontoFinal = new javax.swing.JTextField();
         jB_guardarPaquete = new javax.swing.JButton();
-        JBbuscar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -70,6 +66,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
 
         jB_guardarPaquete.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_guardarPaquete.setForeground(new java.awt.Color(255, 153, 0));
+        jB_guardarPaquete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono guardar.png"))); // NOI18N
         jB_guardarPaquete.setText("   AGREGAR");
         jB_guardarPaquete.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         jB_guardarPaquete.addActionListener(new java.awt.event.ActionListener() {
@@ -79,19 +76,16 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jB_guardarPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 500, 190, 80));
 
-        JBbuscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
-        JBbuscar.setForeground(new java.awt.Color(255, 153, 0));
-        JBbuscar.setText("   BUSCAR");
-        JBbuscar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
-        JBbuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBbuscarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(JBbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 500, 190, 80));
+        jButton2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 153, 0));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono buscar (2).png"))); // NOI18N
+        jButton2.setText("   BUSCAR");
+        jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 500, 190, 80));
 
         jButton3.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 153, 0));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono listar.png"))); // NOI18N
         jButton3.setText("LISTAR");
         jButton3.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 500, 170, 80));
@@ -121,14 +115,13 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/paquete (2).png"))); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1200, 670));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1170, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jB_guardarPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_guardarPaqueteActionPerformed
         // TODO add your handling code here:
-        guardarPaquete();
     }//GEN-LAST:event_jB_guardarPaqueteActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -139,20 +132,15 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         eliminarPaquete();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void JBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBbuscarActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_JBbuscarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Ctransp;
-    private javax.swing.JButton JBbuscar;
     private com.toedter.calendar.JDateChooser calendIda;
     private com.toedter.calendar.JDateChooser calendVuelta;
     private javax.swing.JComboBox<Alojamiento> comboAlojamientos;
     private javax.swing.JButton jB_guardarPaquete;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jCdestino;
@@ -179,28 +167,6 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null,"Por favor ingrese un paquete valido");
         }
     } 
-    private void guardarPaquete(){
-    try{
-    int idPaquete = Integer.parseInt(txtIdPaquete.getText());
-    LocalDate fechaIni = LocalDate.parse(calendIda.getDateFormatString());
-    LocalDate fechaFin = LocalDate.parse(calendVuelta.getDateFormatString());
-    String origen = (String)jCorigen.getSelectedItem();
-    String destino = (String) jCdestino.getSelectedItem();
-    String traslados = Ctransp.getText();
-    double montoFinal = Double.parseDouble(txtMontoFinal.getText());
-    int idPasaje = Integer.parseInt(txtIdPasaje.getText());
-    int idAlojamiento = (int) comboAlojamientos.getSelectedItem();
-    int idPension = Integer.parseInt(txtIdPension.getText());
-    
-    Paquete paquete = new Paquete(idPaquete, fechaIni, fechaFin, origen, destino, traslados, montoFinal, idPasaje, idAlojamiento, idPension);
-    paqueData.guardarPaquete(paquete);
-    JOptionPane.showMessageDialog(null, "paquete guardado");
-    } catch(NumberFormatException ex){
-        JOptionPane.showMessageDialog(null, "Error ingresar valores validos");
-    } catch(Exception e) {
-    JOptionPane.showMessageDialog(null, "Ocurrio un error al guardar el paquete" + e.getMessage());
-    }
-    }
 }    
     
 

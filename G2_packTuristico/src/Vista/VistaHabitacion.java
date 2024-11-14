@@ -50,7 +50,6 @@ private Habitacion habiActual = null;
 
         JBbuscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         JBbuscar.setForeground(new java.awt.Color(255, 153, 0));
-        JBbuscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\find_search_card_user_16713 (1).png")); // NOI18N
         JBbuscar.setText("BUSCAR");
         JBbuscar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         JBbuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +91,7 @@ private Habitacion habiActual = null;
         getContentPane().add(JBeliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 530, 150, 60));
         getContentPane().add(JTidalojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 490, 320, 30));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\habitacion (2).png")); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/habitacion (2).png"))); // NOI18N
         jLabel8.setText("jLabel8");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 670));
 
