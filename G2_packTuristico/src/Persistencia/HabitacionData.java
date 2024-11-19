@@ -41,8 +41,8 @@ public class HabitacionData {
             ps.setInt(2, habitacion.getPlanta());
             ps.setInt(3, habitacion.getNumeracion());
             ps.setInt(4,habitacion.getCupo());
-            ps.setBoolean(6, habitacion.isActivo()); 
-            ps.setInt(5,habitacion.getIdalojamiento());
+            ps.setBoolean(5, habitacion.isActivo()); 
+            ps.setInt(6,habitacion.getIdalojamiento());
             ps.executeUpdate();
             
          ResultSet rs = ps.getGeneratedKeys();
@@ -58,14 +58,15 @@ public class HabitacionData {
  
  public void modificarHabitacion (Habitacion habitacion){
          Connection conn = Conexion.getConexion();
- String sql = "UPDATE habitacion SET planta= ?, numeracion= ?, cupo= ? + WHERE idHabitacion = ?";
+ String sql = "UPDATE habitacion SET idHabitacion=?,planta=?,numeracion=?,cupo=?,estado=?,idalojamiento=? + WHERE idHabitacion = ?";
       try {
           PreparedStatement ps = conn.prepareStatement(sql);
           ps.setInt(1, habitacion.getidHabitacion());
-          ps.setInt(2, habitacion.getPlanta());
-          ps.setInt(3, habitacion.getNumeracion());
-          ps.setInt(4, habitacion.getCupo());
-          ps.setInt(5,habitacion.getIdalojamiento());
+            ps.setInt(2, habitacion.getPlanta());
+            ps.setInt(3, habitacion.getNumeracion());
+            ps.setInt(4,habitacion.getCupo());
+            ps.setBoolean(5, habitacion.isActivo()); 
+            ps.setInt(6,habitacion.getIdalojamiento());
          
          int exito = ps.executeUpdate();
          if(exito ==1){
