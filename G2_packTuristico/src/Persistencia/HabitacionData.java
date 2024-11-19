@@ -56,31 +56,32 @@ public class HabitacionData {
         }
  }
  
- public void modificarHabitacion (Habitacion habitacion){
-         Connection conn = Conexion.getConexion();
- String sql = "UPDATE habitacion SET idHabitacion=?,planta=?,numeracion=?,cupo=?,estado=?,idalojamiento=? + WHERE idHabitacion = ?";
-      try {
-          PreparedStatement ps = conn.prepareStatement(sql);
-          ps.setInt(1, habitacion.getidHabitacion());
-            ps.setInt(2, habitacion.getPlanta());
-            ps.setInt(3, habitacion.getNumeracion());
-            ps.setInt(4,habitacion.getCupo());
-            ps.setBoolean(5, habitacion.isActivo()); 
-            ps.setInt(6,habitacion.getIdalojamiento());
-         
-         int exito = ps.executeUpdate();
-         if(exito ==1){
-         JOptionPane.showMessageDialog(null, "Habitacion Modificada");
-         }
-         
-          
-          
-                  
-                  } catch (SQLException ex) {
-          JOptionPane.showMessageDialog(null, "error al intentar modificar tabla Habitacion");
-      }
+ public void modificarHabitacion(Habitacion habitacion) {
+    Connection conn = Conexion.getConexion();
+    String sql = "UPDATE habitacion SET planta = ?, numeracion = ?, cupo = ?, estado = ?, idalojamiento = ? WHERE idHabitacion = ?";
+    try {
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, habitacion.getPlanta());
+        ps.setInt(2, habitacion.getNumeracion());
+        ps.setInt(3, habitacion.getCupo());
+        ps.setBoolean(4, habitacion.isActivo());
+        ps.setInt(5, habitacion.getIdalojamiento());
+        ps.setInt(6, habitacion.getidHabitacion()); 
+
+        int exito = ps.executeUpdate();
+        if (exito == 1) {
+            JOptionPane.showMessageDialog(null, "Habitación modificada correctamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontró una habitación con el id especificado");
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al intentar modificar la tabla Habitación: " + ex.getMessage());
+    }
+}
+
+      
  
- }
+ 
  public void eliminarHabitacion (int idHabitacion) {
              java.sql.Connection conn = Conexion.getConexion();
         try {
@@ -106,7 +107,7 @@ public class HabitacionData {
                 habitacion = new Habitacion (rs.getInt("idHabitacion"), rs.getInt("Planta"), rs.getInt("Numeracion"), rs.getInt("Cupo"), rs.getInt("idAlojamiento"), rs.getBoolean("Estado"));
             }
         } catch (SQLException e) {
-            System.out.println("Error al buscar el alojamiento.");
+            System.out.println("Error al buscar la habitacion.");
             e.printStackTrace();
         }
          return habitacion;
