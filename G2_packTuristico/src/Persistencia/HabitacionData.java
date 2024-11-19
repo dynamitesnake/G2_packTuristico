@@ -33,7 +33,7 @@ public class HabitacionData {
  public void guardarHabitacion(Habitacion habitacion){
      Connection conn = Conexion.getConexion();
     
- String sql = "INSERT INTO habitacion (idHabitacion, planta, numeracion, cupo, idalojamiento, estado) VALUES (?, ?, ?, ?, ?, ?)";
+ String sql = "INSERT INTO habitacion (idHabitacion, planta, numeracion, cupo, estado, idalojamiento) VALUES (?, ?, ?, ?, ?, ?)";
  
         try {
             PreparedStatement ps = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -41,8 +41,8 @@ public class HabitacionData {
             ps.setInt(2, habitacion.getPlanta());
             ps.setInt(3, habitacion.getNumeracion());
             ps.setInt(4,habitacion.getCupo());
-            ps.setInt(5,habitacion.getIdalojamiento() );
             ps.setBoolean(6, habitacion.isActivo()); 
+            ps.setInt(5,habitacion.getIdalojamiento());
             ps.executeUpdate();
             
          ResultSet rs = ps.getGeneratedKeys();
@@ -80,55 +80,36 @@ public class HabitacionData {
       }
  
  }
- public void eliminarHabitacion (int id) {
-     String sql = "UPDATE habitacion SET estado = 0 WHERE idHabitacion = ?";
-      try {
-          PreparedStatement ps = conn.prepareStatement(sql);
-          ps.setInt(1,id);
-         int exito = ps.executeUpdate();
-          if(exito ==1){
-         JOptionPane.showMessageDialog(null, "Habitacion eliminada");
-         }
-         
-          
-      } catch (SQLException ex) {
-         JOptionPane.showMessageDialog(null, "error al intentar eliminar en tabla habication");
-      }
-     
-     
- }
- public Habitacion buscarHabitacion(int id){
-     System.out.println("\nBuscar habitacion por id:" + id);
+ public void eliminarHabitacion (int idHabitacion) {
+             java.sql.Connection conn = Conexion.getConexion();
+        try {
+            String query = "DELETE FROM habitacion WHERE idHabitacion = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, idHabitacion);
+            stmt.executeUpdate();
+            System.out.println("Habitacion eliminada correctamente.");
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar Habitacion.");
+            e.printStackTrace();
+        }
+    }
+ public Habitacion buscarHabitacion(int idHabitacion){
+   java.sql.Connection conn = Conexion.getConexion();
         Habitacion habitacion = null;
-        
-        String sql = "SELECT idHabitacion planta, numeracion, cupo, idalojamiento FROM habitacion WHERE idHabitacion = ? AND estado =1" ;
-      try {
-          PreparedStatement ps = conn.prepareStatement(sql);
-          ps.setInt(1,id);
-          ResultSet rs = ps.executeQuery();
-          if(rs.next()){
-          habitacion = new Habitacion();
-          habitacion.setidHabitacion(rs.getInt("idHabitacion"));
-          /*
-          habitacion.setPlanta(rs.getInt("planta"));
-          habitacion.setNumeracion(rs.getInt("numeracion"));
-          habitacion.setCupo(rs.getInt("cupo"));
-          habitacion.setIdalojamiento(rs.getInt("idalojamiento"));
-          habitacion.setActivo(true);*/
-          
-          } else {
-            JOptionPane.showMessageDialog(null, "No existe la habitacion con el ID espesificado");
+        try {
+            String query = "SELECT * FROM habitacion WHERE idHabitacion = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, idHabitacion);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                habitacion = new Habitacion (rs.getInt("idHabitacion"), rs.getInt("Planta"), rs.getInt("Numeracion"), rs.getInt("Cupo"), rs.getInt("idAlojamiento"), rs.getBoolean("Estado"));
             }
-                rs.close();
-                ps.close();
-          
-            
-      } catch (SQLException ex) {
-          JOptionPane.showMessageDialog(null, "Eror al buscar habitacion: " + ex.getMessage());
-      }
-        
-        return habitacion;
-     }
+        } catch (SQLException e) {
+            System.out.println("Error al buscar el alojamiento.");
+            e.printStackTrace();
+        }
+         return habitacion;
+    }
 
     
     
