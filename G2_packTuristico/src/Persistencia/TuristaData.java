@@ -37,54 +37,77 @@ public class TuristaData {
         }
         }
  
-    public Turista buscarTurista (int dni) {
-        System.out.println("\nbuscar Turista: " + dni);
-        Turista turista= null;
-        String sql = "SELECT nombre FROM turista WHERE dni = ? ";;
-        
-        try {
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, dni);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()) {
-                turista = new Turista();
-                turista.setDni(rs.getInt("dni"));
-                turista.setNombre(rs.getString("nombre"));
-                turista.setEdad(rs.getInt("edad"));
-                turista.setIdPaquete(rs.getInt("idPaquete"));
-             }
-            else {
-                JOptionPane.showMessageDialog(null, "No existe el cliente");
-            }
-                rs.close();
-                ps.close();
-        }catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla turista");
-    } return turista;
+    public Turista buscarTurista(int dni) {
+    System.out.println("\nbuscar Turista: " + dni);
+    Turista turista = null;
+    String sql = "SELECT dni, nombre, edad, idPaquete FROM turista WHERE dni = ?";
     
-}   
+    try {
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, dni);
+        ResultSet rs = ps.executeQuery();
+        
+        if (rs.next()) {
+            turista = new Turista();
+            turista.setDni(rs.getInt("dni"));
+            turista.setNombre(rs.getString("nombre"));
+            turista.setEdad(rs.getInt("edad"));
+            turista.setIdPaquete(rs.getInt("idPaquete"));
+        } else {
+            JOptionPane.showMessageDialog(null, "No existe el cliente");
+        }
+        
+        rs.close();
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla turista");
+        ex.printStackTrace(); 
+    }
+    return turista;
+}
+
+   
     public void modificarTurista(Turista turista){
         System.out.println("\nModificar Turista:");
-        String sql = "UPDATE turista SET dni=?,nombre=?,edad=?,idPaquete=? WHERE dni =?";
-        
-        try {
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setInt(1, turista.getDni());
-            ps.setString(2, turista.getNombre());
-            ps.setInt(3, turista.getEdad());
-            ps.setInt(4, turista.getIdPaquete());
-           int exito = ps.executeUpdate();
-            System.out.println("Cliente modificado ");
-            if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Modificado exitosamente");
-            } else {
-                JOptionPane.showMessageDialog(null, "El cliente no existe");
-            }
-            ps.close();
-           }catch (SQLException ex) { 
-           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla turista");
-           }
-        }
+String sql = "UPDATE turista SET dni = ?, nombre = ?, edad = ?, idPaquete = ? WHERE dni = ?";
+
+try {
+    
+    if (conn == null || conn.isClosed()) {
+        throw new SQLException("La conexión a la base de datos no está establecida.");
+    }
+
+    
+    String selectSql = "SELECT COUNT(*) FROM turista WHERE dni = ?";
+    PreparedStatement selectPs = conn.prepareStatement(selectSql);
+    selectPs.setInt(1, turista.getDni());
+    ResultSet rs = selectPs.executeQuery();
+    if (rs.next() && rs.getInt(1) == 0) {
+        JOptionPane.showMessageDialog(null, "El cliente no existe en la base de datos");
+        return;
+    }
+
+    
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setInt(1, turista.getDni());
+    ps.setString(2, turista.getNombre());
+    ps.setInt(3, turista.getEdad());
+    ps.setInt(4, turista.getIdPaquete());
+    ps.setInt(5, turista.getDni()); 
+
+    int exito = ps.executeUpdate();
+    if (exito == 1) {
+        JOptionPane.showMessageDialog(null, "Modificado exitosamente");
+    } else {
+        JOptionPane.showMessageDialog(null, "El cliente no existe");
+    }
+
+    ps.close();
+} catch (SQLException ex) {
+    JOptionPane.showMessageDialog(null, "Error al acceder a la tabla turista: " + ex.getMessage());
+}
+}
+
      public void bajaTurista(int dni) {
         System.out.println("\nDar de baja a cliente: " + dni);
         String sql = "UPDATE turista SET dni = 0 WHERE dni = ? ";
