@@ -155,7 +155,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void JBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBbuscarActionPerformed
-      
+      buscarPaquete();
     }//GEN-LAST:event_JBbuscarActionPerformed
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
@@ -315,30 +315,67 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null,"Por favor ingrese un paquete valido");
         }
     } 
-    private void guardarPaquete(){
-    try{
-    int idPaquete = Integer.parseInt(txtIdPaquete.getText());
-    LocalDate fechaIni = LocalDate.parse(calendIda.getDateFormatString());
-    LocalDate fechaFin = LocalDate.parse(calendVuelta.getDateFormatString());
-    String origen = (String)jCorigen.getSelectedItem();
-    String destino = (String) jCdestino.getSelectedItem();
-    String traslados = (String) cboxTransporte.getSelectedItem();
-    double montoFinal = Double.parseDouble(txtMontoFinal.getText());
-    int idPasaje = Integer.parseInt(jtCantidadPasajeros.getText());
-    int idAlojamiento = (int) comboAlojamientos.getSelectedItem();
-    int idPension = Integer.parseInt(txtIdPension.getText());
-    
-    Paquete paquete = new Paquete(idPaquete, fechaIni, fechaFin, origen, destino, traslados, montoFinal, idPasaje, idAlojamiento, idPension);
-    paqueData.guardarPaquete(paquete);
-    JOptionPane.showMessageDialog(null, "paquete guardado");
-    } catch(NumberFormatException ex){
-        JOptionPane.showMessageDialog(null, "Error ingresar valores validos");
-    } catch(Exception e) {
-    JOptionPane.showMessageDialog(null, "Ocurrio un error al guardar el paquete" + e.getMessage());
+  private void guardarPaquete() {
+    try {
+        int idPaquete = Integer.parseInt(txtIdPaquete.getText());
+        
+        
+        LocalDate fechaIni = calendIda.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaFin = calendVuelta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        
+        String origen = (String) jCorigen.getSelectedItem();
+        String destino = (String) jCdestino.getSelectedItem();
+        String traslados = (String) cboxTransporte.getSelectedItem();
+        double montoFinal = Double.parseDouble(txtMontoFinal.getText());
+        int idPasaje = Integer.parseInt(jtCantidadPasajeros.getText());
+        int idAlojamiento = Integer.parseInt(comboAlojamientos.getSelectedItem().toString());
+        int idPension = Integer.parseInt(txtIdPension.getText());
+        
+        Paquete paquete = new Paquete(idPaquete, fechaIni, fechaFin, origen, destino, traslados, montoFinal, idPasaje, idAlojamiento, idPension);
+        paqueData.guardarPaquete(paquete);
+        JOptionPane.showMessageDialog(null, "Paquete guardado");
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(null, "Error: ingresa valores válidos");
+    } catch (NullPointerException e) {
+        JOptionPane.showMessageDialog(null, "Error: asegúrate de completar todos los campos, incluidas las fechas");
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el paquete: " + e.getMessage());
     }
+    }
+  private void buscarPaquete() {
+    try {
+        
+        int idPaquete = Integer.parseInt(txtIdPaquete.getText());
+        String origen = (String) jCorigen.getSelectedItem();
+        String destino = (String) jCdestino.getSelectedItem();
 
+        
+        Paquete paquete = paqueData.buscarPaquete(idPaquete);
+
+        if (paquete != null) {
+            
+            txtIdPaquete.setText(String.valueOf(paquete.getIdPaquete()));
+            calendIda.setDate(java.sql.Date.valueOf(paquete.getFechaIni()));
+            calendVuelta.setDate(java.sql.Date.valueOf(paquete.getFechaFin()));
+            jCorigen.setSelectedItem(paquete.getOrigen());
+            jCdestino.setSelectedItem(paquete.getDestino());
+            cboxTransporte.setSelectedItem(paquete.getTraslados());
+            txtMontoFinal.setText(String.valueOf(paquete.getMontoFinal()));
+            jtCantidadPasajeros.setText(String.valueOf(paquete.getIdPasaje()));
+            comboAlojamientos.setSelectedItem(paquete.getIdAlojamiento());
+            txtIdPension.setText(String.valueOf(paquete.getIdPension()));
+
+            JOptionPane.showMessageDialog(null, "Paquete encontrado");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontró ningún paquete");
+        }
+    }  catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Ocurrió un error al buscar el paquete: " + e.getMessage());
     }
-    
 }
+
+  }
+
+
     
 

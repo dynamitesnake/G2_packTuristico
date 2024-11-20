@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Xethias/Documents/NetBeansProjects/G2_packTuristico/G2_packTuristico/src/Vista/VistaTurista.java</file>
-            <file>file:/C:/Users/Xethias/Documents/NetBeansProjects/G2_packTuristico/G2_packTuristico/src/Persistencia/TuristaData.java</file>
-            <file>file:/C:/Users/Xethias/Documents/NetBeansProjects/G2_packTuristico/G2_packTuristico/src/Vista/VistaHabitacion.java</file>
-            <file>file:/C:/Users/Xethias/Documents/NetBeansProjects/G2_packTuristico/G2_packTuristico/src/Modelo/Turista.java</file>
-            <file>file:/C:/Users/Xethias/Documents/NetBeansProjects/G2_packTuristico/G2_packTuristico/src/Persistencia/HabitacionData.java</file>
+            <file>file:/C:/Users/Xethias/Documents/NetBeansProjects/G2_packTuristico/G2_packTuristico/src/Persistencia/PaqueteData.java</file>
+            <file>file:/C:/Users/Xethias/Documents/NetBeansProjects/G2_packTuristico/G2_packTuristico/src/Vista/VistaPaquete.java</file>
+            <file>file:/C:/Users/Xethias/Documents/NetBeansProjects/G2_packTuristico/G2_packTuristico/src/Vista/VistaPasaje.java</file>
+            <file>file:/C:/Users/Xethias/Documents/NetBeansProjects/G2_packTuristico/G2_packTuristico/src/Modelo/Paquete.java</file>
         </group>
     </open-files>
 </project-private>
