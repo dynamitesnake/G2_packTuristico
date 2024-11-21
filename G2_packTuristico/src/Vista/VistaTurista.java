@@ -36,7 +36,6 @@ public class VistaTurista extends javax.swing.JInternalFrame {
         jB_buscar = new javax.swing.JButton();
         jB_modificar = new javax.swing.JButton();
         jB_baja = new javax.swing.JButton();
-        jB_alta = new javax.swing.JButton();
         jB_salir = new javax.swing.JButton();
         jB_activo = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
@@ -86,31 +85,19 @@ public class VistaTurista extends javax.swing.JInternalFrame {
                 jB_modificarActionPerformed(evt);
             }
         });
-        getContentPane().add(jB_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 130, 60));
+        getContentPane().add(jB_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 130, 60));
 
         jB_baja.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_baja.setForeground(new java.awt.Color(255, 153, 0));
         jB_baja.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\gui_low_priority_icon_157102 (1).png")); // NOI18N
-        jB_baja.setText("BAJA");
+        jB_baja.setText("ELIMINAR");
         jB_baja.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         jB_baja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_bajaActionPerformed(evt);
             }
         });
-        getContentPane().add(jB_baja, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 130, 60));
-
-        jB_alta.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
-        jB_alta.setForeground(new java.awt.Color(255, 153, 0));
-        jB_alta.setIcon(new javax.swing.ImageIcon("C:\\Users\\54266\\Downloads\\task_document_paper_descending_priority_tasks_documents_icon_142254.png")); // NOI18N
-        jB_alta.setText("ALTA");
-        jB_alta.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
-        jB_alta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jB_altaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jB_alta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, 130, 60));
+        getContentPane().add(jB_baja, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, 130, 60));
 
         jB_salir.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_salir.setForeground(new java.awt.Color(255, 153, 51));
@@ -122,7 +109,7 @@ public class VistaTurista extends javax.swing.JInternalFrame {
                 jB_salirActionPerformed(evt);
             }
         });
-        getContentPane().add(jB_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 420, 130, 60));
+        getContentPane().add(jB_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 410, 130, 60));
 
         jB_activo.setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jB_activo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 20, -1));
@@ -149,12 +136,8 @@ public class VistaTurista extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jB_salirActionPerformed
 
-    private void jB_altaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_altaActionPerformed
-       altaTurista();
-    }//GEN-LAST:event_jB_altaActionPerformed
-
     private void jB_bajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_bajaActionPerformed
-        bajaTurista();
+        eliminarTurista();
     }//GEN-LAST:event_jB_bajaActionPerformed
 
     private void guardarTurista() {
@@ -195,65 +178,50 @@ public class VistaTurista extends javax.swing.JInternalFrame {
     }  
     
     private void modificarTurista() {
-    try {
+    
+        try{
         int dni = Integer.parseInt(txtdni.getText());
-        for (Turista turista : turistas) {
-            if (turista.getDni() == dni) { 
-                turista.setNombre(txtnom.getText());
-                turista.setEdad(Integer.parseInt(txtedad.getText()));
-                turista.setIdPaquete(Integer.parseInt(txtid.getText()));
-                JOptionPane.showMessageDialog(null, "Turista modificado: " + turista.getNombre());
-                limpiarCampos();
-                return;
-            }
+        turista = turisData.buscarTurista(dni);
+        
+        if(turista != null){
+            //modifica los atributos de habiActual segun los nuevos valores:
+        turista.setDni(Integer.parseInt(txtdni.getText()));
+        turista.setNombre(txtnom.getText());
+        turista.setEdad(Integer.parseInt(txtedad.getText()));
+        turista.setIdPaquete(Integer.parseInt(txtid.getText()));
+        jB_activo.setSelected(turista.isActivo());//si esta activo, se selecciona el boton. 
+        
+        //logica para guardar los cambios en la base de datos:
+        turisData.modificarTurista(turista);
+        
+        JOptionPane.showMessageDialog(this, "Turista modificado con exito");
+        }else{
+        JOptionPane.showMessageDialog(this, "Turista no encontrado");
         }
-        JOptionPane.showMessageDialog(null, "Turista no encontrado.");
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(null, "Error: Por favor ingresa números válidos para Edad y ID de Paquete.");
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Ocurrió un error al modificar el turista: " + e.getMessage());
-    }
+        } catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Debe Ingresar un numero valido para el ID");
+         }catch(Exception ex){
+             JOptionPane.showMessageDialog(this, "Ocurrio un error al modificar el turista");
+        }
+        
 }
     
-    private void bajaTurista() {
-        try { 
-            int dni = Integer.parseInt(txtdni.getText()); 
-            for (Turista turista : turistas) { 
-                if (turista.getDni() == dni) { 
-                    turista.setActivo(false); 
-                    JOptionPane.showMessageDialog(null, "Turista dado de baja: " + turista.getNombre()); 
-                    limpiarCampos(); 
-                    return;  
-                } 
-            } JOptionPane.showMessageDialog(null, "Turista no encontrado."); 
-        } catch (NumberFormatException e) { JOptionPane.showMessageDialog(null, "Error: Por favor ingresa un DNI válido."); 
+    private void eliminarTurista() {
+        
+        try{
+        int dni = Integer.parseInt(txtdni.getText());
+        turisData.bajaTurista(dni);
+        JOptionPane.showMessageDialog(null,"Turista Eliminado");
+        } catch(NumberFormatException ex){
+        JOptionPane.showMessageDialog(null, "Turista no encontrado");
         } catch (Exception e) { 
             JOptionPane.showMessageDialog(null, "Ocurrió un error al dar de baja el turista: " + e.getMessage()); 
-        } 
     }
-    
-    private void altaTurista() {
-        try { 
-            int dni = Integer.parseInt(txtdni.getText()); 
-            for (Turista turista : turistas) { 
-                if (turista.getDni() == dni) { 
-                    turista.setActivo(true); 
-                    JOptionPane.showMessageDialog(null, "Turista dado de alta: " + turista.getNombre()); 
-                    limpiarCampos(); 
-                    return; 
-                } 
-            } 
-            JOptionPane.showMessageDialog(null, "Turista no encontrado."); 
-        } catch (NumberFormatException e) { 
-            JOptionPane.showMessageDialog(null, "Error: Por favor ingresa un DNI válido."); 
-        } catch (Exception e) { 
-            JOptionPane.showMessageDialog(null, "Ocurrió un error al dar de alta el turista: " + e.getMessage()); 
-        } 
     }
+       
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton jB_activo;
-    private javax.swing.JButton jB_alta;
     private javax.swing.JButton jB_baja;
     private javax.swing.JButton jB_buscar;
     private javax.swing.JButton jB_guardar;
