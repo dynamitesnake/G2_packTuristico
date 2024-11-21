@@ -109,18 +109,16 @@ try {
 }
 
      public void bajaTurista(int dni) {
-        System.out.println("\nDar de baja a cliente: " + dni);
-        String sql = "UPDATE turista SET dni = 0 WHERE dni = ? ";
+   java.sql.Connection conn = Conexion.getConexion();
         try {
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, dni);
-            int fila=ps.executeUpdate();
-            if (fila == 1) {
-                JOptionPane.showMessageDialog(null, "Baja de cliente");
-            }
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla turista");
+            String query = "DELETE FROM turista WHERE dni = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, dni);
+            stmt.executeUpdate();
+            System.out.println("turista eliminado correctamente.");
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar el turista.");
+            e.printStackTrace();
         }
     }
      public void altaTurista(int dni) {
