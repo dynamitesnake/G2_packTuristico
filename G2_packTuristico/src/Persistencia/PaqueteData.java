@@ -146,7 +146,34 @@ try {
         return lista;
     }
     
-  
+    public List<Paquete> listarPaquetesUltimos2Meses() {
+        List<Paquete> listaPaquetes = new ArrayList<>();
 
-  
+        String sql = "SELECT idpaquete, fechaIni, fechaFin, origen, destino, traslados " +
+                "DATEDIFF(fechaFin, fechaIni) AS Dias idpasaje, idalojamiento, " +
+                "idpension, montoFinal FROM paquete" +         
+                "WHERE fechaIni BETWEEN DATE_SUB(CURRENT_DATE, INTERVAL 2 MONTH) AND CURRENT_DATE "; 
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery(); 
+
+            while (rs.next()) {
+                Paquete paquete = new Paquete();
+                paquete.setIdPaquete(rs.getInt("idpaquete"));
+                paquete.setFechaIni(rs.getDate("fechaIni").toLocalDate());
+                paquete.setFechaFin(rs.getDate("fechaFin").toLocalDate());
+                paquete.setDestino("destino");
+                paquete.setIdPasaje(rs.getInt("idpasaje"));
+                paquete.setIdAlojamiento(rs.getInt("idalojamiento"));
+                paquete.setIdPension(rs.getInt("idpension"));
+                paquete.setMontoFinal(rs.getDouble("montoFinal"));
+                listaPaquetes.add(paquete);
+                
+                }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Paquete " + ex.getMessage());
+        }
+            return listaPaquetes;
+    }
+
 }
