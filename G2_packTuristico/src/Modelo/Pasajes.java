@@ -4,6 +4,7 @@ package Modelo;
 import java.time.LocalDate;
 
 
+
 public class Pasajes {
     private int codPasaje;
     private LocalDate fechaida;

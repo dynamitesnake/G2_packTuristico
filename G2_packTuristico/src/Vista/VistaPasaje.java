@@ -51,6 +51,8 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
         calendVuelta = new com.toedter.calendar.JDateChooser();
         jTprecio = new javax.swing.JTextField();
         jBguardar = new javax.swing.JButton();
+        eliminar = new javax.swing.JButton();
+        jBuscar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -104,6 +106,26 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jBguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 160, 50));
 
+        eliminar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono eliminar.png"))); // NOI18N
+        eliminar.setText("ELIMINAR");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, 190, 60));
+
+        jBuscar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono buscar (2).png"))); // NOI18N
+        jBuscar.setText("BUSCAR");
+        jBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBuscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, 190, 60));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/VistaPasajefinal.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 500));
 
@@ -121,6 +143,14 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
         guardarDatos();
     }//GEN-LAST:event_jBguardarActionPerformed
+
+    private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
+        buscar();
+    }//GEN-LAST:event_jBuscarActionPerformed
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        eliminar();
+    }//GEN-LAST:event_eliminarActionPerformed
 
     private void guardarDatos() {
         presupuesto();
@@ -147,7 +177,7 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
 
                         // Guardar el pasaje
                         pasaData.guardPasaje(new Pasajes(id, fechaIda, fechaVuelta, origen, destino, asiento));
-                        JOptionPane.showMessageDialog(null, "Pasaje con D.N.I "+id+" guardado correctamente");
+                        JOptionPane.showMessageDialog(null, "Pasaje con D.N.I " + id + " guardado correctamente");
                     } else {
                         JOptionPane.showMessageDialog(null, "El campo de precio está vacío.");
                     }
@@ -166,7 +196,6 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
         }
 
     }
-    
 
     private void presupuesto() {
         String trans = (String) jCtransp.getSelectedItem();
@@ -236,12 +265,63 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
 
     }
 
+    private void buscar() {
+        String idText = jTCodigo.getText().trim();
+        if (idText.isEmpty() || !idText.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número válido");
+            return;
+        }
+
+        try {
+            Integer id = Integer.parseInt(jTCodigo.getText());
+            pasaje = pasaData.buscarPasaje(id);
+            if (pasaje != null) {
+                //jCtransp.setText(String.valueOf(pasaje.));
+                jCorigen.setSelectedItem(pasaje.getOrigen());
+                jCdestino.setSelectedItem(pasaje.getDestino());
+                jCAsiento.setSelectedItem(pasaje.getAsiento());
+                LocalDate fechaida= pasaje.getFechaida();
+                if(fechaida!=null){
+                    calendIda.setDate(java.sql.Date.valueOf(fechaida));
+                }else{
+                    calendIda.setDate(null);
+                }
+                
+                LocalDate fechaVuelta= pasaje.getFechavuelta();
+                if(fechaVuelta != null){
+                    calendVuelta.setDate(java.sql.Date.valueOf(fechaVuelta));               
+                }else {
+                    calendVuelta.setDate(null);
+                }
+                
+
+            }else{
+               JOptionPane.showMessageDialog(this, "Pasaje no encontrado."); 
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "debe ingresar un numero valido");
+        }catch (Exception ex) { JOptionPane.showMessageDialog(this, "Ocurrió un error: " + ex.getMessage());
+    }
+    }
+    public void eliminar(){
+         try{
+        int idPasaje = Integer.parseInt(jTCodigo.getText());
+        pasaData.eliminarPasaje(idPasaje);
+        JOptionPane.showMessageDialog(null,"Pasaje "+jTCodigo.getText()+" Eliminado");
+        } catch(NumberFormatException ex){
+        JOptionPane.showMessageDialog(null, "Ingrese un pasaje valido");
+        }
+    }            
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser calendIda;
     private com.toedter.calendar.JDateChooser calendVuelta;
+    private javax.swing.JButton eliminar;
     private javax.swing.JButton jBguardar;
     private javax.swing.JButton jBpresupuesto;
+    private javax.swing.JButton jBuscar;
     private javax.swing.JComboBox<String> jCAsiento;
     private javax.swing.JComboBox<String> jCdestino;
     private javax.swing.JComboBox<String> jCorigen;

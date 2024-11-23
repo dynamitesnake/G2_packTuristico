@@ -24,6 +24,7 @@ public class pasajeDatas {
             ps.setString(2, pasaje.getOrigen());
             ps.setString(3,pasaje.getDestino());
             ps.setInt(4,pasaje.getAsiento());
+            
             ps.setDate(5, java.sql.Date.valueOf(pasaje.getFechaida()));
             ps.setDate(6, java.sql.Date.valueOf(pasaje.getFechavuelta()));
             ps.executeUpdate();
@@ -34,6 +35,19 @@ public class pasajeDatas {
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla pasaje");
+        }
+    }
+     public void eliminarPasaje (int idPasaje) {
+             java.sql.Connection conn = Conexion.getConexion();
+        try {
+            String query = "DELETE FROM pasaje WHERE idPasaje = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, idPasaje);
+            stmt.executeUpdate();
+            System.out.println("Pasaje eliminada correctamente.");
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar Pasaje.");
+            e.printStackTrace();
         }
     }
      /*public Pasaje buscarPasajeId(int codPasaje) {
@@ -84,7 +98,7 @@ public class pasajeDatas {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla pasaje");
         }
     }*/
-     public void darDeBajaPorId(int codPasaje) {
+    /* public void darDeBajaPorId(int codPasaje) {
         System.out.println("\nDar de baja a id: " + codPasaje);
         String sql = "UPDATE pasaje SET idPasaje = 0 WHERE idPasaje = ? ";
         try {
@@ -113,7 +127,30 @@ public class pasajeDatas {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla pasaje");
         }
-    }
+    }*/
+     public Pasajes buscarPasaje(int idPasaje){
+         java.sql.Connection conn = Conexion.getConexion();
+        Pasajes pasaje = null;
+        try {
+            String query = "SELECT * FROM pasaje WHERE idPasaje = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, idPasaje);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                pasaje = new Pasajes
+                       (rs.getInt("idPasaje"),
+                        rs.getDate("fecha_ida").toLocalDate(),
+                        rs.getDate("fecha_vuelta").toLocalDate(),
+                        rs.getString("origen"),
+                        rs.getString("destino"),
+                        rs.getInt("asiento"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al buscar la habitacion.");
+            e.printStackTrace();
+        }
+         return pasaje;
+     }
 
       
 }
