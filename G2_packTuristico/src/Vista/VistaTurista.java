@@ -210,7 +210,7 @@ public class VistaTurista extends javax.swing.JInternalFrame {
         
         try{
         int dni = Integer.parseInt(txtdni.getText());
-        turisData.bajaTurista(dni);
+        turisData.eliminarTurista(dni);
         JOptionPane.showMessageDialog(null,"Turista Eliminado");
         } catch(NumberFormatException ex){
         JOptionPane.showMessageDialog(null, "Turista no encontrado");

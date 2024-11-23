@@ -19,13 +19,14 @@ public class TuristaData {
     
     public void guardarTurista (Turista tu){
         System.out.println("\nGuardar turista: ");
-        String sql = "INSERT INTO Turista (dni, nombre, edad, idpaquete) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Turista (dni, nombre, edad, idpaquete, estado) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, tu.getDni());
             ps.setString(2, tu.getNombre());
             ps.setInt(3, tu.getEdad());
             ps.setInt(4, tu.getIdPaquete());
+            ps.setBoolean(5, tu.isActivo()); 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -40,7 +41,7 @@ public class TuristaData {
     public Turista buscarTurista(int dni) {
     System.out.println("\nbuscar Turista: " + dni);
     Turista turista = null;
-    String sql = "SELECT dni, nombre, edad, idPaquete FROM turista WHERE dni = ?";
+    String sql = "SELECT * FROM dni, nombre, edad, idPaquete, estado FROM turista WHERE dni = ?";
     
     try {
         PreparedStatement ps = conn.prepareStatement(sql);
@@ -69,7 +70,7 @@ public class TuristaData {
    
     public void modificarTurista(Turista turista){
         System.out.println("\nModificar Turista:");
-String sql = "UPDATE turista SET dni = ?, nombre = ?, edad = ?, idPaquete = ? WHERE dni = ?";
+String sql = "UPDATE turista SET dni = ?, nombre = ?, edad = ?, idPaquete = ?, estado = ? WHERE dni = ?";
 
 try {
     
@@ -108,7 +109,7 @@ try {
 }
 }
 
-     public void bajaTurista(int dni) {
+     public void eliminarTurista(int dni) {
    java.sql.Connection conn = Conexion.getConexion();
         try {
             String query = "DELETE FROM turista WHERE dni = ?";
@@ -121,21 +122,7 @@ try {
             e.printStackTrace();
         }
     }
-     public void altaTurista(int dni) {
-        System.out.println("\nDar de alta a cliente: " + dni);
-        String sql = "UPDATE turista SET dni = 1 WHERE dni = ? ";
-        try {
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, dni);
-            int fila=ps.executeUpdate();
-            if (fila == 1) {
-                JOptionPane.showMessageDialog(null, "Alta de cliente");
-            }
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla turista");
-        }
-}
+   
 
     public void guardarTurista(VistaTurista turista) {
         
