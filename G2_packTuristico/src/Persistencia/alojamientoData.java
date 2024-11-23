@@ -44,29 +44,31 @@ public class alojamientoData {
     }
 }
 
-public void modificarAlojamiento(Alojamiento alojamiento) {
-    System.out.println("\nModificar Alojamiento:");
-    String sql = "UPDATE alojamiento SET nombre=?, capacidad=?, nroAmbientes=?, camas=?, baños=?, precioNoche=? WHERE idAlojamiento =?";
+    public void modificarAlojamiento(Alojamiento alojamiento) {
+        System.out.println("\nModificar Alojamiento:");
+        String sql = "UPDATE alojamiento SET idAlojamiento=?, nombre=?, capacidad=?, nroAmbientes=?, camas=?, baños=?, precioNoche=? WHERE idAlojamiento =?";
 
-    try {
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setString(1, alojamiento.getNombre());
-        ps.setInt(2, alojamiento.getCapacidad());
-        ps.setInt(3, alojamiento.getNroAmbientes());
-        ps.setInt(4, alojamiento.getCamas());
-        ps.setInt(5, alojamiento.getBaños());
-        ps.setDouble(6, alojamiento.getPrecioNoche()); 
-        ps.setInt(7, alojamiento.getIdAlojamiento());
-        int exito = ps.executeUpdate();
-        if (exito == 1) {
+            try {
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ps.setInt(1, alojamiento.getIdAlojamiento());
+                ps.setString(2, alojamiento.getNombre());
+                ps.setInt(3, alojamiento.getCapacidad());
+                ps.setInt(4, alojamiento.getNroAmbientes());
+                ps.setInt(5, alojamiento.getCamas());
+                ps.setInt(6, alojamiento.getBaños());
+                ps.setDouble(7, alojamiento.getPrecioNoche()); 
+                ps.setInt(8, alojamiento.getIdAlojamiento());
+
+                int exito = ps.executeUpdate();
+                if (exito == 1) {
             JOptionPane.showMessageDialog(null, "Modificado exitosamente");
         } else {
             JOptionPane.showMessageDialog(null, "El alojamiento no existe");
         }
-        ps.close();
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alojamiento: " + ex.getMessage());
-    }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alojamiento: " + ex.getMessage());
+        }
 }
 
 public void bajaAlojamiento(int IdAlojamiento) {

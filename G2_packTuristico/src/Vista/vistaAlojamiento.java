@@ -17,6 +17,7 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
     private alojamientoData alojaData ;
     private ArrayList <Alojamiento> listaAloja;
     private DefaultTableModel modelo;
+    private Alojamiento alojamiento = null;
     
     public vistaAlojamiento() {
         initComponents();
@@ -38,7 +39,7 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
+        btn_modificar = new javax.swing.JButton();
         txtIdAlojamiento = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtCapacidad = new javax.swing.JTextField();
@@ -48,6 +49,10 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
         txtPrecio = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         getContentPane().add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 340, 30));
@@ -62,7 +67,7 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 130, 160, 80));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 120, 160, 80));
 
         btnBuscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(255, 153, 0));
@@ -74,7 +79,7 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 160, 80));
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 160, 80));
 
         btnNuevo.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         btnNuevo.setForeground(new java.awt.Color(255, 153, 0));
@@ -85,7 +90,7 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
                 btnNuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, 160, 80));
+        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 160, 80));
 
         btnEliminar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 153, 0));
@@ -97,19 +102,19 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 320, 160, 80));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 300, 160, 80));
 
-        btnSalir.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
-        btnSalir.setForeground(new java.awt.Color(255, 153, 0));
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono salir.png"))); // NOI18N
-        btnSalir.setText("SALIR");
-        btnSalir.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+        btn_modificar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
+        btn_modificar.setForeground(new java.awt.Color(255, 153, 0));
+        btn_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono editar.png"))); // NOI18N
+        btn_modificar.setText("MODIFICAR");
+        btn_modificar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
+                btn_modificarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 430, 120, 50));
+        getContentPane().add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, 160, 80));
         getContentPane().add(txtIdAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 340, 30));
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 420, 30));
         getContentPane().add(txtCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 390, 30));
@@ -137,9 +142,9 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnSalirActionPerformed
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        modificarAlojamiento();
+    }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         guardarAlojamiento();
@@ -172,7 +177,7 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btn_modificar;
     private javax.swing.JComboBox<Alojamiento> comboAlojamientos;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtAmbientes;
@@ -197,7 +202,7 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
            modelo.addRow(new Object [] {a.getNombre(),a.getCapacidad(),a.getNroAmbientes(),a.getCamas(),a.getBaños(),a.getPrecioNoche()});
     }    
 }
-  private void buscarAlojamiento() { 
+    private void buscarAlojamiento() { 
     try { 
         int selectedIndex = comboAlojamientos.getSelectedIndex();
         
@@ -229,7 +234,7 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(null, "Ocurrió un error al buscar el alojamiento: " + e.getMessage()); 
     }
 }
-private void guardarAlojamiento() {
+    private void guardarAlojamiento() {
         try { 
             int idAlojamiento = Integer.parseInt(txtIdAlojamiento.getText()); 
             String nombre = txtNombre.getText(); 
@@ -267,5 +272,36 @@ private void guardarAlojamiento() {
         txtBaños.setText("");
         txtPrecio.setText("");
     } 
+     
+     private void modificarAlojamiento() {
+    
+        try{
+            int idAlojamiento = Integer.parseInt(txtIdAlojamiento.getText());
+            alojamiento = alojaData.buscarAlojamiento(idAlojamiento);
+        
+            if(alojamiento != null){
+                //modifica los atributos de habiActual segun los nuevos valores:
+            alojamiento.setNombre(txtNombre.getText());
+            alojamiento.setCapacidad(Integer.parseInt(txtCapacidad.getText()));
+            alojamiento.setNroAmbientes(Integer.parseInt(txtAmbientes.getText()));
+            alojamiento.setCamas(Integer.parseInt(txtCamas.getText()));
+            alojamiento.setBaños(Integer.parseInt(txtBaños.getText()));
+            alojamiento.setPrecioNoche(Integer.parseInt(txtPrecio.getText())); 
+
+            //logica para guardar los cambios en la base de datos:
+            alojaData.modificarAlojamiento(alojamiento);
+        
+        JOptionPane.showMessageDialog(this, "Alojamiento modificado con exito");
+        }else{
+        JOptionPane.showMessageDialog(this, "Alojamiento no encontrado");
+            }
+        } catch (NumberFormatException ex) {
+        
+        JOptionPane.showMessageDialog(this, "Debe ingresar un número válido en los campos numéricos.");
+            } catch (Exception ex) {
+       
+        JOptionPane.showMessageDialog(this, "Ocurrió un error al modificar el alojamiento.");
+    }
+}
   }
 
