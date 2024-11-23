@@ -69,6 +69,8 @@ public class TuristaData {
             ps.setInt(3, turista.getEdad());
             ps.setInt(4, turista.getIdPaquete());
             ps.setBoolean(5, turista.isActivo());
+            ps.setInt(6, turista.getDni());  
+            
             int exito = ps.executeUpdate();
             if (exito == 1) {
         JOptionPane.showMessageDialog(null, "Modificado exitosamente");
