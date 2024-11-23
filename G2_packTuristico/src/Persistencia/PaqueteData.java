@@ -176,4 +176,32 @@ try {
             return listaPaquetes;
     }
 
+    public List<Paquete> listarPaqueteCiudadesMasElegidas() {
+       
+        List<Paquete> destinos = new ArrayList<>();
+            String sql = "SELECT idpaquete AS Destino, " +
+                 "FROM paquete " +
+                 "ORDER BY destino ASC";
+
+    try {
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Paquete ciudad = new Paquete();
+            ciudad.setDestino(rs.getString("destino"));
+            destinos.add(ciudad);
+        }
+
+        rs.close();
+        ps.close();
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al listar las ciudades con estadísticas: " + ex.getMessage());
+    }
+    return destinos;
+    }
+    
+    
+    
 }
