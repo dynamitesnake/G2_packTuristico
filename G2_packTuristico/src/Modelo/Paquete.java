@@ -11,11 +11,12 @@ public class Paquete {
     private LocalDate fechaFin;
     private String origen;
     private String destino;
-    private String traslados;
+    private String medioViaje;
     private double montoFinal;
     private int idPasaje;
     private int idAlojamiento;
     private int idPension;
+    private int pasajeros;
 
     
     public Paquete() {
@@ -25,17 +26,34 @@ public class Paquete {
         this.idPaquete = idPaquete;
     }
 
-    public Paquete(int idPaquete, LocalDate fechaIni, LocalDate fechaFin, String origen, String destino, String traslados, double montoFinal, int idPasaje, int idAlojaminto, int idPension) {
+    public Paquete(int idPaquete, LocalDate fechaIni, LocalDate fechaFin, String origen, String destino, String medioViaje, double montoFinal, int idPasaje, int idAlojaminto, int idPension, int pasajeros) {
         this.idPaquete = idPaquete;
         this.fechaIni = fechaIni;
         this.fechaFin = fechaFin;
         this.origen = origen;
         this.destino = destino;
-        this.traslados = traslados;
+        this.medioViaje = medioViaje;
         this.montoFinal = montoFinal;
         this.idPasaje = idPasaje;
         this.idAlojamiento = idAlojamiento;
         this.idPension = idPension;
+        this.pasajeros= pasajeros;
+    }
+
+    public String getMedioViaje() {
+        return medioViaje;
+    }
+
+    public void setMedioViaje(String medioViaje) {
+        this.medioViaje = medioViaje;
+    }
+
+    public int getPasajeros() {
+        return pasajeros;
+    }
+
+    public void setPasajeros(int pasajeros) {
+        this.pasajeros = pasajeros;
     }
 
     public int getIdPaquete() {
@@ -78,14 +96,6 @@ public class Paquete {
         this.destino = destino;
     }
 
-    public String getTraslados() {
-        return traslados;
-    }
-
-    public void setTraslados(String traslados) {
-        this.traslados = traslados;
-    }
-
     public double getMontoFinal() {
         return montoFinal;
     }
@@ -120,8 +130,8 @@ public class Paquete {
  
      @Override
     public String toString() {
-        return "Paquete{" + "idPaquete=" + idPaquete + ", fechaIni=" + fechaIni + ", fechaFin=" + fechaFin + ", origen=" + origen + ", destino=" + destino + ", traslados=" + traslados 
-                + ", montoFinal=" + montoFinal + ", idPasaje=" + idPasaje + ", idAlojamiento=" + idAlojamiento + ", idPension=" + idPension + "}";
+        return "Paquete{" + "idPaquete=" + idPaquete + ", fechaIni=" + fechaIni + ", fechaFin=" + fechaFin + ", origen=" + origen + ", destino=" + destino + ", medioViaje=" + medioViaje 
+                + ", montoFinal=" + montoFinal + ", idPasaje=" + idPasaje + ", idAlojamiento=" + idAlojamiento + ", idPension=" + idPension +"pasajeros"+ pasajeros + "}";
 }
 
 }

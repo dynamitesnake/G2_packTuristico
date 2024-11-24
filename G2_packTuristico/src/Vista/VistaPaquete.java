@@ -5,6 +5,7 @@ import Modelo.Alojamiento;
 import Modelo.Paquete;
 import Persistencia.PaqueteData;
 import Persistencia.alojamientoData;
+import Persistencia.pasajeDatas;
 import java.awt.event.ActionEvent;
 import java.time.LocalDate;
 import java.time.Month;
@@ -12,10 +13,13 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import persistencia.PensionData;
 
 
 public class VistaPaquete extends javax.swing.JInternalFrame {
      private alojamientoData alojaData ;
+     private PensionData penData;
+     private pasajeDatas pasajeData;
      private PaqueteData paqueData;
     private ArrayList <Alojamiento> listaAloja;
     private String temporada;
@@ -25,6 +29,8 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         initComponents();
         alojaData = new alojamientoData();
         paqueData = new PaqueteData();
+        penData = new PensionData();
+        pasajeData = new pasajeDatas();
         listaAloja = (ArrayList <Alojamiento>)alojaData.listarAlojamiento();
         comboAlojamiento();
     }
@@ -37,19 +43,20 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         comboAlojamientos = new javax.swing.JComboBox<>();
         jCorigen = new javax.swing.JComboBox<>();
         jCdestino = new javax.swing.JComboBox<>();
-        cboxTransporte = new javax.swing.JComboBox<>();
+        jCtransp = new javax.swing.JComboBox<>();
         txtIdPaquete = new javax.swing.JTextField();
         calendIda = new com.toedter.calendar.JDateChooser();
         calendVuelta = new com.toedter.calendar.JDateChooser();
         jtCantidadPasajeros = new javax.swing.JTextField();
         txtIdPension = new javax.swing.JTextField();
         txtMontoFinal = new javax.swing.JTextField();
+        txt_temp = new javax.swing.JTextField();
+        txt_idPasaje = new javax.swing.JTextField();
         jB_guardarPaquete = new javax.swing.JButton();
         JBbuscar = new javax.swing.JButton();
         btnCalcular = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        txt_temp = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -71,14 +78,16 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jCdestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, 140, 30));
 
-        cboxTransporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Avion", "Colectivo", " " }));
-        getContentPane().add(cboxTransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 180, 170, 30));
+        jCtransp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Avion", "Colectivo", " " }));
+        getContentPane().add(jCtransp, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 180, 170, 30));
         getContentPane().add(txtIdPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 240, 30));
         getContentPane().add(calendIda, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 110, 30));
         getContentPane().add(calendVuelta, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 110, 30));
-        getContentPane().add(jtCantidadPasajeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 160, 30));
+        getContentPane().add(jtCantidadPasajeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 160, 30));
         getContentPane().add(txtIdPension, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, 160, 30));
         getContentPane().add(txtMontoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 420, 120, 40));
+        getContentPane().add(txt_temp, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 490, 160, 30));
+        getContentPane().add(txt_idPasaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 160, 30));
 
         jB_guardarPaquete.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_guardarPaquete.setForeground(new java.awt.Color(255, 153, 0));
@@ -138,13 +147,6 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 470, 130, 50));
 
-        txt_temp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_tempActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txt_temp, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 490, 160, 30));
-
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vista paquete (1).png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 1100, 770));
@@ -202,7 +204,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
       }
         double precio=0;
         
-        String seleccionCompletaT = cboxTransporte.getSelectedItem().toString();
+        String seleccionCompletaT = jCtransp.getSelectedItem().toString();
         String[] a = seleccionCompletaT.split("\\D+");
         
         double costoT = Integer.parseInt(a[1]);
@@ -223,7 +225,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Tiene que ingresar una cantidad de pasajeros");
     
       }
-        String trans = (String) cboxTransporte.getSelectedItem();
+        String trans = (String) jCtransp.getSelectedItem();
         String origen = (String) jCorigen.getSelectedItem();
         String destino = (String) jCdestino.getSelectedItem();
         double suma = 0;
@@ -295,28 +297,25 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCdestinoActionPerformed
 
-    private void txt_tempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_tempActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_tempActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBbuscar;
     private javax.swing.JButton btnCalcular;
     private com.toedter.calendar.JDateChooser calendIda;
     private com.toedter.calendar.JDateChooser calendVuelta;
-    private javax.swing.JComboBox<String> cboxTransporte;
     private javax.swing.JComboBox<Alojamiento> comboAlojamientos;
     private javax.swing.JButton jB_guardarPaquete;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jCdestino;
     private javax.swing.JComboBox<String> jCorigen;
+    private javax.swing.JComboBox<String> jCtransp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jtCantidadPasajeros;
     private javax.swing.JTextField txtIdPaquete;
     private javax.swing.JTextField txtIdPension;
     private javax.swing.JTextField txtMontoFinal;
+    private javax.swing.JTextField txt_idPasaje;
     private javax.swing.JTextField txt_temp;
     // End of variables declaration//GEN-END:variables
 
@@ -335,33 +334,33 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null,"Por favor ingrese un paquete valido");
         }
     } 
-  private void guardarPaquete() {
-    try {
-        int idPaquete = Integer.parseInt(txtIdPaquete.getText());
-        
-        
-        LocalDate fechaIni = calendIda.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate fechaFin = calendVuelta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
-        String origen = (String) jCorigen.getSelectedItem();
-        String destino = (String) jCdestino.getSelectedItem();
-        String traslados = (String) cboxTransporte.getSelectedItem();
-        double montoFinal = Double.parseDouble(txtMontoFinal.getText());
-        int idPasaje = Integer.parseInt(jtCantidadPasajeros.getText());
-        int idAlojamiento = Integer.parseInt(comboAlojamientos.getSelectedItem().toString());
-        int idPension = Integer.parseInt(txtIdPension.getText());
-        
-        Paquete paquete = new Paquete(idPaquete, fechaIni, fechaFin, origen, destino, traslados, montoFinal, idPasaje, idAlojamiento, idPension);
-        paqueData.guardarPaquete(paquete);
-        JOptionPane.showMessageDialog(null, "Paquete guardado");
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(null, "Error: ingresa valores válidos");
-    } catch (NullPointerException e) {
-        JOptionPane.showMessageDialog(null, "Error: asegúrate de completar todos los campos, incluidas las fechas");
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el paquete: " + e.getMessage());
-    }
-    }
+private void guardarPaquete() {
+    try { 
+            int idPaquete = Integer.parseInt(txtIdPaquete.getText()); 
+            LocalDate fechaIni = new java.sql.Date(calendIda.getDate().getTime()).toLocalDate();
+            LocalDate fechaFin = new java.sql.Date(calendVuelta.getDate().getTime()).toLocalDate();
+            int idPasaje = Integer.parseInt(txt_idPasaje.getText()); 
+            int pasajeros = Integer.parseInt(jtCantidadPasajeros.getText()); 
+            int idAlojamiento = Integer.parseInt((String) comboAlojamientos.getSelectedItem());  
+            int idPension = Integer.parseInt(txtIdPension.getText()); 
+            String medioViaje = (String) jCtransp.getSelectedItem();
+            String origen = (String) jCorigen.getSelectedItem();
+            String destino = (String) jCdestino.getSelectedItem();
+            int montoFinal = Integer.parseInt(txtMontoFinal.getText());
+            Paquete paquete = new Paquete(idPaquete, fechaIni, fechaFin,origen, destino, medioViaje, montoFinal, idPasaje,idAlojamiento,idPension,pasajeros); 
+            
+            paqueData.guardarPaquete(paquete); 
+            JOptionPane.showMessageDialog(null, "alojamiento agregado: "); 
+            
+        } catch (NumberFormatException e) { 
+            JOptionPane.showMessageDialog(null, "Error: Por favor ingresa datos validos"); 
+        } catch (Exception e) { 
+            JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el Alojamiento: " + e.getMessage()); 
+        }
+    }     
+
+
+
   private void buscarPaquete() {
     try {
         
@@ -379,7 +378,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
             calendVuelta.setDate(java.sql.Date.valueOf(paquete.getFechaFin()));
             jCorigen.setSelectedItem(paquete.getOrigen());
             jCdestino.setSelectedItem(paquete.getDestino());
-            cboxTransporte.setSelectedItem(paquete.getTraslados());
+            jCtransp.setSelectedItem(paquete.getMedioViaje());
             txtMontoFinal.setText(String.valueOf(paquete.getMontoFinal()));
             jtCantidadPasajeros.setText(String.valueOf(paquete.getIdPasaje()));
             comboAlojamientos.setSelectedItem(paquete.getIdAlojamiento());

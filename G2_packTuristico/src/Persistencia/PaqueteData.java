@@ -19,38 +19,47 @@ public class PaqueteData {
     }
     
     public void guardarPaquete (Paquete paquete){
-        String sql = "INSERT INTO paquete (fechaIni, fechaFin, origen, destino, traslados, montoFinal, idpasaje, idalojamiento, idpension) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-try {
-    PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-    ps.setDate(1, java.sql.Date.valueOf(paquete.getFechaIni()));
-    ps.setDate(2, java.sql.Date.valueOf(paquete.getFechaFin()));
-    ps.setString(3, paquete.getOrigen());
-    ps.setString(4, paquete.getDestino());
-    ps.setString(5, paquete.getTraslados());
-    ps.setDouble(6, paquete.getMontoFinal());
-    ps.setInt(7, paquete.getIdPasaje());
-    ps.setInt(8, paquete.getIdAlojamiento());
-    ps.setInt(9, paquete.getIdPension());
-    int rowsInserted = ps.executeUpdate();
-    if (rowsInserted > 0) {
-        ResultSet rs = ps.getGeneratedKeys();
-        if (rs.next()) {
-            paquete.setIdPaquete(rs.getInt(1));
+    String sql = "INSERT INTO `paquete` (idpaquete, fechaIni, fechaFin, origen, destino, pasajeros, medioViaje, montoFinal, idpasaje, idalojamiento, idpension) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    try {
+        if (conn == null || conn.isClosed()) {
+            throw new SQLException("La conexión con la base de datos no está disponible.");
         }
-        rs.close();
-        System.out.println("Paquete guardado correctamente.");
-    } else {
-        System.out.println("No se insertó el paquete.");
+
+        PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        
+        
+        ps.setInt(1, paquete.getIdPaquete()); 
+        ps.setDate(2, java.sql.Date.valueOf(paquete.getFechaIni()));
+        ps.setDate(3, java.sql.Date.valueOf(paquete.getFechaFin()));
+        ps.setString(4, paquete.getOrigen());
+        ps.setString(5, paquete.getDestino());
+        ps.setInt(6, paquete.getPasajeros()); 
+        ps.setString(7, paquete.getMedioViaje());
+        ps.setDouble(8, paquete.getMontoFinal());
+        ps.setInt(9, paquete.getIdPasaje());
+        ps.setInt(10, paquete.getIdAlojamiento());
+        ps.setInt(11, paquete.getIdPension());
+
+        // Ejecutar la inserción
+        int rowsInserted = ps.executeUpdate();
+        if (rowsInserted > 0) {
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                paquete.setIdPaquete(rs.getInt(1)); 
+            }
+            rs.close();
+            System.out.println("Paquete guardado correctamente. ID generado: " + paquete.getIdPaquete());
+        } else {
+            System.out.println("No se insertó el paquete.");
+        }
+        ps.close();
+    } catch (SQLException e) {
+        System.err.println("Error al guardar el paquete: " + e.getMessage());
+        e.printStackTrace();
     }
-    ps.close();
-} catch (SQLException ex) {
-    ex.printStackTrace();
-    JOptionPane.showMessageDialog(null, "Error al acceder a la tabla paquete: " + ex.getMessage());
-}
 }
 
-    
-    public Paquete buscarPaquete(int idPaquete) {
+ public Paquete buscarPaquete(int idPaquete) {
     System.out.println("\nBuscando Paquete con ID: " + idPaquete);
     Paquete paquete = null;
     String sql = "SELECT * FROM paquete WHERE idPaquete = ?"; 
@@ -67,7 +76,8 @@ try {
             paquete.setFechaFin(rs.getDate("fechaFin").toLocalDate());
             paquete.setOrigen(rs.getString("origen"));
             paquete.setDestino(rs.getString("destino"));
-            paquete.setTraslados(rs.getString("traslados"));
+            paquete.setPasajeros(rs.getInt("Pasajeros"));
+            paquete.setMedioViaje(rs.getString("MedioViaje"));
             paquete.setMontoFinal(rs.getDouble("montoFinal"));
             paquete.setIdPasaje(rs.getInt("idPasaje"));
             paquete.setIdAlojamiento(rs.getInt("idAlojamiento"));
@@ -87,33 +97,35 @@ try {
 
     
      public void modificarPaquete(Paquete paquete) {
-        System.out.println("\nModificar paquete: ");
-        String sql = "UPDATE paquete SET idpaquete = ?, fechaIni = ?, fechaFin = ?, origen = ?, destino = ?, traslados = ?; montoFinal = ?, idpasaje= ?, idalojamiento = ?, idpension = ? WHERE idpaquete = ?";
-        try {
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, paquete.getIdPaquete());
-            ps.setDate(2, java.sql.Date.valueOf(paquete.getFechaIni()));
-            ps.setDate(3, java.sql.Date.valueOf(paquete.getFechaFin()));
-            ps.setString(4, paquete.getOrigen());
-            ps.setString(5, paquete.getDestino());
-            ps.setString(6, paquete.getTraslados());
-            ps.setDouble(7, paquete.getMontoFinal());
-            ps.setInt(8, paquete.getIdPasaje()); 
-            ps.setInt(9, paquete.getIdAlojamiento()); 
-            ps.setInt(10, paquete.getIdPension()); 
-            int exito = ps.executeUpdate();
-            
-            if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Paquete modificado exitosamente");
-            } else {
-                JOptionPane.showMessageDialog(null, "El paquete no existe");
-            }
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla paquete");
+    System.out.println("\nModificar paquete: ");
+    String sql = "UPDATE paquete SET fechaIni = ?, fechaFin = ?, origen = ?, destino = ?, pasajeros = ?, medioViaje = ?, montoFinal = ?, idpasaje = ?, idalojamiento = ?, idpension = ? WHERE idpaquete = ?";
+    try {
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setDate(1, java.sql.Date.valueOf(paquete.getFechaIni()));
+        ps.setDate(2, java.sql.Date.valueOf(paquete.getFechaFin()));
+        ps.setString(3, paquete.getOrigen());
+        ps.setString(4, paquete.getDestino());
+        ps.setInt(5, paquete.getPasajeros()); // Asumiendo que "pasajeros" es un entero
+        ps.setString(6, paquete.getMedioViaje());
+        ps.setDouble(7, paquete.getMontoFinal());
+        ps.setInt(8, paquete.getIdPasaje());
+        ps.setInt(9, paquete.getIdAlojamiento());
+        ps.setInt(10, paquete.getIdPension());
+        ps.setInt(11, paquete.getIdPaquete()); // Este es el idpaquete para el WHERE
+
+        int exito = ps.executeUpdate();
+
+        if (exito == 1) {
+            JOptionPane.showMessageDialog(null, "Paquete modificado exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "El paquete no existe");
         }
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla paquete: " + ex.getMessage());
     }
-    
+}
+
     public void eliminarPaquete(int idPaquete) {
         java.sql.Connection conn = Conexion.getConexion();
         try {
@@ -136,7 +148,7 @@ try {
             PreparedStatement stmt = conn.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                Paquete paquete = new Paquete(rs.getInt("idpaquete"), rs.getDate("fechaIni").toLocalDate(), rs.getDate("fechaFin").toLocalDate(), rs.getString("origen"), rs.getString("destino"), rs.getString("traslados"), rs.getDouble("montoFinal"), rs.getInt("idpasaje"), rs.getInt("idalojamiento"), rs.getInt("idpension"));
+                Paquete paquete = new Paquete(rs.getInt("idpaquete"), rs.getDate("fechaIni").toLocalDate(), rs.getDate("fechaFin").toLocalDate(), rs.getString("origen"), rs.getString("destino"),rs.getString("medioViaje"), rs.getDouble("montoFinal"), rs.getInt("idpasaje"), rs.getInt("idalojamiento"), rs.getInt("idpension"),rs.getInt("pasajeros"));
                 lista.add(paquete);
             }
         } catch (SQLException e) {
@@ -149,7 +161,7 @@ try {
     public List<Paquete> listarPaquetesUltimos2Meses() {
         List<Paquete> listaPaquetes = new ArrayList<>();
 
-        String sql = "SELECT idpaquete, fechaIni, fechaFin, origen, destino, traslados " +
+        String sql = "SELECT idpaquete, fechaIni, fechaFin, origen, destino, medioViaje " +
                 "DATEDIFF(fechaFin, fechaIni) AS Dias idpasaje, idalojamiento, " +
                 "idpension, montoFinal FROM paquete" +         
                 "WHERE fechaIni BETWEEN DATE_SUB(CURRENT_DATE, INTERVAL 2 MONTH) AND CURRENT_DATE "; 
