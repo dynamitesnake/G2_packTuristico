@@ -163,7 +163,7 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
                 String origen = (String) jCorigen.getSelectedItem();
                 String destino = (String) jCdestino.getSelectedItem();
                 LocalDate fechaIda = new java.sql.Date(calendIda.getDate().getTime()).toLocalDate();
-                LocalDate fechaVuelta = new java.sql.Date(calendIda.getDate().getTime()).toLocalDate();
+                LocalDate fechaVuelta = new java.sql.Date(calendVuelta.getDate().getTime()).toLocalDate();
                 String selecAsiento = (String) jCAsiento.getSelectedItem();
 
                 // Validar que selecAsiento no sea nulo o vacío antes de convertirlo
