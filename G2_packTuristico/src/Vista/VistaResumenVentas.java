@@ -6,171 +6,107 @@ import Modelo.Paquete;
 import Modelo.Pasajes;
 import Modelo.Turista;
 import Persistencia.TuristaData;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.List;
+
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.sql.*;
+import java.util.List;
 
 public class VistaResumenVentas extends javax.swing.JInternalFrame {
 
-    public Turista turis = new Turista();
-    public Pasajes pasaje = new Pasajes();
-    public Paquete paquete;
-    public TuristaData turistaData = new TuristaData();
-    public PaqueteData paqueteData = new PaqueteData();
-
-    public ArrayList<Turista> pasajeros = new ArrayList<>();
-    public ArrayList<Paquete> listado = new ArrayList();
-
-    
-private DefaultTableModel modelo= new DefaultTableModel(){
-
-    
-    @Override
-    public boolean isCellEditable(int f, int c){
-        
-        return false;
-    }
-};
-
+    private JTable tablaVentas;
+    private DefaultTableModel modeloTabla;
+  
     public VistaResumenVentas() {
-        initComponents();
-        armarCabecera();
-        cargarTabla();
         
+        
+        setTitle("Resumen de Ventas");
+        setSize(600, 400);
+        setClosable(true);
+        setMaximizable(true);
+        setIconifiable(true);
+        setLayout(new BorderLayout());
+        
+        // Definir columnas de la tabla
+        String[] columnas = {"ID Paquete", "FechaIni", "FechaFin", "Origen", "Destino", "Traslados", "Monto", "ID Pasaje", "ID Alojamiento", "ID Pension"};
+        
+        // Crear el modelo de la tabla
+        modeloTabla = new DefaultTableModel(null, columnas);
+        tablaVentas = new JTable(modeloTabla);
+        
+        // Hacer que la tabla sea no editable
+        tablaVentas.setDefaultEditor(Object.class, null);
+        
+        // Agregar la tabla al panel con un JScrollPane
+        JScrollPane scrollPane = new JScrollPane(tablaVentas);
+        add(scrollPane, BorderLayout.CENTER);
+        
+        // Cargar las ventas al inicializar el frame
+        cargarVentas();
     }
 
-   private void cargarTabla(){
-            
-       limpiarTabla();    
-            double total = 0;
-            int cantidad =0;
-            listado = (ArrayList) paqueteData.listarPaquetesUltimos2Meses();
-            for (Paquete p: listado) {
-                    long cantidadDeDias = p.getFechaIni().until(p.getFechaFin(), ChronoUnit.DAYS);
-                    modelo.addRow(new Object[] {
-                        p.getIdPaquete(),
-                        p.getDestino(),
-                        p.getFechaIni(),
-                        p.getFechaFin(),
-                        cantidadDeDias,
-                        p.getIdPasaje(),
-                        p.getIdAlojamiento(),
-                        p.getIdPension(),
-                        String.format("$%.2f", p.getMontoFinal())
-                    });
-                    total = total + p.getMontoFinal();
-                    cantidad++;
+    // Método para cargar las ventas desde la base de datos
+    public void cargarVentas() {
+        // Limpiar la tabla antes de cargar los nuevos datos
+        modeloTabla.setRowCount(0);
+
+        // Conexión a la base de datos y consulta SQL
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/turismo", "root", "")) {
+            String query = "SELECT * FROM paquete";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            // Iterar sobre los resultados y agregar las filas a la tabla
+            while (rs.next()) {
+                int idPaquete = rs.getInt("idPaquete");
+                Date fechaIni = rs.getDate("fechaIni");
+                Date fechaFin = rs.getDate("fechaFin");
+                String origen = rs.getString("origen");
+                String destino = rs.getString("destinno");
+                Boolean traslados = rs.getBoolean("traslados");
+                double montoFinal = rs.getDouble("montoFinal");
+                int idPasaje = rs.getInt("idPasaje");
+                int idAlojamiento = rs.getInt("idAlojamiento");
+                int idPension = rs.getInt("idPension");
+                
+
+                // Agregar la fila a la tabla
+            Object[] fila = {idPaquete, fechaIni, fechaFin, origen, destino, traslados, montoFinal,  idPasaje, idAlojamiento, idPension};
+            modeloTabla.addRow(fila);
             }
-            txt_total.setText(String.format("$%.2f", total));
-            txt_cantidad.setText(String.valueOf(cantidad));
-
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar las ventas: " + e.getMessage());
         }
+    }
 
-
-    private void limpiarTabla(){
-
-            int indice= modelo.getRowCount()-1;
-            for (int i = indice; i>=0; i--) {
-                    modelo.removeRow(i);
-            }
-        }
-        
-            private void armarCabecera(){
-
-            modelo.addColumn("ID Paquete");
-            modelo.addColumn("Destino");
-            modelo.addColumn("Desde");
-            modelo.addColumn("Hasta");
-            modelo.addColumn("Días");
-            modelo.addColumn("Transporte");
-            modelo.addColumn("Aljoamiento");
-            modelo.addColumn("Regimen");
-            modelo.addColumn("Monto");
-
-            tablaPaque.setModel(modelo);
-            // Obtener el modelo de columnas de la tabla
-            TableColumnModel columnModel = tablaPaque.getColumnModel();
-
-            //Ancho de las columnas
-            columnModel.getColumn(0).setPreferredWidth(5);   // "ID"
-            columnModel.getColumn(1).setPreferredWidth(10);  // "Destino"
-            columnModel.getColumn(2).setPreferredWidth(20);  // "Desde"
-            columnModel.getColumn(3).setPreferredWidth(20);  // "Hasta"
-            columnModel.getColumn(4).setPreferredWidth(50);  // "Días"
-            columnModel.getColumn(5).setPreferredWidth(40);  // "Transporte"
-            columnModel.getColumn(6).setPreferredWidth(50);  // "Alojamiento"
-            columnModel.getColumn(7).setPreferredWidth(30);  // "Regimen"
-            columnModel.getColumn(8).setPreferredWidth(10);  // "Monto"
-
-            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-
-            tablaPaque.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
-            tablaPaque.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
-            tablaPaque.getColumnModel().getColumn(3).setCellRenderer(centerRenderer);                
-            tablaPaque.getColumnModel().getColumn(4).setCellRenderer(centerRenderer);  
-            tablaPaque.getColumnModel().getColumn(5).setCellRenderer(centerRenderer);  
-            tablaPaque.getColumnModel().getColumn(8).setCellRenderer(centerRenderer);  
-
-            DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
-            rightRenderer.setHorizontalAlignment(SwingConstants.RIGHT);
-            tablaPaque.getColumnModel().getColumn(9).setCellRenderer(rightRenderer); 
-            
-            JTableHeader header = tablaPaque.getTableHeader();
-            DefaultTableCellRenderer rendererCentrado = (DefaultTableCellRenderer) header.getDefaultRenderer();
-            rendererCentrado.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
-            header.setDefaultRenderer(rendererCentrado);
-
-        }
-    
+    // Método para actualizar la tabla después de una venta
+    public void agregarVenta(int idPaquete, Date fechaIni, Date fechaFin, String origen, String destino, Boolean traslados, double montoFinal, int idPasaje, int idAlojamiento, int idPension ) {
+        Object[] fila = {idPaquete, fechaIni, fechaFin, origen, destino, traslados, montoFinal, idPasaje, idAlojamiento, idPension};
+        modeloTabla.addRow(fila);
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        txt_total = new javax.swing.JTextField();
-        txt_cantidad = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaPaque = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 230, 40));
-        getContentPane().add(txt_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 290, 40));
-
-        tablaPaque.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tablaPaque);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 580, 170));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaPaque;
-    private javax.swing.JTextField txt_cantidad;
-    private javax.swing.JTextField txt_total;
     // End of variables declaration//GEN-END:variables
-}
+
