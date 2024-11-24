@@ -160,9 +160,12 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         try{
-          
+            if (calendIda.getDate() == null || calendVuelta.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar las fechas de ida y vuelta.");
+            return;
+        }
        
-      LocalDate fecha1 = calendIda.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    LocalDate fecha1 = calendIda.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     LocalDate fecha2 = calendVuelta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
    
     int inicio = fecha1.getMonthValue();
@@ -184,7 +187,6 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
     
       } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Tiene que seleccionar una fecha");
-    
        
       }
         double precio=0;
@@ -274,7 +276,6 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         if (origen.equalsIgnoreCase("villa mercedes")) {
             suma = suma + 10000;
         }
-        
         
         txtMontoFinal.setText(String.valueOf(precio + suma));
     }//GEN-LAST:event_btnCalcularActionPerformed
