@@ -96,7 +96,7 @@ CREATE TABLE `pasaje` (
 CREATE TABLE `pension` (
   `idPension` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
-  `procentaje` double(4,2) DEFAULT NULL
+  `porcentaje` double(4,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
