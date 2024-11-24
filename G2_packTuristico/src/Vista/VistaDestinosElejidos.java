@@ -22,7 +22,7 @@ public class VistaDestinosElejidos extends javax.swing.JInternalFrame {
     
     public VistaDestinosElejidos() {
         
-        try { backgroundImage = ImageIO.read(new File("imagenes/logo.png")); 
+        try { backgroundImage = ImageIO.read(new File("src/imagenes/menuprincipal.png")); 
         } catch (IOException e) { e.printStackTrace(); }
         
         setTitle("Destinos Más Elegidos"); 
@@ -37,9 +37,11 @@ public class VistaDestinosElejidos extends javax.swing.JInternalFrame {
         
         BackgroundPanel backgroundPanel = new BackgroundPanel(); 
         backgroundPanel.setLayout(new BorderLayout()); 
-        backgroundPanel.add(new JScrollPane(table), BorderLayout.CENTER);
         
-        add(new JScrollPane(table), BorderLayout.CENTER); 
+        JScrollPane scrollPane = new JScrollPane(table);
+        backgroundPanel.add(scrollPane, BorderLayout.CENTER);
+        
+        add(backgroundPanel, BorderLayout.CENTER); 
         
         cargarDestinosMasElegidos(); 
     }
@@ -63,9 +65,15 @@ public class VistaDestinosElejidos extends javax.swing.JInternalFrame {
    
     private class BackgroundPanel extends JPanel { 
         
-        @Override protected void paintComponent(Graphics g) { 
+        @Override 
+        protected void paintComponent(Graphics g) { 
             super.paintComponent(g); 
             if (backgroundImage != null) { 
+                
+                int tableHeight = table.getHeight(); 
+                int panelHeight = getHeight(); 
+                int imageHeight = panelHeight - tableHeight; 
+                
                 g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this); 
             } 
         } 
