@@ -118,21 +118,9 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
         getContentPane().add(txtIdAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 340, 30));
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 420, 30));
         getContentPane().add(txtCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 390, 30));
-
-        txtAmbientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAmbientesActionPerformed(evt);
-            }
-        });
         getContentPane().add(txtAmbientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 390, 30));
         getContentPane().add(txtCamas, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 440, 30));
         getContentPane().add(txtBaños, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 440, 30));
-
-        txtPrecio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecioActionPerformed(evt);
-            }
-        });
         getContentPane().add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 330, 30));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -162,14 +150,6 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         limpiarCampos();
     }//GEN-LAST:event_btnNuevoActionPerformed
-
-    private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecioActionPerformed
-
-    private void txtAmbientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmbientesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAmbientesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -254,7 +234,9 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
         } catch (Exception e) { 
             JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el Alojamiento: " + e.getMessage()); 
         }
-    }     private void eliminarAlojamiento() {
+    }     
+    
+    private void eliminarAlojamiento() {
         try {
             int idAlojamiento = Integer.parseInt(txtIdAlojamiento.getText().trim());
             alojaData.eliminarAlojamiento(idAlojamiento);
@@ -263,7 +245,9 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, " Por favor ingrese un alojamiento valido.");     
         }
-     } private void limpiarCampos() {
+     } 
+    
+    private void limpiarCampos() {
          txtIdAlojamiento.setText("");
         txtNombre.setText("");
         txtCapacidad.setText("");
@@ -296,11 +280,9 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this, "Alojamiento no encontrado");
             }
         } catch (NumberFormatException ex) {
-        
-        JOptionPane.showMessageDialog(this, "Debe ingresar un número válido en los campos numéricos.");
-            } catch (Exception ex) {
-       
-        JOptionPane.showMessageDialog(this, "Ocurrió un error al modificar el alojamiento.");
+            JOptionPane.showMessageDialog(this, "Debe Ingresar un numero valido para el ID");
+         }catch(Exception ex){
+             JOptionPane.showMessageDialog(this, "Ocurrio un error al modificar el alojamiento");
     }
 }
   }
