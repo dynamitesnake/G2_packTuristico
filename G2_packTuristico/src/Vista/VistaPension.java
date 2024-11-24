@@ -125,22 +125,37 @@ public class VistaPension extends javax.swing.JInternalFrame {
 
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
         // TODO add your handling code here:
-        String nombre = jTextFieldNombre.getText();
-        double porcentaje = Double.parseDouble(jTextFieldPorcentaje.getText());
+        try {
+            String nombre = jTextFieldNombre.getText();
+            double porcentaje = Double.parseDouble(jTextFieldPorcentaje.getText());
         
-        Pension pension = new Pension(nombre, porcentaje);
-        pensionData.agregarPension(pension);
-        JOptionPane.showMessageDialog(null, "Pensión agregada correctamente");
+            Pension pension = new Pension(nombre, porcentaje);
+            pensionData.agregarPension(pension);
+            JOptionPane.showMessageDialog(null, "Pensión agregada correctamente");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Debe completar los campos de texto.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
         // TODO add your handling code here:
-        String nombre = jTextFieldNombre.getText(); 
-        double porcentaje = Double.parseDouble(jTextFieldPorcentaje.getText()); 
-        int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la pensión a modificar:")); 
-        Pension pension = new Pension(id, nombre, porcentaje); 
-        pensionData.modificarPension(pension); 
-        JOptionPane.showMessageDialog(null, "Pensión modificada correctamente");
+        try {
+            String nombre = jTextFieldNombre.getText(); 
+            double porcentaje = Double.parseDouble(jTextFieldPorcentaje.getText()); 
+            int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la pensión a modificar:")); 
+            
+            Pension pension = new Pension(id, nombre, porcentaje); 
+            pensionData.modificarPension(pension); 
+            JOptionPane.showMessageDialog(null, "Pensión modificada correctamente");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Debe completar los campos de texto.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
     private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed

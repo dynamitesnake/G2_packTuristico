@@ -6,6 +6,7 @@ import modelo.Pension;
 
 import java.sql.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 public class PensionData {
 
