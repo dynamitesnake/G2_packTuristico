@@ -46,11 +46,11 @@ public class SistemaReservas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuprincipal (1).png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuprincipalultimo.png"))); // NOI18N
         sistema.add(jLabel1);
-        jLabel1.setBounds(0, 0, 1080, 680);
+        jLabel1.setBounds(0, -200, 1700, 1200);
 
-        getContentPane().add(sistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 680));
+        getContentPane().add(sistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 900));
 
         jM_paquete.setText("Paquete");
         jM_paquete.addActionListener(new java.awt.event.ActionListener() {

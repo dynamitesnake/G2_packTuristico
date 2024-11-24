@@ -176,7 +176,7 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
                         double precio = Double.parseDouble(precioTexto);
 
                         // Guardar el pasaje
-                        pasaData.guardPasaje(new Pasajes(id, fechaIda, fechaVuelta, origen, destino, asiento));
+                        pasaData.guardPasaje(new Pasajes(id, trans, fechaIda, fechaVuelta, origen, destino, asiento));
                         JOptionPane.showMessageDialog(null, "Pasaje con D.N.I " + id + " guardado correctamente");
                     } else {
                         JOptionPane.showMessageDialog(null, "El campo de precio está vacío.");
@@ -276,7 +276,7 @@ public class VistaPasaje extends javax.swing.JInternalFrame {
             Integer id = Integer.parseInt(jTCodigo.getText());
             pasaje = pasaData.buscarPasaje(id);
             if (pasaje != null) {
-                //jCtransp.setText(String.valueOf(pasaje.));
+                jCtransp.setSelectedItem(pasaje.getTransp());
                 jCorigen.setSelectedItem(pasaje.getOrigen());
                 jCdestino.setSelectedItem(pasaje.getDestino());
                 jCAsiento.setSelectedItem(pasaje.getAsiento());

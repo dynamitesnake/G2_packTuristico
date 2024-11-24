@@ -213,12 +213,12 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/Pension_imagen-transformed.jpg"/>
+          <Image iconType="3" name="/imagenes/pension.png"/>
         </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="-10" y="0" width="920" height="450"/>
+          <AbsoluteConstraints x="-10" y="0" width="880" height="470"/>
         </Constraint>
       </Constraints>
     </Component>

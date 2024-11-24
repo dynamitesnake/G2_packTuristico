@@ -7,14 +7,16 @@ import java.time.LocalDate;
 
 public class Pasajes {
     private int codPasaje;
+    private String transp;
     private LocalDate fechaida;
     private LocalDate fechavuelta;
     private String origen;
     private String destino;
     private int asiento;
 
-    public Pasajes(int codPasaje, LocalDate fechaida, LocalDate fechavuelta, String origen, String destino, int asiento) {
+    public Pasajes(int codPasaje,String transp, LocalDate fechaida, LocalDate fechavuelta, String origen, String destino, int asiento) {
         this.codPasaje = codPasaje;
+        this.transp = transp;
         this.fechaida = fechaida;
         this.fechavuelta = fechavuelta;
         this.origen = origen;
@@ -22,12 +24,21 @@ public class Pasajes {
         this.asiento = asiento;
     }
 
-    public Pasajes( LocalDate fechaida, LocalDate fechavuelta, String origen, String destino, int asiento) {
+    public Pasajes(String transp, LocalDate fechaida, LocalDate fechavuelta, String origen, String destino, int asiento) {
+        this.transp = transp;
         this.fechaida = fechaida;
         this.fechavuelta = fechavuelta;
         this.origen = origen;
         this.destino = destino;
         this.asiento = asiento;
+    }
+
+    public void setTransp(String transp) {
+        this.transp = transp;
+    }
+
+    public String getTransp() {
+        return transp;
     }
 
     public Pasajes() {
@@ -88,8 +99,10 @@ public class Pasajes {
 
     @Override
     public String toString() {
-        return "Pasaje{" + "codPasaje=" + codPasaje + ", fechaida=" + fechaida + ", fechavuelta=" + fechavuelta + ", origen=" + origen + ", destino=" + destino + ", asiento=" + asiento + '}';
+        return "Pasajes{" + "codPasaje=" + codPasaje + ", transp=" + transp + ", fechaida=" + fechaida + ", fechavuelta=" + fechavuelta + ", origen=" + origen + ", destino=" + destino + ", asiento=" + asiento + '}';
     }
+
+    
 
   
     

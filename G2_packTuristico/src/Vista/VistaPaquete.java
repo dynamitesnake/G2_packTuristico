@@ -58,22 +58,27 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        getContentPane().add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 200, 30));
+        getContentPane().add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 200, 30));
 
         jCorigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "San Luis", "Villa Mercedes", " " }));
-        getContentPane().add(jCorigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 170, 30));
+        getContentPane().add(jCorigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 140, 30));
 
         jCdestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mar del Plata", "Bariloche", "Mendoza", "Salta", "Jujuy", "Las Grutas", "Puerto Madryn", "Carlos Paz", "Mina Clavero", "Pinamar", "Miramar", "Villa Gesell", "Necochea", "Puerto Iguazu", "Termas de Rio Hondo", "Merlo", "Calafate", "Ushuaia", "Tucuman", "Chubut", "Buenos Aires", "Mar de Ajó", "Santiago de Chile", "Florianapolis", "Camboriú", "Punta del Este", "Punta Cana", "Cancun", "Viña del Mar", "Montevideo", "Cordoba", " " }));
-        getContentPane().add(jCdestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 170, 30));
+        jCdestino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCdestinoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jCdestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, 140, 30));
 
         cboxTransporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Avion", "Colectivo", " " }));
-        getContentPane().add(cboxTransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, 170, 30));
-        getContentPane().add(txtIdPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 240, 30));
-        getContentPane().add(calendIda, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 110, 30));
-        getContentPane().add(calendVuelta, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 110, 30));
-        getContentPane().add(jtCantidadPasajeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 160, 30));
-        getContentPane().add(txtIdPension, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 160, 30));
-        getContentPane().add(txtMontoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 120, 40));
+        getContentPane().add(cboxTransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 180, 170, 30));
+        getContentPane().add(txtIdPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 240, 30));
+        getContentPane().add(calendIda, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 110, 30));
+        getContentPane().add(calendVuelta, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 110, 30));
+        getContentPane().add(jtCantidadPasajeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 160, 30));
+        getContentPane().add(txtIdPension, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, 160, 30));
+        getContentPane().add(txtMontoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 420, 120, 40));
 
         jB_guardarPaquete.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_guardarPaquete.setForeground(new java.awt.Color(255, 153, 0));
@@ -85,7 +90,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
                 jB_guardarPaqueteActionPerformed(evt);
             }
         });
-        getContentPane().add(jB_guardarPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 160, 70));
+        getContentPane().add(jB_guardarPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 530, 190, 100));
 
         JBbuscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         JBbuscar.setForeground(new java.awt.Color(255, 153, 0));
@@ -97,7 +102,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
                 JBbuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(JBbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 370, 160, 70));
+        getContentPane().add(JBbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 530, 180, 100));
 
         btnCalcular.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         btnCalcular.setForeground(new java.awt.Color(255, 153, 0));
@@ -109,7 +114,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
                 btnCalcularActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 370, 180, 70));
+        getContentPane().add(btnCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 530, 170, 100));
 
         jButton4.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 153, 0));
@@ -120,7 +125,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, 110, 30));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 470, 140, 50));
 
         jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 153, 0));
@@ -131,12 +136,18 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 450, 90, 30));
-        getContentPane().add(txt_temp, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 160, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 470, 130, 50));
+
+        txt_temp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_tempActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txt_temp, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 490, 160, 30));
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vista paquete.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 900, 500));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vista paquete (1).png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 1100, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -279,6 +290,14 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         
         txtMontoFinal.setText(String.valueOf(precio + suma));
     }//GEN-LAST:event_btnCalcularActionPerformed
+
+    private void jCdestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCdestinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCdestinoActionPerformed
+
+    private void txt_tempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_tempActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_tempActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

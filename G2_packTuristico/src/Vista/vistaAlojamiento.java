@@ -55,7 +55,7 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
         setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        getContentPane().add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 340, 30));
+        getContentPane().add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 340, 30));
 
         btnGuardar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 153, 0));
@@ -67,7 +67,7 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 120, 160, 80));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 170, 160, 80));
 
         btnBuscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(255, 153, 0));
@@ -79,7 +79,7 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 160, 80));
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 160, 80));
 
         btnNuevo.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         btnNuevo.setForeground(new java.awt.Color(255, 153, 0));
@@ -90,7 +90,7 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
                 btnNuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 160, 80));
+        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 260, 160, 80));
 
         btnEliminar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 153, 0));
@@ -102,7 +102,7 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 300, 160, 80));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 160, 80));
 
         btn_modificar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         btn_modificar.setForeground(new java.awt.Color(255, 153, 0));
@@ -114,18 +114,18 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
                 btn_modificarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, 160, 80));
-        getContentPane().add(txtIdAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 340, 30));
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 420, 30));
-        getContentPane().add(txtCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 390, 30));
-        getContentPane().add(txtAmbientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 390, 30));
-        getContentPane().add(txtCamas, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 440, 30));
-        getContentPane().add(txtBaños, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 440, 30));
-        getContentPane().add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 330, 30));
+        getContentPane().add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 360, 160, 80));
+        getContentPane().add(txtIdAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 220, 30));
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 220, 30));
+        getContentPane().add(txtCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 220, 30));
+        getContentPane().add(txtAmbientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 220, 30));
+        getContentPane().add(txtCamas, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 220, 30));
+        getContentPane().add(txtBaños, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 220, 30));
+        getContentPane().add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, 220, 30));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vista alojamiento.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/visAlojamiento.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

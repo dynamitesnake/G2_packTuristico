@@ -17,16 +17,17 @@ public class pasajeDatas {
     }
      public void guardPasaje(Pasajes pasaje) {
         System.out.println("\nGuardar pasaje: ");
-        String sql = "INSERT INTO pasaje ( idPasaje, origen, destino, asiento, fecha_ida, fecha_vuelta) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO pasaje ( idPasaje, medioViaje, origen, destino, asiento, fecha_ida, fecha_vuelta) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, pasaje.getCodPasaje());
-            ps.setString(2, pasaje.getOrigen());
-            ps.setString(3,pasaje.getDestino());
-            ps.setInt(4,pasaje.getAsiento());
+            ps.setString(2, pasaje.getTransp());
+            ps.setString(3, pasaje.getOrigen());
+            ps.setString(4,pasaje.getDestino());
+            ps.setInt(5,pasaje.getAsiento());
             
-            ps.setDate(5, java.sql.Date.valueOf(pasaje.getFechaida()));
-            ps.setDate(6, java.sql.Date.valueOf(pasaje.getFechavuelta()));
+            ps.setDate(6, java.sql.Date.valueOf(pasaje.getFechaida()));
+            ps.setDate(7, java.sql.Date.valueOf(pasaje.getFechavuelta()));
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -139,6 +140,7 @@ public class pasajeDatas {
             if (rs.next()) {
                 pasaje = new Pasajes
                        (rs.getInt("idPasaje"),
+                        rs.getString("medioViaje"),
                         rs.getDate("fecha_ida").toLocalDate(),
                         rs.getDate("fecha_vuelta").toLocalDate(),
                         rs.getString("origen"),

@@ -42,11 +42,11 @@ private Habitacion habiActual = null;
         jLabel8 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(JTidHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 330, 30));
-        getContentPane().add(JTNPlanta, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 280, 30));
-        getContentPane().add(JTNumeracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 350, 30));
-        getContentPane().add(JTcupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 440, 30));
-        getContentPane().add(JRestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, -1, -1));
+        getContentPane().add(JTidHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 280, 30));
+        getContentPane().add(JTNPlanta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 280, 30));
+        getContentPane().add(JTNumeracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 280, 30));
+        getContentPane().add(JTcupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 280, 30));
+        getContentPane().add(JRestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, -1, 30));
 
         JBbuscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         JBbuscar.setForeground(new java.awt.Color(255, 153, 0));
@@ -98,10 +98,10 @@ private Habitacion habiActual = null;
                 JTidalojamientoActionPerformed(evt);
             }
         });
-        getContentPane().add(JTidalojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 320, 30));
+        getContentPane().add(JTidalojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 280, 30));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vista habitacion.png"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 460));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/alojamiento.png"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

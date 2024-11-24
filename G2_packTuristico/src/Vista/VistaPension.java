@@ -104,8 +104,8 @@ public class VistaPension extends javax.swing.JInternalFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 430, 140));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Pension_imagen-transformed.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 920, 450));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pension.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 880, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
