@@ -29,7 +29,7 @@ public class VistaResumenVentas extends javax.swing.JInternalFrame {
         setLayout(new BorderLayout());
         
 
-        String[] columnas = {"ID Paquete", "FechaIni", "FechaFin", "Origen", "Destino", "Traslados", "Monto", "ID Pasaje", "ID Alojamiento", "ID Pension"};
+        String[] columnas = {"ID Paquete", "FechaIni", "FechaFin", "Origen", "Destino", "medioViaje", "Monto", "ID Pasaje", "ID Alojamiento", "ID Pension"};
         
         modeloTabla = new DefaultTableModel(null, columnas);
         tablaVentas = new JTable(modeloTabla);
@@ -55,7 +55,7 @@ public class VistaResumenVentas extends javax.swing.JInternalFrame {
         
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/turismo", "root", "")) { 
             String query = "SELECT idPaquete, fechaIni, fechaFin, " + 
-                    "DATEDIFF(fechaFin, fechaIni) AS dias, origen, destino, traslados, " + 
+                    "DATEDIFF(fechaFin, fechaIni) AS dias, origen, destino, medioViaje, " + 
                     "montoFinal, idPasaje, idAlojamiento, idPension " + 
                     "FROM paquete " + 
                     "WHERE fechaIni BETWEEN ? AND ?";
@@ -72,18 +72,18 @@ public class VistaResumenVentas extends javax.swing.JInternalFrame {
                 int dias = rs.getInt("dias"); 
                 String origen = rs.getString("origen"); 
                 String destino = rs.getString("destino"); 
-                Boolean traslados = rs.getBoolean("traslados"); 
+                String medioViaje = rs.getString("medioViaje"); 
                 double montoFinal = rs.getDouble("montoFinal"); 
                 int idPasaje = rs.getInt("idPasaje"); 
                 int idAlojamiento = rs.getInt("idAlojamiento"); 
                 int idPension = rs.getInt("idPension"); 
 
 
-                Object[] fila = {idPaquete, fechaIni, fechaFin, origen, destino, traslados, montoFinal, idPasaje, idAlojamiento, idPension}; modeloTabla.addRow(fila); } } } catch (SQLException e) { JOptionPane.showMessageDialog(this, "Error al cargar las ventas: " + e.getMessage()); } }
+                Object[] fila = {idPaquete, fechaIni, fechaFin, origen, destino, medioViaje, montoFinal, idPasaje, idAlojamiento, idPension}; modeloTabla.addRow(fila); } } } catch (SQLException e) { JOptionPane.showMessageDialog(this, "Error al cargar las ventas: " + e.getMessage()); } }
 
     
-    public void agregarVenta(int idPaquete, Date fechaIni, Date fechaFin, String origen, String destino, Boolean traslados, double montoFinal, int idPasaje, int idAlojamiento, int idPension ) {
-        Object[] fila = {idPaquete, fechaIni, fechaFin, origen, destino, traslados, montoFinal, idPasaje, idAlojamiento, idPension};
+    public void agregarVenta(int idPaquete, Date fechaIni, Date fechaFin, String origen, String destino, String medioViaje, double montoFinal, int idPasaje, int idAlojamiento, int idPension ) {
+        Object[] fila = {idPaquete, fechaIni, fechaFin, origen, destino, medioViaje, montoFinal, idPasaje, idAlojamiento, idPension};
         modeloTabla.addRow(fila);
     }
     

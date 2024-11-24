@@ -26,7 +26,7 @@ public class Paquete {
         this.idPaquete = idPaquete;
     }
 
-    public Paquete(int idPaquete, LocalDate fechaIni, LocalDate fechaFin, String origen, String destino, String medioViaje, double montoFinal, int idPasaje, int idAlojaminto, int idPension, int pasajeros) {
+    public Paquete(int idPaquete, LocalDate fechaIni, LocalDate fechaFin, String origen, String destino, String medioViaje, double montoFinal, int idPasaje, int idAlojamiento, int idPension, int pasajeros) {
         this.idPaquete = idPaquete;
         this.fechaIni = fechaIni;
         this.fechaFin = fechaFin;

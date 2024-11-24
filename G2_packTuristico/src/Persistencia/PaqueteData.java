@@ -21,13 +21,7 @@ public class PaqueteData {
     public void guardarPaquete (Paquete paquete){
     String sql = "INSERT INTO `paquete` (idpaquete, fechaIni, fechaFin, origen, destino, pasajeros, medioViaje, montoFinal, idpasaje, idalojamiento, idpension) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     try {
-        if (conn == null || conn.isClosed()) {
-            throw new SQLException("La conexión con la base de datos no está disponible.");
-        }
-
         PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        
-        
         ps.setInt(1, paquete.getIdPaquete()); 
         ps.setDate(2, java.sql.Date.valueOf(paquete.getFechaIni()));
         ps.setDate(3, java.sql.Date.valueOf(paquete.getFechaFin()));
@@ -40,24 +34,16 @@ public class PaqueteData {
         ps.setInt(10, paquete.getIdAlojamiento());
         ps.setInt(11, paquete.getIdPension());
 
-        // Ejecutar la inserción
-        int rowsInserted = ps.executeUpdate();
-        if (rowsInserted > 0) {
+        ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                paquete.setIdPaquete(rs.getInt(1)); 
+                 paquete.setIdPaquete(rs.getInt(1));
             }
-            rs.close();
-            System.out.println("Paquete guardado correctamente. ID generado: " + paquete.getIdPaquete());
-        } else {
-            System.out.println("No se insertó el paquete.");
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla pasaje");
         }
-        ps.close();
-    } catch (SQLException e) {
-        System.err.println("Error al guardar el paquete: " + e.getMessage());
-        e.printStackTrace();
     }
-}
 
  public Paquete buscarPaquete(int idPaquete) {
     System.out.println("\nBuscando Paquete con ID: " + idPaquete);
@@ -77,7 +63,7 @@ public class PaqueteData {
             paquete.setOrigen(rs.getString("origen"));
             paquete.setDestino(rs.getString("destino"));
             paquete.setPasajeros(rs.getInt("Pasajeros"));
-            paquete.setMedioViaje(rs.getString("MedioViaje"));
+            paquete.setMedioViaje(rs.getString("medioViaje"));
             paquete.setMontoFinal(rs.getDouble("montoFinal"));
             paquete.setIdPasaje(rs.getInt("idPasaje"));
             paquete.setIdAlojamiento(rs.getInt("idAlojamiento"));

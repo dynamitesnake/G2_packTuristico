@@ -52,6 +52,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         txtMontoFinal = new javax.swing.JTextField();
         txt_temp = new javax.swing.JTextField();
         txt_idPasaje = new javax.swing.JTextField();
+        txtIdAlojamiento = new javax.swing.JTextField();
         jB_guardarPaquete = new javax.swing.JButton();
         JBbuscar = new javax.swing.JButton();
         btnCalcular = new javax.swing.JButton();
@@ -65,7 +66,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        getContentPane().add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 200, 30));
+        getContentPane().add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, 200, 30));
 
         jCorigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "San Luis", "Villa Mercedes", " " }));
         getContentPane().add(jCorigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 140, 30));
@@ -84,10 +85,11 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         getContentPane().add(calendIda, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 110, 30));
         getContentPane().add(calendVuelta, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 110, 30));
         getContentPane().add(jtCantidadPasajeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 160, 30));
-        getContentPane().add(txtIdPension, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, 160, 30));
+        getContentPane().add(txtIdPension, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 160, 30));
         getContentPane().add(txtMontoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 420, 120, 40));
         getContentPane().add(txt_temp, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 490, 160, 30));
         getContentPane().add(txt_idPasaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 160, 30));
+        getContentPane().add(txtIdAlojamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 160, 30));
 
         jB_guardarPaquete.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_guardarPaquete.setForeground(new java.awt.Color(255, 153, 0));
@@ -312,6 +314,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> jCtransp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jtCantidadPasajeros;
+    private javax.swing.JTextField txtIdAlojamiento;
     private javax.swing.JTextField txtIdPaquete;
     private javax.swing.JTextField txtIdPension;
     private javax.swing.JTextField txtMontoFinal;
@@ -341,12 +344,13 @@ private void guardarPaquete() {
             LocalDate fechaFin = new java.sql.Date(calendVuelta.getDate().getTime()).toLocalDate();
             int idPasaje = Integer.parseInt(txt_idPasaje.getText()); 
             int pasajeros = Integer.parseInt(jtCantidadPasajeros.getText()); 
-            int idAlojamiento = Integer.parseInt((String) comboAlojamientos.getSelectedItem());  
+            int idAlojamiento = Integer.parseInt(txtIdAlojamiento.getText());  
             int idPension = Integer.parseInt(txtIdPension.getText()); 
             String medioViaje = (String) jCtransp.getSelectedItem();
             String origen = (String) jCorigen.getSelectedItem();
             String destino = (String) jCdestino.getSelectedItem();
             int montoFinal = Integer.parseInt(txtMontoFinal.getText());
+            
             Paquete paquete = new Paquete(idPaquete, fechaIni, fechaFin,origen, destino, medioViaje, montoFinal, idPasaje,idAlojamiento,idPension,pasajeros); 
             
             paqueData.guardarPaquete(paquete); 
