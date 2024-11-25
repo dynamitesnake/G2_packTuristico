@@ -52,7 +52,6 @@ public class vistaAlojamiento extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         getContentPane().add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 340, 30));

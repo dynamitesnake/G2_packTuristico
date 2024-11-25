@@ -41,6 +41,9 @@ private Habitacion habiActual = null;
         JTidalojamiento = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(JTidHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 280, 30));
         getContentPane().add(JTNPlanta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 280, 30));

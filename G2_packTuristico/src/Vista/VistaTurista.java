@@ -43,14 +43,12 @@ public class VistaTurista extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(txtdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 280, 30));
         getContentPane().add(txtnom, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 250, 30));
         getContentPane().add(txtedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 280, 30));
         getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 210, 30));
 
-        jB_guardar.setBackground(new java.awt.Color(255, 255, 255));
         jB_guardar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_guardar.setForeground(new java.awt.Color(255, 153, 51));
         jB_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono guardar.png"))); // NOI18N
@@ -63,7 +61,6 @@ public class VistaTurista extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jB_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 170, 110));
 
-        jB_buscar.setBackground(new java.awt.Color(255, 255, 255));
         jB_buscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jB_buscar.setForeground(new java.awt.Color(255, 153, 51));
         jB_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono buscar (2).png"))); // NOI18N
