@@ -19,6 +19,7 @@ public class VistaPension extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextFieldID = new javax.swing.JTextField();
         jTextFieldPorcentaje = new javax.swing.JTextField();
         jTextFieldNombre = new javax.swing.JTextField();
         jButtonBuscar = new javax.swing.JButton();
@@ -33,11 +34,14 @@ public class VistaPension extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(900, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTextFieldID.setMinimumSize(new java.awt.Dimension(68, 22));
+        getContentPane().add(jTextFieldID, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 100, 30));
+
         jTextFieldPorcentaje.setMinimumSize(new java.awt.Dimension(68, 22));
-        getContentPane().add(jTextFieldPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 180, 30));
+        getContentPane().add(jTextFieldPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 100, 30));
 
         jTextFieldNombre.setMinimumSize(new java.awt.Dimension(68, 22));
-        getContentPane().add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 210, 30));
+        getContentPane().add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 100, 30));
 
         jButtonBuscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButtonBuscar.setForeground(new java.awt.Color(255, 153, 0));
@@ -126,10 +130,11 @@ public class VistaPension extends javax.swing.JInternalFrame {
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
         // TODO add your handling code here:
         try {
+            int id = Integer.parseInt(jTextFieldID.getText());
             String nombre = jTextFieldNombre.getText();
             double porcentaje = Double.parseDouble(jTextFieldPorcentaje.getText());
         
-            Pension pension = new Pension(nombre, porcentaje);
+            Pension pension = new Pension(id, nombre, porcentaje);
             pensionData.agregarPension(pension);
             JOptionPane.showMessageDialog(null, "Pensión agregada correctamente");
         } catch (NumberFormatException e) {
@@ -183,6 +188,7 @@ public class VistaPension extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaListar;
+    private javax.swing.JTextField jTextFieldID;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldPorcentaje;
     // End of variables declaration//GEN-END:variables
