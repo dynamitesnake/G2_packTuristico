@@ -335,12 +335,12 @@ private void guardarPaquete() {
             Paquete paquete = new Paquete(idPaquete, fechaIni, fechaFin,origen, destino, medioViaje, montoFinal, idPasaje,idAlojamiento,idPension,pasajeros); 
             
             paqueData.guardarPaquete(paquete); 
-            JOptionPane.showMessageDialog(null, "alojamiento agregado: "); 
+            JOptionPane.showMessageDialog(null, "Paquete agregado: "); 
             
         } catch (NumberFormatException e) { 
             JOptionPane.showMessageDialog(null, "Error: Por favor ingresa datos validos"); 
         } catch (Exception e) { 
-            JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el Alojamiento: " + e.getMessage()); 
+            JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el paquete: " + e.getMessage()); 
         }
     }     
 
