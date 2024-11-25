@@ -3,6 +3,7 @@ package Vista;
 
 import Modelo.Alojamiento;
 import Modelo.Paquete;
+import Modelo.Pasajes;
 import Persistencia.PaqueteData;
 import Persistencia.alojamientoData;
 import Persistencia.pasajeDatas;
@@ -14,6 +15,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import modelo.Pension;
 import persistencia.PensionData;
 
 
@@ -179,6 +181,7 @@ String temporada = "";
 double precio = 0;
 long diasEstadia = 0; 
 
+
 try {
     if (calendIda.getDate() == null || calendVuelta.getDate() == null) {
         JOptionPane.showMessageDialog(null, "Debe seleccionar las fechas de ida y vuelta.");
@@ -274,6 +277,53 @@ try {
 } catch (Exception e) {
     JOptionPane.showMessageDialog(null, "Error al obtener el precio del alojamiento: " + e.getMessage());
 }
+
+
+
+try { 
+    PensionData penData = new PensionData();
+    int idPension = Integer.parseInt(txtIdPension.getText()); 
+    Pension pension = penData.buscarPension(idPension); 
+    if (pension == null) { 
+        JOptionPane.showMessageDialog(null, "No se encontró un paquete válido con el ID de pensión proporcionado.");
+    return; 
+} 
+
+    double porcentajePension = pension.getPorcentaje(); 
+
+    } catch (NumberFormatException ex) { 
+        JOptionPane.showMessageDialog(null, "Por favor ingrese un ID de pensión válido.");
+        return; 
+    } catch (Exception ex) { 
+        JOptionPane.showMessageDialog(null, "Error al buscar la pensión: " + ex.getMessage());
+        return; 
+    } 
+
+    try { 
+        pasajeDatas pasData = new pasajeDatas();
+        int idPasaje = Integer.parseInt(txt_idPasaje.getText()); 
+        Pasajes pasaje = pasData.buscarPasaje(idPasaje); 
+
+    if (pasaje == null) { 
+        JOptionPane.showMessageDialog(null, "No se encontró un paquete válido con el ID de pasaje proporcionado.");
+        return; 
+    } 
+        double presupuestoPasaje = pasaje.getCodPasaje(); 
+
+    } catch (NumberFormatException ex) { 
+        JOptionPane.showMessageDialog(null, "Por favor ingrese un ID de pasaje válido."); 
+        return; 
+    } catch (Exception ex) { 
+        JOptionPane.showMessageDialog(null, "Error al buscar el pasaje: " + ex.getMessage()); 
+        return; 
+    } 
+         int porcentajePension = 0;
+         double presupuestoPasaje = 0;
+         
+        double costoTotal = presupuestoPasaje + (porcentajePension * presupuestoPasaje / 100); 
+
+        JOptionPane.showMessageDialog(null, "Costo total calculado: " + costoTotal);
+
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     private void jCdestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCdestinoActionPerformed
