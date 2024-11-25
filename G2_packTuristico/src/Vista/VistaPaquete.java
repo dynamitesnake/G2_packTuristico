@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -175,131 +176,105 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JBbuscarActionPerformed
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
-        try{
-            if (calendIda.getDate() == null || calendVuelta.getDate() == null) {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar las fechas de ida y vuelta.");
-            return;
-        }
-       //conversion de fechas:
+String temporada = ""; 
+double precio = 0;
+long diasEstadia = 0; 
+
+try {
+    if (calendIda.getDate() == null || calendVuelta.getDate() == null) {
+        JOptionPane.showMessageDialog(null, "Debe seleccionar las fechas de ida y vuelta.");
+        return;
+    }
+
+    // Conversión de fechas:
     LocalDate fechaIda = calendIda.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     LocalDate fechaVuelta = calendVuelta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    
-    int diasEstadia = fechaIda.until(fechaVuelta).getDays();
-    if(diasEstadia <= 0){
-    JOptionPane.showMessageDialog(null, "La fecha de vuelta debe ser poesterior a la fecha de ida");
-    return;
+
+    diasEstadia = ChronoUnit.DAYS.between(fechaIda, fechaVuelta);
+    if (diasEstadia <= 0) {
+        JOptionPane.showMessageDialog(null, "La fecha de vuelta debe ser posterior a la fecha de ida");
+        return;
     }
-   
-   // int inicio = fecha1.getMonthValue();
-    //int fin = fecha2.getMonthValue();
-/*
+
+    int inicio = fechaIda.getMonthValue();
+    int fin = fechaVuelta.getMonthValue();
+
     if ((inicio == Month.JANUARY.getValue() || inicio == Month.JULY.getValue()) &&
         (fin == Month.JANUARY.getValue() || fin == Month.JULY.getValue())) {
         txt_temp.setText("Alta");
-        temporada ="Alta";
+        temporada = "Alta";
     } else if ((inicio == Month.FEBRUARY.getValue() || inicio == Month.JUNE.getValue()) &&
                (fin == Month.FEBRUARY.getValue() || fin == Month.JUNE.getValue())) {
         txt_temp.setText("Media");
-         temporada ="Media";
+        temporada = "Media";
     } else {
         txt_temp.setText("Baja");
-         temporada ="Baja";
+        temporada = "Baja";
     }
-        */
+
+} catch (NullPointerException e) {
+    JOptionPane.showMessageDialog(null, "Tiene que seleccionar una fecha");
+    return;
+}
+
+try {
+    String seleccionCompletaT = jCtransp.getSelectedItem().toString();
+    String[] a = seleccionCompletaT.split("\\D+");
+    double costoT = Integer.parseInt(a[1]);
+
+    int cantP = Integer.parseInt(jtCantidadPasajeros.getText());
+
+    if (temporada.equals("Alta")) {
+        precio = (costoT * cantP) * 1.30;
+    } else if (temporada.equals("Media")) {
+        precio = (costoT * cantP) * 1.15;
+    } else {
+        precio = (costoT * cantP);
+    }
+} catch (NumberFormatException e) {
+    JOptionPane.showMessageDialog(null, "Tiene que ingresar una cantidad de pasajeros");
+    return;
+}
+
+String trans = (String) jCtransp.getSelectedItem();
+String origen = (String) jCorigen.getSelectedItem();
+String destino = (String) jCdestino.getSelectedItem();
+double suma = 0;
+
+// Costos por destino
+if (destino.equalsIgnoreCase("mar del plata") || destino.equalsIgnoreCase("pinamar")
+        || destino.equalsIgnoreCase("miramar") || destino.equalsIgnoreCase("villa gesell")
+        || destino.equalsIgnoreCase("necochea") || destino.equalsIgnoreCase("buenos aires")
+        || destino.equalsIgnoreCase("mar de ajo")) {
+    suma = 140000;
+}
+else if (trans.equalsIgnoreCase("avion")) {
+    suma = suma * 1.6;
+}
+if (origen.equalsIgnoreCase("villa mercedes")) {
+    suma = suma + 10000;
+}
+
+
+try {
+    alojamientoData alojamientoData = new alojamientoData();
+    double precioPorNoche = alojamientoData.getPrecioPorNoche(ALLBITS);
+
+    if (precioPorNoche == 0) {
+        JOptionPane.showMessageDialog(null, "No se encontró precio por noche para el destino seleccionado.");
+        return;
+    }
+
+    double costoAlojamiento = precioPorNoche * diasEstadia;
+
     
-      } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Tiene que seleccionar una fecha");
-       
-      }
-        double precio=0;
-        
-        String seleccionCompletaT = jCtransp.getSelectedItem().toString();
-        String[] a = seleccionCompletaT.split("\\D+");
-        
-        double costoT = Integer.parseInt(a[1]);
-        
-        try{
-        int cantP = Integer.parseInt(jtCantidadPasajeros.getText());
-        
-        if (temporada.equals("Alta")) {
-            precio = (costoT * cantP) * 1.30;
-        } else if (temporada.equals("Media")) {
-            precio = (costoT * cantP) * 1.15;
-        } else {
+    double montoFinal = precio + suma + costoAlojamiento;
 
-           precio = (costoT * cantP);
-
-        }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Tiene que ingresar una cantidad de pasajeros");
     
-      }
-        String trans = (String) jCtransp.getSelectedItem();
-        String origen = (String) jCorigen.getSelectedItem();
-        String destino = (String) jCdestino.getSelectedItem();
-        double suma = 0;
-
-        
-        if (destino.equalsIgnoreCase("mar del plata") || destino.equalsIgnoreCase("pinamar")
-                || destino.equalsIgnoreCase("miramar") || destino.equalsIgnoreCase("villa gesell")
-                || destino.equalsIgnoreCase("necochea") || destino.equalsIgnoreCase("buenos aires")
-                || destino.equalsIgnoreCase("mar de ajo")) {
-            suma = 140000;
-        }
-        if (destino.equalsIgnoreCase("mendoza") || destino.equalsIgnoreCase("carlos paz")
-                || destino.equalsIgnoreCase("cordoba")) {
-            suma = 70000;
-        }
-        if (destino.equalsIgnoreCase("mina clavero") || destino.equalsIgnoreCase("merlo")) {
-            suma = 60000;
-        }
-        if (destino.equalsIgnoreCase("puerto madryn") || destino.equalsIgnoreCase("salta")
-                || destino.equalsIgnoreCase("jujuy")) {
-            suma = 200000;
-        }
-        if (destino.equalsIgnoreCase("bariloche") || destino.equalsIgnoreCase("las grutas")
-                || destino.equalsIgnoreCase("chubut") || destino.equalsIgnoreCase("tucuman")
-                || destino.equalsIgnoreCase("termas de rio hondo")) {
-            suma = 190000;
-        }
-
-        if (destino.equalsIgnoreCase("puerto iguazu") || destino.equalsIgnoreCase("ushuaia")
-                || destino.equalsIgnoreCase("calafate")) {
-            suma = 240000;
-
-        }
-        if (destino.equalsIgnoreCase("santiago de chile")) {
-            suma = 100000;
-        }
-        if (destino.equalsIgnoreCase("viña del mar")) {
-            suma = 140000;
-        }
-        if (destino.equalsIgnoreCase("florianapolis")) {
-            suma = 370000;
-        }
-        if (destino.equalsIgnoreCase("camboriu")) {
-            suma = 390000;
-        }
-        if (destino.equalsIgnoreCase("punta del este")) {
-            suma = 260000;
-        }
-        if (destino.equalsIgnoreCase("montevideo")) {
-            suma = 240000;
-        }
-        if (destino.equalsIgnoreCase("punta cana")) {
-            suma = 1600000;
-        }
-        if (destino.equalsIgnoreCase("cancun")) {
-            suma = 1900000;
-        }
-        if (trans.equalsIgnoreCase("avion")) {
-            suma = suma * 1.6;
-        }
-        if (origen.equalsIgnoreCase("villa mercedes")) {
-            suma = suma + 10000;
-        }
-        
-        txtMontoFinal.setText(String.valueOf(precio + suma));
+    txtMontoFinal.setText(String.valueOf(montoFinal)); 
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(null, "Error al obtener el precio del alojamiento: " + e.getMessage());
+}
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     private void jCdestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCdestinoActionPerformed

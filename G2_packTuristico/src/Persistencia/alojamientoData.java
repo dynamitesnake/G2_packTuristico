@@ -149,4 +149,18 @@ public List<Alojamiento> listarAlojamiento() {
         }
         return lista;
     }
+public double getPrecioPorNoche(int idAlojamiento) throws SQLException {
+    java.sql.Connection conn = Conexion.getConexion();
+    double precioPorNoche = 0;
+    String query = "SELECT precioNoche FROM alojamiento WHERE idAlojamiento = ? ";
+    try (
+         PreparedStatement stmt = conn.prepareStatement(query)) {
+        stmt.setInt(1, idAlojamiento);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            precioPorNoche = rs.getDouble("precioNoche");
+        }
+    }
+    return precioPorNoche;
+}
 }
