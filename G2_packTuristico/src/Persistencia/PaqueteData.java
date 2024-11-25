@@ -69,7 +69,7 @@ public class PaqueteData {
             paquete.setIdAlojamiento(rs.getInt("idAlojamiento"));
             paquete.setIdPension(rs.getInt("idPension"));
         } else {
-            JOptionPane.showMessageDialog(null, "No se encontró un paquete con el ID proporcionado.");
+            System.out.println("No se encontró un paquete con el ID proporcionado.");
         }
 
         rs.close(); 

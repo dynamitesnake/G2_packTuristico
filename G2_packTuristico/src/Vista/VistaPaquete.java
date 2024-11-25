@@ -332,6 +332,13 @@ private void guardarPaquete() {
             String destino = (String) jCdestino.getSelectedItem();
             int montoFinal = Integer.parseInt(txtMontoFinal.getText());
             
+            Paquete paqueteExistente = paqueData.buscarPaquete(idPaquete);
+            if (paqueteExistente != null) {
+                JOptionPane.showMessageDialog(null, "Ya existe un paquete con el ID proporcionado. Por favor, ingrese un ID diferente.");
+                return;
+            }
+            
+            
             Paquete paquete = new Paquete(idPaquete, fechaIni, fechaFin,origen, destino, medioViaje, montoFinal, idPasaje,idAlojamiento,idPension,pasajeros); 
             
             paqueData.guardarPaquete(paquete); 
