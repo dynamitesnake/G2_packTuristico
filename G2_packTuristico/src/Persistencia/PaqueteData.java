@@ -91,13 +91,13 @@ public class PaqueteData {
         ps.setDate(2, java.sql.Date.valueOf(paquete.getFechaFin()));
         ps.setString(3, paquete.getOrigen());
         ps.setString(4, paquete.getDestino());
-        ps.setInt(5, paquete.getPasajeros()); // Asumiendo que "pasajeros" es un entero
+        ps.setInt(5, paquete.getPasajeros()); 
         ps.setString(6, paquete.getMedioViaje());
         ps.setDouble(7, paquete.getMontoFinal());
         ps.setInt(8, paquete.getIdPasaje());
         ps.setInt(9, paquete.getIdAlojamiento());
         ps.setInt(10, paquete.getIdPension());
-        ps.setInt(11, paquete.getIdPaquete()); // Este es el idpaquete para el WHERE
+        ps.setInt(11, paquete.getIdPaquete()); 
 
         int exito = ps.executeUpdate();
 
