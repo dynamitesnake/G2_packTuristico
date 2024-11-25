@@ -6,25 +6,19 @@ import modelo.Pension;
 
 import java.sql.*;
 import java.util.*;
-import javax.swing.JOptionPane;
 
 public class PensionData {
 
     // Método para agregar una nueva pensión
-    public void agregarPension(Pension pension) {
+    public void agregarPension(Pension pension) throws SQLException {
         Connection conn = Conexion.getConexion();
-        try {
-            String query = "INSERT INTO pension (idPension, nombre, porcentaje) VALUES (?, ?, ?)";
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setInt(1, pension.getIdPension());
-            stmt.setString(2, pension.getNombre());
-            stmt.setDouble(3, pension.getPorcentaje());
-            stmt.executeUpdate();
-            System.out.println("Pensión agregada correctamente.");
-        } catch (SQLException e) {
-            System.out.println("Error al agregar pensión.");
-            e.printStackTrace();
-        }
+        String query = "INSERT INTO pension (idPension, nombre, porcentaje) VALUES (?, ?, ?)";
+        PreparedStatement stmt = conn.prepareStatement(query);
+        stmt.setInt(1, pension.getIdPension());
+        stmt.setString(2, pension.getNombre());
+        stmt.setDouble(3, pension.getPorcentaje());
+        stmt.executeUpdate();
+        System.out.println("Pensión agregada correctamente.");
     }
 
     // Método para eliminar una pensión por idPension
@@ -43,20 +37,36 @@ public class PensionData {
     }
 
     // Método para modificar una pensión
-    public void modificarPension(Pension pension) {
+    public void modificarPension(int idOriginal, Integer idNuevo, Pension pension) {
         Connection conn = Conexion.getConexion();
         try {
-            String query = "UPDATE pension SET nombre = ?, porcentaje = ? WHERE idPension = ?";
+            String query;
+            if (idNuevo != null) {
+                query = "UPDATE pension SET idPension = ?, nombre = ?, porcentaje = ? WHERE idPension = ?";
+            } else {
+                query = "UPDATE pension SET nombre = ?, porcentaje = ? WHERE idPension = ?";
+            }
+
             PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setString(1, pension.getNombre());
-            stmt.setDouble(2, pension.getPorcentaje());
-            stmt.setInt(3, pension.getIdPension());
+
+            if (idNuevo != null) {
+                stmt.setInt(1, idNuevo);
+                stmt.setString(2, pension.getNombre());
+                stmt.setDouble(3, pension.getPorcentaje());
+                stmt.setInt(4, idOriginal);
+            } else {
+                stmt.setString(1, pension.getNombre());
+                stmt.setDouble(2, pension.getPorcentaje());
+                stmt.setInt(3, idOriginal);
+            }
+
             stmt.executeUpdate();
             System.out.println("Pensión modificada correctamente.");
         } catch (SQLException e) {
             System.out.println("Error al modificar pensión.");
             e.printStackTrace();
         }
+
     }
 
     // Método para buscar una pensión por idPension

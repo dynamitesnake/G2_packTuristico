@@ -1,6 +1,7 @@
 
 package Vista;
 
+import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Pension;
@@ -31,6 +32,7 @@ public class VistaPension extends javax.swing.JInternalFrame {
         jTextAreaListar = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
 
+        setClosable(true);
         setPreferredSize(new java.awt.Dimension(900, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -124,6 +126,7 @@ public class VistaPension extends javax.swing.JInternalFrame {
         int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la pensión a buscar:")); 
         Pension pension = pensionData.buscarPension(id); 
         if (pension != null) { 
+            jTextFieldID.setText(String.valueOf(pension.getIdPension()));
             jTextFieldNombre.setText(pension.getNombre()); 
             jTextFieldPorcentaje.setText(String.valueOf(pension.getPorcentaje())); 
             JOptionPane.showMessageDialog(null, "Pensión encontrada"); 
@@ -138,34 +141,47 @@ public class VistaPension extends javax.swing.JInternalFrame {
             int id = Integer.parseInt(jTextFieldID.getText());
             String nombre = jTextFieldNombre.getText();
             double porcentaje = Double.parseDouble(jTextFieldPorcentaje.getText());
-        
+
             Pension pension = new Pension(id, nombre, porcentaje);
             pensionData.agregarPension(pension);
             JOptionPane.showMessageDialog(null, "Pensión agregada correctamente");
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Debe completar los campos de texto.");
+        } catch (SQLException e) {
+            if (e.getSQLState().equals("23000")) { // Código SQLState para clave duplicada
+                JOptionPane.showMessageDialog(null, "Error: El ID de la pensión ya existe. Por favor, ingrese un ID diferente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al agregar pensión.");
+                e.printStackTrace();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
         // TODO add your handling code here:
         try {
-            String nombre = jTextFieldNombre.getText(); 
-            double porcentaje = Double.parseDouble(jTextFieldPorcentaje.getText()); 
-            int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la pensión a modificar:")); 
-            
-            Pension pension = new Pension(id, nombre, porcentaje); 
-            pensionData.modificarPension(pension); 
-            JOptionPane.showMessageDialog(null, "Pensión modificada correctamente");
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Debe completar los campos de texto.");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
+        int idOriginal = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la pensión a modificar:"));
+
+        String idNuevoTexto = jTextFieldID.getText();
+        String nombre = jTextFieldNombre.getText(); 
+        double porcentaje = Double.parseDouble(jTextFieldPorcentaje.getText());
+
+        Integer idNuevo = idNuevoTexto.isEmpty() ? null : Integer.parseInt(idNuevoTexto);
+
+        Pension pension = new Pension(idOriginal, nombre, porcentaje);
+
+        pensionData.modificarPension(idOriginal, idNuevo, pension);
+
+        JOptionPane.showMessageDialog(null, "Pensión modificada correctamente");
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Debe completar los campos de texto correctamente.");
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+  
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
     private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
