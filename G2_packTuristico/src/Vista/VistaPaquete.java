@@ -180,13 +180,19 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Debe seleccionar las fechas de ida y vuelta.");
             return;
         }
-       
-    LocalDate fecha1 = calendIda.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    LocalDate fecha2 = calendVuelta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+       //conversion de fechas:
+    LocalDate fechaIda = calendIda.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    LocalDate fechaVuelta = calendVuelta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    
+    int diasEstadia = fechaIda.until(fechaVuelta).getDays();
+    if(diasEstadia <= 0){
+    JOptionPane.showMessageDialog(null, "La fecha de vuelta debe ser poesterior a la fecha de ida");
+    return;
+    }
    
-    int inicio = fecha1.getMonthValue();
-    int fin = fecha2.getMonthValue();
-
+   // int inicio = fecha1.getMonthValue();
+    //int fin = fecha2.getMonthValue();
+/*
     if ((inicio == Month.JANUARY.getValue() || inicio == Month.JULY.getValue()) &&
         (fin == Month.JANUARY.getValue() || fin == Month.JULY.getValue())) {
         txt_temp.setText("Alta");
@@ -199,7 +205,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         txt_temp.setText("Baja");
          temporada ="Baja";
     }
-        
+        */
     
       } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Tiene que seleccionar una fecha");
