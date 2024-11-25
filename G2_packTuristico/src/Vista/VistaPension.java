@@ -35,13 +35,18 @@ public class VistaPension extends javax.swing.JInternalFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextFieldID.setMinimumSize(new java.awt.Dimension(68, 22));
-        getContentPane().add(jTextFieldID, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 100, 30));
+        getContentPane().add(jTextFieldID, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 100, 30));
 
         jTextFieldPorcentaje.setMinimumSize(new java.awt.Dimension(68, 22));
-        getContentPane().add(jTextFieldPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 100, 30));
+        getContentPane().add(jTextFieldPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 100, 30));
 
         jTextFieldNombre.setMinimumSize(new java.awt.Dimension(68, 22));
-        getContentPane().add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 100, 30));
+        jTextFieldNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNombreActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 100, 30));
 
         jButtonBuscar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButtonBuscar.setForeground(new java.awt.Color(255, 153, 0));
@@ -53,7 +58,7 @@ public class VistaPension extends javax.swing.JInternalFrame {
                 jButtonBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 90, 180, 70));
+        getContentPane().add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, 180, 70));
 
         jButtonAgregar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButtonAgregar.setForeground(new java.awt.Color(255, 153, 0));
@@ -65,7 +70,7 @@ public class VistaPension extends javax.swing.JInternalFrame {
                 jButtonAgregarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 210, 180, 70));
+        getContentPane().add(jButtonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 250, 180, 70));
 
         jButtonModificar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButtonModificar.setForeground(new java.awt.Color(255, 153, 51));
@@ -76,7 +81,7 @@ public class VistaPension extends javax.swing.JInternalFrame {
                 jButtonModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, 120, 40));
+        getContentPane().add(jButtonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 430, 120, 40));
 
         jButtonListar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButtonListar.setForeground(new java.awt.Color(255, 153, 0));
@@ -89,7 +94,7 @@ public class VistaPension extends javax.swing.JInternalFrame {
                 jButtonListarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, 180, 70));
+        getContentPane().add(jButtonListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 390, 180, 70));
 
         jButtonEliminar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButtonEliminar.setForeground(new java.awt.Color(255, 153, 51));
@@ -100,16 +105,16 @@ public class VistaPension extends javax.swing.JInternalFrame {
                 jButtonEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 120, 40));
+        getContentPane().add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 120, 40));
 
         jTextAreaListar.setColumns(20);
         jTextAreaListar.setRows(5);
         jScrollPane1.setViewportView(jTextAreaListar);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 430, 140));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 430, 140));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pension.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 880, 470));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pensión ultimo.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 900, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -178,6 +183,10 @@ public class VistaPension extends javax.swing.JInternalFrame {
         pensionData.eliminarPension(id); 
         JOptionPane.showMessageDialog(null, "Pensión eliminada correctamente");
     }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNombreActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAgregar;

@@ -66,7 +66,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        getContentPane().add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, 220, 30));
+        getContentPane().add(comboAlojamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, 220, 30));
 
         jCorigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "San Luis", "Villa Mercedes", " " }));
         getContentPane().add(jCorigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 140, 30));
@@ -82,8 +82,8 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         jCtransp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Avion", "Colectivo", " " }));
         getContentPane().add(jCtransp, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 180, 170, 30));
         getContentPane().add(txtIdPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 240, 30));
-        getContentPane().add(calendIda, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 130, 30));
-        getContentPane().add(calendVuelta, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 130, 30));
+        getContentPane().add(calendIda, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 120, 30));
+        getContentPane().add(calendVuelta, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 120, 30));
         getContentPane().add(jtCantidadPasajeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 160, 30));
         getContentPane().add(txtIdPension, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 160, 30));
         getContentPane().add(txtMontoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 420, 120, 40));

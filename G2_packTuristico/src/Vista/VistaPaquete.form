@@ -38,7 +38,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="500" y="370" width="220" height="30"/>
+          <AbsoluteConstraints x="550" y="310" width="220" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -141,14 +141,14 @@
     <Component class="com.toedter.calendar.JDateChooser" name="calendIda">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="280" y="130" width="130" height="30"/>
+          <AbsoluteConstraints x="300" y="130" width="120" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="calendVuelta">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="290" y="180" width="130" height="30"/>
+          <AbsoluteConstraints x="300" y="180" width="120" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
