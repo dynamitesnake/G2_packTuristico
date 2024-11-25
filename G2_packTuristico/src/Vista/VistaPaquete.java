@@ -23,6 +23,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
      private PaqueteData paqueData;
     private ArrayList <Alojamiento> listaAloja;
     private String temporada;
+    private Paquete paquete = null;
 
     
     public VistaPaquete() {
@@ -56,7 +57,7 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         jB_guardarPaquete = new javax.swing.JButton();
         JBbuscar = new javax.swing.JButton();
         btnCalcular = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -127,16 +128,16 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 530, 170, 100));
 
-        jButton4.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 153, 0));
-        jButton4.setText("MODIFICAR");
-        jButton4.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnModificar.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(255, 153, 0));
+        btnModificar.setText("MODIFICAR");
+        btnModificar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 470, 140, 50));
+        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 470, 140, 50));
 
         jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 153, 0));
@@ -161,9 +162,9 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
         guardarPaquete();
     }//GEN-LAST:event_jB_guardarPaqueteActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+       modificarPaquete();
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         eliminarPaquete();
@@ -303,12 +304,12 @@ public class VistaPaquete extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBbuscar;
     private javax.swing.JButton btnCalcular;
+    private javax.swing.JButton btnModificar;
     private com.toedter.calendar.JDateChooser calendIda;
     private com.toedter.calendar.JDateChooser calendVuelta;
     private javax.swing.JComboBox<Alojamiento> comboAlojamientos;
     private javax.swing.JButton jB_guardarPaquete;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jCdestino;
     private javax.swing.JComboBox<String> jCorigen;
     private javax.swing.JComboBox<String> jCtransp;
@@ -399,9 +400,40 @@ private void guardarPaquete() {
         }
     }  catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Ocurrió un error al buscar el paquete: " + e.getMessage());
+    } 
+    }
+  private void modificarPaquete() {
+    
+        try{
+            int idPaquete = Integer.parseInt(txtIdPaquete.getText());
+            paquete = paqueData.buscarPaquete(idPaquete);
+        
+            if(paquete != null){
+                
+            paquete.setIdPaquete(Integer.parseInt(txtIdPaquete.getText()));
+            paquete.setFechaIni(calendIda.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            paquete.setFechaFin(calendVuelta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            paquete.setOrigen((String) jCorigen.getSelectedItem());
+            paquete.setDestino((String) jCdestino.getSelectedItem());
+            paquete.setPasajeros(Integer.parseInt(jtCantidadPasajeros.getText()));
+            paquete.setMedioViaje((String) jCtransp.getSelectedItem());
+            paquete.setMontoFinal(Double.parseDouble(txtMontoFinal.getText()));
+            paquete.setIdPasaje(Integer.parseInt(txt_idPasaje.getText()));
+            paquete.setIdAlojamiento(Integer.parseInt(txtIdAlojamiento.getText()));
+            paquete.setIdPension(Integer.parseInt(txtIdPension.getText()));
+
+            
+            paqueData.modificarPaquete(paquete);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "El paquete con el ID especificado no existe.");
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Error: Verifique que los campos numéricos tengan valores válidos. " + e.getMessage());
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
     }
 }
-
   }
 
 
